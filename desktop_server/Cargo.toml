@@ -1,0 +1,11 @@
+[package]
+name = "desktop_server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hyper = { version = "0.14", features = ["full", "server"] }
+tokio = { version = "1", features = ["full"] }
+tokio-rustls = "0.23"
+rustls-pemfile = "2"
+hyper-rustls = "0.23"
