@@ -26,6 +26,6 @@ def build_and_train_model():
 
     model = tf.keras.Model(inputs=[input_a, input_b], outputs=output)
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-    model.fit({'fruit1': input1, 'fruit2': input2}, labels, epochs=30, verbose=0)
+    model.fit({'fruit1': input1, 'fruit2': input2}, labels, epochs=60, verbose=0)
 
     return model

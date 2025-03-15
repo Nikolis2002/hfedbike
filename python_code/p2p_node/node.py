@@ -11,7 +11,8 @@ from model import build_and_train_model
 
 NODE_ID = "A"
 PREV_NODE_ID = "D"
-NEXT_NODE_URL = "http://next-node-ip:8000/send_weights"
+NEXT_NODE_IP= '192.168.1.99'
+NEXT_NODE_URL = f"http://{NEXT_NODE_IP}:8000/send_weights"
 MY_PORT = 8000
 TOTAL_NODES = 4
 
@@ -46,11 +47,11 @@ def send_weights(weights, round_num):
         "round": round_num,
         "weights": serialize_weights(weights)
     }
-    resp = requests.post(f"http://next-node-ip:8000/send_weights", json=data)
+    resp = requests.post(NEXT_NODE_URL, json=data)
     print("Weights sent to next node:", resp.json())
 
 def wait_for_weights(round_num, sender_id):
-    filename = f"weights_from_{sender}_round_{round_num}.npy"
+    filename = f"weights_from_{sender_id}_round_{round_num}.npy"
     timeout = 60
     waited = 0
     while not os.path.exists(filename):
