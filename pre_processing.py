@@ -150,7 +150,7 @@ def create_parser():
     parser.add_argument("--use_l1",type=bool,default=False,help="Use L1")
     parser.add_argument('--hidden_layers', type=str, default="",
                         help="Comma-separated list of hidden layer sizes, e.g., '64,32' or '128,64,32'")
-    parser.add_argument("--dropout",type=float,default=0,help="The Dropout")
+    parser.add_argument("--dropout_rate",type=float,default=0,help="The dropout_rate")
 
     parser.add_argument(
     "--run_id",
@@ -172,7 +172,7 @@ def create_parser():
 
 def create_folder(id):
     date_str = datetime.now().strftime("%m-%d_%H-%M-%S")
-    folder_name = f"screenshots/{id}{date_str}"
+    folder_name = f"screenshots/ID:{id}_DATE_{date_str}"
 
     os.makedirs(folder_name, exist_ok=True)
 
@@ -233,7 +233,7 @@ def plot(args,loss_table,val_loss_table,folder,max_epochs):
             plt.savefig(filename,format='png')
 
 
-def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_layer_func,loss_func,use_l2,use_l1,r=0.001,deep=False,deep_layers=None,dropout_rate=0):
+def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_layer_func,loss_func,use_l2,use_l1,r=0.001,deep=False,deep_layers=None,dropout_rate_rate=0):
     
     hidden_layers={'half':math.ceil(input_shape/2), #diffrent choices for the neuron of the hidden layers all viable
                    "two thirds":math.ceil((2*input_shape)/3),
@@ -292,8 +292,8 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
         for layer in deep_layers[1:]:
             model.add(tf.keras.layers.Dense(layer, activation=activation_options[hid_layer_func],kernel_regularizer=l))
 
-            if dropout_rate > 0.0:
-                model.add(tf.keras.layers.Dropout(dropout_rate))
+            if dropout_rate_rate > 0.0:
+                model.add(tf.keras.layers.Dropout(dropout_rate_rate))
         
     
         model.add(tf.keras.layers.Dense(1, activation='linear'))
@@ -330,7 +330,7 @@ def normal_training(filtered_input,output,args,folder,hidden_layers):
             input_train,input_val=filtered_input[training_idx],filtered_input[val_idx]
             output_train,output_val=output[training_idx],output[val_idx]
 
-            model,early_stop,reduce_lr=neural_network_model(filtered_input.shape[1],args.optimizer,args.momentum,args.lr,args.num_of_layers,args.hid_layer_func,args.loss_func,args.use_l2,args.use_l1,args.r,args.more_layers,hidden_layers,args.dropout)
+            model,early_stop,reduce_lr=neural_network_model(filtered_input.shape[1],args.optimizer,args.momentum,args.lr,args.num_of_layers,args.hid_layer_func,args.loss_func,args.use_l2,args.use_l1,args.r,args.more_layers,hidden_layers,args.dropout_rate)
             training=model.fit(input_train, output_train,validation_data=(input_val, output_val),epochs=args.epochs, batch_size=batch_size, verbose=1,callbacks=[early_stop,reduce_lr])
 
             stop_epoch=len(training.history['loss'])
@@ -362,6 +362,7 @@ def normal_training(filtered_input,output,args,folder,hidden_layers):
         #write the results to mongodb for further analysis
         evals_np=np.array(evals)
         evals_json={
+            "_id": args.run_id,
             "use L2":args.use_l2,
             "use L1":args.use_l1,
             "multiple layers":args.more_layers, #ignore for 1 layer
@@ -377,7 +378,7 @@ def normal_training(filtered_input,output,args,folder,hidden_layers):
                 "hidden layer activation function":args.hid_layer_func,
                 "regulazation rate":args.r,
                 "loss function":args.loss_func,
-                "dropout":args.dropout
+                "dropout_rate":args.dropout_rate
             },
             "Average MSE": np.mean(evals_np[:, 0]),
             "Average MAE": np.mean(evals_np[:, 1]),
