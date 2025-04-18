@@ -1,0 +1,6 @@
+all_csvs/
+citibike_zips/
+*.zip
+*~ 
+*.swp 
+*.lock
