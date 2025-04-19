@@ -19,44 +19,48 @@ class NeuronComboRunner:
     def generate_layer_combos(self):
         # only 2‑ and 3‑layer configurations
         sizes = [32, 64, 128, 256]
-        for combo in itertools.product(sizes, repeat=2):
-            yield list(combo)
         for combo in itertools.product(sizes, repeat=3):
+            yield list(combo)
+        for combo in itertools.product(sizes, repeat=2):
             yield list(combo)
 
     def generate_commands(self):
-        optimizers    = ['SGD', 'adam', 'nadam']
-        reg_methods   = [('none', False, False), ('l1', True, False), ('l2', False, True)]
-        r_values      = [0.0, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1]
-        lr_values     = [1e-4, 1e-3, 1e-2]
-        bs            = 64  # fixed batch size
+        optimizers  = ['SGD', 'adam', 'nadam']
+        methods     = ['l1', 'l2']  # only L1 and L2
+        # regularization strengths for l1/l2
+        r_values    = [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]
+        lr_values   = [1e-4, 1e-3, 1e-2]
+        batch_size  = 64  # fixed batch size
 
         for optimizer in optimizers:
-            # For SGD test two momentum values; for others, momentum=0
+            # For SGD test two momentum values; for others momentum=0
             momentums = [0.2, 0.6] if optimizer == 'SGD' else [0.0]
 
             for momentum in momentums:
                 for layers in self.generate_layer_combos():
                     hidden_str = ",".join(str(n) for n in layers)
-                    for method, use_l1, use_l2 in reg_methods:
+
+                    for method in methods:
+                        # L1 or L2: sweep r_values
                         for r in r_values:
-                            # only allow r=0 for 'none', and r>0 for l1/l2
-                            if (method == 'none' and r != 0.0) or (method != 'none' and r == 0.0):
-                                continue
                             for lr in lr_values:
                                 cmd = [
                                     "python3", "pre_processing.py",
-                                    "--optimizer",      optimizer,
-                                    "--momentum",       str(momentum),
-                                    "--lr",             str(lr),
-                                    "--epochs",         "1100",
-                                    "--use_l1",         str(use_l1),
-                                    "--use_l2",         str(use_l2),
-                                    "--r",              str(r),
-                                    "--b_size",         str(bs),           # fixed batch size 64
-                                    "--more_layers",    "True",
-                                    "--hidden_layers",  hidden_str
+                                    "--optimizer",       optimizer,
+                                    "--momentum",        str(momentum),
+                                    "--lr",              str(lr),
+                                    "--epochs",          "1100",
+                                    "--b_size",          str(batch_size),
+                                    "--more_layers",     "True",
+                                    "--hidden_layers",   hidden_str
                                 ]
+                                # toggle L1/L2 flag exclusively
+                                if method == 'l1':
+                                    cmd += ["--use_l1", "True"]
+                                else:  # l2
+                                    cmd += ["--use_l2", "True"]
+                                # add regularization factor
+                                cmd += ["--r", str(r)]
                                 yield cmd
 
     def run_experiment(self, cmd, run_id):
@@ -78,7 +82,7 @@ class NeuronComboRunner:
             return False
 
     def run_all(self):
-        total, success = 0, 0
+        total = success = 0
         for run_id, cmd in enumerate(self.generate_commands(), start=1):
             total += 1
             if self.run_experiment(cmd, run_id):

@@ -302,7 +302,7 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
     #optimizer options
     if optimizer == "adam":
         optimizer = tf.keras.optimizers.Adam(learning_rate=lr)
-    if optimizer == "nadam":
+    elif optimizer == "nadam":
         optimizer = tf.keras.optimizers.Nadam(learning_rate=lr)
     elif optimizer == "SGD":
         optimizer = tf.keras.optimizers.SGD(learning_rate=lr, momentum=momentum,nesterov=True)
