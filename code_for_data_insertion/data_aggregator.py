@@ -6,7 +6,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["citibike"]
 collection = db["bike_data_enriched"]
 
-selected_regions = ["upper_manhattan", "lower_west_manhattan"]
+selected_regions = ["upper_manhattan", "east_of_manhattan"]
 subzones = ["NW", "NE", "SW", "SE"]
 
 
