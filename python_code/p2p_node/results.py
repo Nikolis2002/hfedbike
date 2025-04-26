@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 # Load the trained model
-model = tf.keras.models.load_model("final_model_node_A.h5")  # Adjust filename if needed
+model = tf.keras.models.load_model("/home/nick/Desktop/diplwmatikh/python_code/p2p_node/models/final_model_node_X.h5")  # Adjust filename if needed
 
 # Test inputs (same as used during training)
 input1 = np.array([[0], [1], [0], [1]], dtype=np.int32)

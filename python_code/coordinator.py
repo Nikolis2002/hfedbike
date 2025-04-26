@@ -4,17 +4,19 @@ import numpy as np
 import time
 
 # Configuration for the reverse proxy:
-LOCAL_UPDATE_PORT = 5560  # Port where local aggregators publish updates (via PUB)
+LOCAL_UPDATE_PORT = 5560  # Port where local aggregators publish updates 
 REQUEST_PORT = 5570       # Port where neighborhoods request the latest global update
 
 # Create a ZeroMQ context
 context = zmq.Context()
 
 # SUB socket: receives local updates
+
 sub_socket = context.socket(zmq.SUB)
-sub_socket.bind(f"tcp://*:{LOCAL_UPDATE_PORT}")
-# Subscribe to all topics (or you can set a topic string, e.g., "LOCAL_UPDATE")
+#sub_socket.connect("tcp://192.168.1.200:5560")  # X
+sub_socket.connect("tcp://192.168.1.204:5560")  # P
 sub_socket.setsockopt_string(zmq.SUBSCRIBE, "")
+
 
 # REP socket: responds to requests for the latest update
 rep_socket = context.socket(zmq.REP)
@@ -28,6 +30,7 @@ poller = zmq.Poller()
 poller.register(sub_socket, zmq.POLLIN)
 poller.register(rep_socket, zmq.POLLIN)
 
+print("i use the new codeA ")
 print("Reverse Proxy started. Waiting for local updates and requests...")
 
 while True:
@@ -37,7 +40,6 @@ while True:
     # Check for a new local update
     if sub_socket in events and events[sub_socket] == zmq.POLLIN:
         try:
-            # Assume local aggregators send a JSON string with their aggregated weights.
             msg = sub_socket.recv_string()
             stored_update = msg  # Cache the update
             print("Stored a new local update.")
@@ -58,5 +60,4 @@ while True:
         except Exception as e:
             print("Error handling request:", e)
     
-    # Small sleep to prevent busy waiting (optional)
-    time.sleep(0.1)
+    #time.sleep(0.1)

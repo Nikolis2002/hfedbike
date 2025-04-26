@@ -2,7 +2,7 @@ import pandas as pd
 import glob
 import numpy as np
 from sklearn.preprocessing import StandardScaler,  OneHotEncoder
-from sklearn.model_selection import  KFold
+from sklearn.model_selection import  KFold, StratifiedShuffleSplit
 import tensorflow as tf
 import math
 import matplotlib.pyplot as plt
@@ -12,13 +12,13 @@ import os, pprint
 from datetime import datetime
 from tensorflow.keras import backend as K
 from numba import cuda 
-
+from collections import Counter
 
 client = MongoClient("mongodb://localhost:27017/")
 database=client["citibike"]
 average_results=database["results"]
 
-
+ 
 
 gpus = tf.config.list_physical_devices('GPU')
 for gpu in gpus:
@@ -28,8 +28,10 @@ def z_score(panda,columns):
     scaler = StandardScaler()  
     
     zscored_data = scaler.fit_transform(panda[columns])
+    sigma= scaler.scale_[0]
+    print(f"This is the sigma: {sigma}")
  
-    return zscored_data
+    return zscored_data, sigma
 
 def one_hot_encoding(panda,columns):
     encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
@@ -59,7 +61,7 @@ def data_processor():
 
 
     #bike_files=glob.glob("processed_csvs/*_bike_usage.csv")
-    file="/home/nikolis/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
+    file="/home/nick/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
     filtered_inputs=[]
     outputs=[]
     save=0
@@ -83,6 +85,8 @@ def data_processor():
     merged_df["hour_of_datetime"]=merged_df["hour"].dt.hour
     merged_df["day_of_week"] = merged_df["hour"].dt.dayofweek 
     merged_df["month"] = merged_df["hour"].dt.month
+    months = merged_df["month"].values
+    print(months)
 
     merged_df["hour_sin"]=np.sin(2*np.pi*merged_df["hour_of_datetime"]/24)
     merged_df["hour_cos"]=np.cos(2*np.pi*merged_df["hour_of_datetime"]/24)
@@ -112,8 +116,8 @@ def data_processor():
 
     categorical_columns=['day_of_week','month','weather_main']
 
-    z_scored_data=z_score(input,numeric_columns).astype(np.float32)
-    output=z_score(merged_df,["bike_usage"]).astype(np.float32)
+    z_scored_data,_=z_score(input,numeric_columns)
+    output,sigma=z_score(merged_df,["bike_usage"])
     categ_data=one_hot_encoding(input,categorical_columns).astype(np.float32)
 
     filtered_input=np.concatenate([z_scored_data,categ_data], axis=1).astype(np.float32)
@@ -128,7 +132,7 @@ def data_processor():
     if save==1:
         merged_df.to_csv(f"{region}_{sub_region}_weather.csv",index=False)
 
-    return filtered_input,output
+    return filtered_input,output ,sigma,months
 
 
 def create_parser():
@@ -271,7 +275,7 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
     reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
     monitor='val_mae',       # or 'val_loss'
     factor=0.5,
-    patience=5,
+    patience=10,
     min_lr=1e-6,
     verbose=1
 )
@@ -281,7 +285,7 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
     if deep ==False:
         model = tf.keras.models.Sequential([
             tf.keras.Input(shape=(input_shape,)),
-            tf.keras.layers.Dense(256, activation=activation_options[hid_layer_func],kernel_regularizer=l),
+            tf.keras.layers.Dense(128, activation=activation_options[hid_layer_func],kernel_regularizer=l),
             tf.keras.layers.Dense(1, activation='linear')
         ])
     else:
@@ -314,90 +318,109 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
 
     return model, early_stopping, reduce_lr
 
-def normal_training(filtered_input,output,args,folder,hidden_layers):
-        file_fold_split = KFold(n_splits=5, shuffle=True, random_state=44) #5-cv fold with balanced output class data(StatifiedKFold does that)
-        round=1
-        evals=[]
-        val_loss_table=[]
-        loss_table=[]
-        early_stop_epochs=[]
-        batch_size=args.b_size
+def normal_training(filtered_input, output, months, args, folder, hidden_layers,sigma):
+    """
+    Train with 5‑folds stratified by month so each validation set
+    contains a slice of every month.
+    """
+    # set up stratified 80/20 split by month label
+    sss = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=44)
 
-        #for every split train the nn and evaluate it 
-        for training_idx,val_idx in file_fold_split.split(filtered_input,output):
-            
+    round = 1
+    evals = []
+    val_loss_table = []
+    loss_table = []
+    early_stop_epochs = []
+    batch_size = args.b_size
 
-            input_train,input_val=filtered_input[training_idx],filtered_input[val_idx]
-            output_train,output_val=output[training_idx],output[val_idx]
+    for train_idx, val_idx in sss.split(filtered_input, months):
 
-            model,early_stop,reduce_lr=neural_network_model(filtered_input.shape[1],args.optimizer,args.momentum,args.lr,args.num_of_layers,args.hid_layer_func,args.loss_func,args.use_l2,args.use_l1,args.r,args.more_layers,hidden_layers,args.dropout_rate)
-            training=model.fit(input_train, output_train,validation_data=(input_val, output_val),epochs=args.epochs, batch_size=batch_size, verbose=1,callbacks=[early_stop,reduce_lr])
+        val_months = months[val_idx]
+        print(f"Fold {round} — val month distribution:", {m: c for m, c in Counter(val_months).items()})
+        # slice into train/validation
+        X_train, X_val = filtered_input[train_idx], filtered_input[val_idx]
+        y_train, y_val = output[train_idx],        output[val_idx]
 
-            stop_epoch=len(training.history['loss'])
-            early_stop_epochs.append(stop_epoch)
- 
-            val_loss_table.append(training.history['val_loss'])
-            loss_table.append(training.history['loss'])
+        # build the model
+        model, early_stop, reduce_lr = neural_network_model(
+            filtered_input.shape[1],
+            args.optimizer, args.momentum, args.lr,
+            args.num_of_layers, args.hid_layer_func,
+            args.loss_func, args.use_l2, args.use_l1,
+            args.r, args.more_layers, hidden_layers,
+            args.dropout_rate
+        )
 
+        # train
+        history = model.fit(
+            X_train, y_train,
+            validation_data=(X_val, y_val),
+            epochs=args.epochs,
+            batch_size=batch_size,
+            verbose=1,
+            callbacks=[early_stop, reduce_lr]
+        )
 
-            evaluation=model.evaluate(input_val,output_val,verbose=0)
-            loss, mae, rmse= evaluation  # unpack the three values
-            print(
-            f"Round {round}: "
-            f"Loss = {loss:.4f}, "
-            f"MAE = {mae:.4f}, "
-            f"RMSE = {rmse:.4f}"
-            )
-            evals.append(evaluation)
+        # record epochs and losses
+        early_stop_epochs.append(len(history.history['loss']))
+        loss_table.append(history.history['loss'])
+        val_loss_table.append(history.history['val_loss'])
 
-            del model
-            del training
-            K.clear_session()
+        # evaluate
+        loss, mae, rmse = model.evaluate(X_val, y_val, verbose=0)
+        print(f"Fold {round}: Loss={loss:.4f}, MAE={mae:.4f}, RMSE={rmse:.4f}")
+        evals.append((loss, mae, rmse))
+        round += 1
 
-        max_epochs = max(early_stop_epochs)
-        plot(args,loss_table,val_loss_table,folder,max_epochs)
+        # cleanup
+        K.clear_session()
+
+    # plot and return
+    max_epochs = max(early_stop_epochs)
+    plot(args, loss_table, val_loss_table, folder, max_epochs)
 
 
         
-        #write the results to mongodb for further analysis
-        evals_np=np.array(evals)
-        evals_json={
-            "_id": args.run_id,
-            "use L2":args.use_l2,
-            "use L1":args.use_l1,
-            "multiple layers":args.more_layers, #ignore for 1 layer
-            "choosen architecture":args.hidden_layers, #ignore for 1 layer
-            "chosen_weight":"double",
-            "params":{
-                "optimizer":args.optimizer,
-                "momentum":args.momentum,
-                "learning rate":args.lr,
-                "epochs":args.epochs,
-                "run_epochs":max_epochs, #the epochs of the training, it can be less thean epochs because i have early stop
-                "number of hidden layers":args.num_of_layers,
-                "hidden layer activation function":args.hid_layer_func,
-                "regulazation rate":args.r,
-                "loss function":args.loss_func,
-                "dropout_rate":args.dropout_rate
-            },
-            "Average MSE": np.mean(evals_np[:, 0]),
-            "Average MAE": np.mean(evals_np[:, 1]),
-            "Average RMSE": np.mean(evals_np[:, 2])
-        }
+    #write the results to mongodb for further analysis
+    evals_np=np.array(evals)
+    evals_json={
+        "_id": args.run_id,
+        "use L2":args.use_l2,
+        "use L1":args.use_l1,
+        "multiple layers":args.more_layers, #ignore for 1 layer
+        "choosen architecture":args.hidden_layers, #ignore for 1 layer
+        "chosen_weight":"double",
+        "params":{
+            "optimizer":args.optimizer,
+            "momentum":args.momentum,
+            "learning rate":args.lr,
+            "epochs":args.epochs,
+            "run_epochs":max_epochs, #the epochs of the training, it can be less thean epochs because i have early stop
+            "number of hidden layers":args.num_of_layers,
+            "hidden layer activation function":args.hid_layer_func,
+            "regulazation rate":args.r,
+            "loss function":args.loss_func,
+            "dropout_rate":args.dropout_rate
+        },
+        "Average MSE": np.mean(evals_np[:, 0]),
+        "Average MAE": np.mean(evals_np[:, 1]),
+        "Average MAE_raw": sigma*float(np.mean(evals_np[:, 1])),
+        "Average RMSE": np.mean(evals_np[:, 2])
+    }
 
-        printer=pprint.PrettyPrinter(indent=4)
-        print('\n')
-        print("|--------FINAL RESULTS----------|")
-        printer.pprint(evals_json)
+    printer=pprint.PrettyPrinter(indent=4)
+    print('\n')
+    print("|--------FINAL RESULTS----------|")
+    printer.pprint(evals_json)
 
-        average_results.insert_one(evals_json)
+    average_results.insert_one(evals_json)
 
 
 
 
 if __name__ == "__main__":
     args=create_parser()
-    input,output=data_processor()
+    input,output,sigma,months=data_processor()
 
     hidden_layers = []
     if args.hidden_layers.strip():  # Check for non-empty string after stripping whitespace
@@ -418,7 +441,7 @@ if __name__ == "__main__":
     #input=input_list[0]
     #output=output_list[0]
 
-    normal_training(input,output,args,folder,hidden_layers)
+    normal_training(input,output,months,args,folder,hidden_layers,sigma)
 
 
 

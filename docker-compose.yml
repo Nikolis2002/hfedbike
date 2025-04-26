@@ -1,0 +1,81 @@
+
+
+services:
+  nodeX:
+    image: federated-node
+    container_name: nodeX
+    environment:
+      - NEIGHBORHOOD=docker
+      - NODE_ID=X
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.200
+    volumes:
+      - "/home/nick/Desktop/diplwmatikh/python_code/p2p_node/models:/models"
+
+  coordinator:
+    image: federated-node
+    container_name: coordinator
+    environment:
+      - NEIGHBORHOOD=docker
+      - NODE_ID=coordinator
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.203
+    volumes:
+      - "/home/nick/Desktop/diplwmatikh/python_code/coordinator.py:/app/coordinator.py"
+    command: ["python", "-u", "/app/coordinator.py"]
+
+  nodeY:
+    image: federated-node
+    container_name: nodeY
+    environment:
+      - NEIGHBORHOOD=docker
+      - NODE_ID=Y
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.201
+
+  nodeZ:
+    image: federated-node
+    container_name: nodeZ
+    environment:
+      - NEIGHBORHOOD=docker
+      - NODE_ID=Z
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.202
+
+  nodeP:
+    image: federated-node
+    container_name: nodeP
+    environment:
+      - NEIGHBORHOOD=docker2
+      - NODE_ID=P
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.204
+
+  nodeQ:
+    image: federated-node
+    container_name: nodeQ
+    environment:
+      - NEIGHBORHOOD=docker2
+      - NODE_ID=Q
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.205
+
+  nodeR:
+    image: federated-node
+    container_name: nodeR
+    environment:
+      - NEIGHBORHOOD=docker2
+      - NODE_ID=R
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.206
+
+networks:
+  my_macvlan:
+    external: true
