@@ -43,7 +43,6 @@ def one_hot_encoding(panda,columns):
 
 
 
-
 def data_processor():
 
     weather_df=pd.read_csv("processed_csvs/clean_weather.csv")
@@ -61,7 +60,7 @@ def data_processor():
 
 
     #bike_files=glob.glob("processed_csvs/*_bike_usage.csv")
-    file="/home/nick/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
+    file="/home/nikolis/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
     filtered_inputs=[]
     outputs=[]
     save=0
@@ -73,14 +72,19 @@ def data_processor():
     region=bike_df["region"].unique()
     sub_region=bike_df["subzone"].unique()
 
-    merged_df=pd.merge(weather_df,bike_df,on="hour",how="left")
+    merged_df=pd.merge(weather_df,bike_df,on="hour",how="inner")
     merged_df["hour"] = pd.to_datetime(merged_df["hour"], errors="coerce")
+    #merged_df = merged_df.set_index('hour')
+    merged_df['bike_usage_next'] = merged_df['bike_usage'].shift(-1)
+    merged_df = merged_df.iloc[:-1].copy()
+
+    print(merged_df.head())
+
+    #bins = [-np.inf,2000,6000,np.inf]
+    #labels=["low","medium","high"]
+    #merged_df["visibility_fixed"]=pd.cut(merged_df["visibility"],bins=bins,labels=labels)
 
 
-    #print(merged_df["hour"].dtype)
-
-    if "bike_usage" in merged_df.columns:
-        merged_df["bike_usage"]= merged_df["bike_usage"].fillna(0)
 
     merged_df["hour_of_datetime"]=merged_df["hour"].dt.hour
     merged_df["day_of_week"] = merged_df["hour"].dt.dayofweek 
@@ -98,7 +102,10 @@ def data_processor():
 
 
     columns=['hour_sin','hour_cos','day_of_week','month','temp','visibility','dew_point','feels_like','temp_min','temp_max','pressure','humidity','wind_speed','wind_deg',"wind_gust",'rain_1h', 'rain_3h', 'snow_1h', 'snow_3h','clouds_all','weather_main']
+    #columns=['hour_sin','hour_cos','day_of_week','weather_main_prev','weather_main_cur','weather_main_next','visibility_fixed','temp_max','temp_min','feels_like','humidity','wind_speed']
     input=merged_df[columns]
+
+    time_feats = input[['hour_sin','hour_cos']].to_numpy(dtype=np.float32)
 
     
     if tester == 2:
@@ -106,7 +113,7 @@ def data_processor():
     
     #output=merged_df['bike_usage'].to_numpy().astype(np.float32)
 
-    exclude_cols = ['hour_sin','hour_cos','day_of_week','month']
+    exclude_cols = ['hour_sin','hour_cos',"day_of_week",'month','weather_main']
 
     numeric_columns=input.select_dtypes(include=['number']).columns.tolist()
     numeric_columns = [col for col in numeric_columns if col not in exclude_cols]
@@ -117,10 +124,10 @@ def data_processor():
     categorical_columns=['day_of_week','month','weather_main']
 
     z_scored_data,_=z_score(input,numeric_columns)
-    output,sigma=z_score(merged_df,["bike_usage"])
+    output,sigma=z_score(merged_df,["bike_usage_next"])
     categ_data=one_hot_encoding(input,categorical_columns).astype(np.float32)
 
-    filtered_input=np.concatenate([z_scored_data,categ_data], axis=1).astype(np.float32)
+    filtered_input=np.concatenate([time_feats,z_scored_data,categ_data], axis=1).astype(np.float32)
     #filtered_inputs.append(filtered_input)
     #outputs.append(output)
 
@@ -142,7 +149,7 @@ def create_parser():
     parser.add_argument("--optimizer",type=str,default="adam",help="Type the optimizer for weights you want to use options:adam,SGD")
     parser.add_argument("--lr",type=float,default=0.001,help="The learning rate for training")
     parser.add_argument("--momentum",type=float,default=0.0,help="THe momentum for the SGD")
-    parser.add_argument("--epochs",type=int,default=50,help="Number of epochs to train")
+    parser.add_argument("--epochs",type=int,default=300,help="Number of epochs to train")
     parser.add_argument("--num_of_layers",type=str,default="double",help="The number of hidden layers options: I/2,2*I/3,I,2*I")
     parser.add_argument("--loss_func",type=str,default="MSE",help="The loss function options: cross entropy,MSE")
     parser.add_argument("--hid_layer_func",type=str,default="Relu",help="Activation function for hidden layers options:Relu,Tanh,Silu")
@@ -189,7 +196,7 @@ def plot(args,loss_table,val_loss_table,folder,max_epochs):
                 epochs = range(1, len(history) + 1)
                 plt.plot(epochs, history, label=f'Fold {i+1}')
             
-            plt.xlabel('Epoch')
+            plt.normal_trainingxlabel('Epoch')
             plt.ylabel('Validation Loss')
             plt.title('Validation Loss per Fold with Stopping Epochs')
             plt.legend()
@@ -314,7 +321,7 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
         raise ValueError("Unsupported option")
     
     
-    model.compile(optimizer=optimizer, loss=options_loss[loss_func], metrics=[metrics["mae"],metrics['RMSE']])
+    model.compile(optimizer=optimizer, loss=options_loss[loss_func], metrics=[metrics["mae"],metrics['RMSE'],tf.keras.metrics.R2Score()])
 
     return model, early_stopping, reduce_lr
 
@@ -366,14 +373,20 @@ def normal_training(filtered_input, output, months, args, folder, hidden_layers,
         loss_table.append(history.history['loss'])
         val_loss_table.append(history.history['val_loss'])
 
-        # evaluate
-        loss, mae, rmse = model.evaluate(X_val, y_val, verbose=0)
-        print(f"Fold {round}: Loss={loss:.4f}, MAE={mae:.4f}, RMSE={rmse:.4f}")
-        evals.append((loss, mae, rmse))
-        round += 1
+            evaluation=model.evaluate(input_val,output_val,verbose=0)
+            loss, mae, rmse,r2= evaluation  # unpack the three values
+            print(
+            f"Round {round}: "
+            f"Loss = {loss:.4f}, "
+            f"MAE = {mae:.4f}, "
+            f"RMSE = {rmse:.4f}, " 
+            f"R2 = {r2:.4f}"
+            )
+            evals.append(evaluation)
 
-        # cleanup
-        K.clear_session()
+            del model
+            del training
+            K.clear_session()
 
     # plot and return
     max_epochs = max(early_stop_epochs)
@@ -381,32 +394,32 @@ def normal_training(filtered_input, output, months, args, folder, hidden_layers,
 
 
         
-    #write the results to mongodb for further analysis
-    evals_np=np.array(evals)
-    evals_json={
-        "_id": args.run_id,
-        "use L2":args.use_l2,
-        "use L1":args.use_l1,
-        "multiple layers":args.more_layers, #ignore for 1 layer
-        "choosen architecture":args.hidden_layers, #ignore for 1 layer
-        "chosen_weight":"double",
-        "params":{
-            "optimizer":args.optimizer,
-            "momentum":args.momentum,
-            "learning rate":args.lr,
-            "epochs":args.epochs,
-            "run_epochs":max_epochs, #the epochs of the training, it can be less thean epochs because i have early stop
-            "number of hidden layers":args.num_of_layers,
-            "hidden layer activation function":args.hid_layer_func,
-            "regulazation rate":args.r,
-            "loss function":args.loss_func,
-            "dropout_rate":args.dropout_rate
-        },
-        "Average MSE": np.mean(evals_np[:, 0]),
-        "Average MAE": np.mean(evals_np[:, 1]),
-        "Average MAE_raw": sigma*float(np.mean(evals_np[:, 1])),
-        "Average RMSE": np.mean(evals_np[:, 2])
-    }
+        #write the results to mongodb for further analysis
+        evals_np=np.array(evals)
+        evals_json={
+            "_id": args.run_id,
+            "use L2":args.use_l2,
+            "use L1":args.use_l1,
+            "multiple layers":args.more_layers, #ignore for 1 layer
+            "choosen architecture":args.hidden_layers, #ignore for 1 layer
+            "chosen_weight":"double",
+            "params":{
+                "optimizer":args.optimizer,
+                "momentum":args.momentum,
+                "learning rate":args.lr,
+                "epochs":args.epochs,
+                "run_epochs":max_epochs, #the epochs of the training, it can be less thean epochs because i have early stop
+                "number of hidden layers":args.num_of_layers,
+                "hidden layer activation function":args.hid_layer_func,
+                "regulazation rate":args.r,
+                "loss function":args.loss_func,
+                "dropout_rate":args.dropout_rate
+            },
+            "Average MSE": np.mean(evals_np[:, 0]),
+            "Average MAE": np.mean(evals_np[:, 1]),
+            "Average RMSE": np.mean(evals_np[:, 2]),
+            "Average R2": np.mean(evals_np[:, 3])
+        }
 
     printer=pprint.PrettyPrinter(indent=4)
     print('\n')
