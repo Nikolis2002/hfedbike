@@ -60,7 +60,7 @@ def data_processor():
 
 
     #bike_files=glob.glob("processed_csvs/*_bike_usage.csv")
-    file="/home/nikolis/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
+    file="/home/nick/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
     filtered_inputs=[]
     outputs=[]
     save=0
@@ -325,7 +325,7 @@ def neural_network_model(input_shape,optimizer,momentum,lr,num_of_layers,hid_lay
 
     return model, early_stopping, reduce_lr
 
-def normal_training(filtered_input, output, months, args, folder, hidden_layers,sigma):
+def month_split(filtered_input, output, months, args, folder, hidden_layers,sigma):
     """
     Train with 5‑folds stratified by month so each validation set
     contains a slice of every month.
@@ -373,6 +373,90 @@ def normal_training(filtered_input, output, months, args, folder, hidden_layers,
         loss_table.append(history.history['loss'])
         val_loss_table.append(history.history['val_loss'])
 
+        evaluation=model.evaluate(X_val,y_val,verbose=0)
+        loss, mae, rmse,r2= evaluation  # unpack the three values
+        print(
+        f"Round {round}: "
+        f"Loss = {loss:.4f}, "
+        f"MAE = {mae:.4f}, "
+        f"Actual MAE = {mae*sigma:.4f}, "
+        f"RMSE = {rmse:.4f}, " 
+        f"R2 = {r2:.4f}"
+        )
+        evals.append(evaluation)
+
+        del model
+        del history
+        K.clear_session()
+
+    # plot and return
+    max_epochs = max(early_stop_epochs)
+    plot(args, loss_table, val_loss_table, folder, max_epochs)
+
+        
+        #write the results to mongodb for further analysis
+    evals_np=np.array(evals)
+    evals_json={
+        "_id": args.run_id,
+        "use L2":args.use_l2,
+        "use L1":args.use_l1,
+        "splitting":"month",
+        "sigma":sigma,
+        "multiple layers":args.more_layers, #ignore for 1 layer
+        "choosen architecture":args.hidden_layers, #ignore for 1 layer
+        "chosen_weight":"double",
+        "params":{
+            "optimizer":args.optimizer,
+            "momentum":args.momentum,
+            "learning rate":args.lr,
+            "epochs":args.epochs,
+            "run_epochs":max_epochs, #the epochs of the training, it can be less thean epochs because i have early stop
+            "number of hidden layers":args.num_of_layers,
+            "hidden layer activation function":args.hid_layer_func,
+            "regulazation rate":args.r,
+            "loss function":args.loss_func,
+            "dropout_rate":args.dropout_rate
+        },
+        "Average MSE": np.mean(evals_np[:, 0]),
+        "Average MAE": np.mean(evals_np[:, 1]),
+        "Average RMSE": np.mean(evals_np[:, 2]),
+        "Average R2": np.mean(evals_np[:, 3])
+    }
+
+    printer=pprint.PrettyPrinter(indent=4)
+    print('\n')
+    print("|--------FINAL RESULTS----------|")
+    printer.pprint(evals_json)
+
+    average_results.insert_one(evals_json)
+
+
+def K_fold(filtered_input,output,args,folder,hidden_layers,sigma):
+        file_fold_split = KFold(n_splits=5, shuffle=True, random_state=44) #5-cv fold with balanced output class data(StatifiedKFold does that)
+        round=1
+        evals=[]
+        val_loss_table=[]
+        loss_table=[]
+        early_stop_epochs=[]
+        batch_size=args.b_size
+
+        #for every split train the nn and evaluate it 
+        for training_idx,val_idx in file_fold_split.split(filtered_input,output):
+            
+
+            input_train,input_val=filtered_input[training_idx],filtered_input[val_idx]
+            output_train,output_val=output[training_idx],output[val_idx]
+
+            model,early_stop,reduce_lr=neural_network_model(filtered_input.shape[1],args.optimizer,args.momentum,args.lr,args.num_of_layers,args.hid_layer_func,args.loss_func,args.use_l2,args.use_l1,args.r,args.more_layers,hidden_layers,args.dropout_rate)
+            training=model.fit(input_train, output_train,validation_data=(input_val, output_val),epochs=args.epochs, batch_size=batch_size, verbose=1,callbacks=[early_stop,reduce_lr])
+
+            stop_epoch=len(training.history['loss'])
+            early_stop_epochs.append(stop_epoch)
+ 
+            val_loss_table.append(training.history['val_loss'])
+            loss_table.append(training.history['loss'])
+
+
             evaluation=model.evaluate(input_val,output_val,verbose=0)
             loss, mae, rmse,r2= evaluation  # unpack the three values
             print(
@@ -388,9 +472,8 @@ def normal_training(filtered_input, output, months, args, folder, hidden_layers,
             del training
             K.clear_session()
 
-    # plot and return
-    max_epochs = max(early_stop_epochs)
-    plot(args, loss_table, val_loss_table, folder, max_epochs)
+        max_epochs = max(early_stop_epochs)
+        plot(args,loss_table,val_loss_table,folder,max_epochs)
 
 
         
@@ -400,6 +483,8 @@ def normal_training(filtered_input, output, months, args, folder, hidden_layers,
             "_id": args.run_id,
             "use L2":args.use_l2,
             "use L1":args.use_l1,
+            "splitting":"Kfold",
+            "sigma":sigma,
             "multiple layers":args.more_layers, #ignore for 1 layer
             "choosen architecture":args.hidden_layers, #ignore for 1 layer
             "chosen_weight":"double",
@@ -421,12 +506,12 @@ def normal_training(filtered_input, output, months, args, folder, hidden_layers,
             "Average R2": np.mean(evals_np[:, 3])
         }
 
-    printer=pprint.PrettyPrinter(indent=4)
-    print('\n')
-    print("|--------FINAL RESULTS----------|")
-    printer.pprint(evals_json)
+        printer=pprint.PrettyPrinter(indent=4)
+        print('\n')
+        print("|--------FINAL RESULTS----------|")
+        printer.pprint(evals_json)
 
-    average_results.insert_one(evals_json)
+        average_results.insert_one(evals_json)
 
 
 
@@ -453,8 +538,12 @@ if __name__ == "__main__":
 
     #input=input_list[0]
     #output=output_list[0]
+    split=1
 
-    normal_training(input,output,months,args,folder,hidden_layers,sigma)
+    if split == 0:
+        K_fold(input,output,args,folder,hidden_layers,sigma)
+    else:
+        month_split(input,output,months,args,folder,hidden_layers,sigma)
 
 
 

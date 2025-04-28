@@ -25,12 +25,12 @@ class NeuronComboRunner:
             yield list(combo)
 
     def generate_commands(self):
-        optimizers  = ['SGD', 'adam', 'nadam']
+        optimizers  = ['adam', 'nadam','SGD']
         methods     = ['l1', 'l2']  # only L1 and L2
         # regularization strengths for l1/l2
-        r_values    = [1e-5, 1e-4, 1e-3, 1e-2, 1e-1]
-        lr_values   = [1e-4, 1e-3, 1e-2]
-        batch_size  = 64  # fixed batch size
+        r_values    = [1e-4, 1e-3, 1e-2]
+        lr_values   = [1e-4,5e-4,1e-3]
+        batch_size  = 32  # fixed batch size
 
         for optimizer in optimizers:
             # For SGD test two momentum values; for others momentum=0
