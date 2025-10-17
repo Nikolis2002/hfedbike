@@ -1,5 +1,4 @@
 
-
 services:
   nodeX:
     image: federated-node
@@ -9,21 +8,26 @@ services:
       - NODE_ID=X
     networks:
       my_macvlan:
-        ipv4_address: 192.168.1.200
+        ipv4_address: 192.168.1.199
     volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
       - "/home/nick/Desktop/diplwmatikh/python_code/p2p_node/models:/models"
+      - ./logs/nodeX:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
 
   coordinator:
     image: federated-node
     container_name: coordinator
     environment:
-      - NEIGHBORHOOD=docker
       - NODE_ID=coordinator
     networks:
       my_macvlan:
         ipv4_address: 192.168.1.203
     volumes:
-      - "/home/nick/Desktop/diplwmatikh/python_code/coordinator.py:/app/coordinator.py"
+      - ./logs/coordinator:/logs:rw
+      - ./python_code/coordinator.py:/app/coordinator.py:ro
     command: ["python", "-u", "/app/coordinator.py"]
 
   nodeY:
@@ -34,7 +38,13 @@ services:
       - NODE_ID=Y
     networks:
       my_macvlan:
-        ipv4_address: 192.168.1.201
+        ipv4_address: 192.168.1.200
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeY:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
 
   nodeZ:
     image: federated-node
@@ -44,7 +54,29 @@ services:
       - NODE_ID=Z
     networks:
       my_macvlan:
+        ipv4_address: 192.168.1.201
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeZ:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeW:
+    image: federated-node
+    container_name: nodeW
+    environment:
+      - NEIGHBORHOOD=docker
+      - NODE_ID=W
+    networks:
+      my_macvlan:
         ipv4_address: 192.168.1.202
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeW:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
 
   nodeP:
     image: federated-node
@@ -55,6 +87,12 @@ services:
     networks:
       my_macvlan:
         ipv4_address: 192.168.1.204
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeP:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
 
   nodeQ:
     image: federated-node
@@ -65,6 +103,12 @@ services:
     networks:
       my_macvlan:
         ipv4_address: 192.168.1.205
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeQ:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
 
   nodeR:
     image: federated-node
@@ -75,6 +119,159 @@ services:
     networks:
       my_macvlan:
         ipv4_address: 192.168.1.206
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeR:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+
+  nodeL:
+    image: federated-node
+    container_name: nodeL
+    environment:
+      - NEIGHBORHOOD=docker2
+      - NODE_ID=L
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.207
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeL:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeA:
+    image: federated-node
+    container_name: nodeA
+    environment:
+      - NEIGHBORHOOD=docker3
+      - NODE_ID=A
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.208
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeA:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeB:
+    image: federated-node
+    container_name: nodeB
+    environment:
+      - NEIGHBORHOOD=docker3
+      - NODE_ID=B
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.209
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeB:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+  
+  nodeC:
+    image: federated-node
+    container_name: nodeC
+    environment:
+      - NEIGHBORHOOD=docker3
+      - NODE_ID=C
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.210
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeC:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeD:
+    image: federated-node
+    container_name: nodeD
+    environment:
+      - NEIGHBORHOOD=docker3
+      - NODE_ID=D
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.211
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeD:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeE:
+    image: federated-node
+    container_name: nodeE
+    environment:
+      - NEIGHBORHOOD=docker4
+      - NODE_ID=E
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.212
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeE:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeF:
+    image: federated-node
+    container_name: nodeF
+    environment:
+      - NEIGHBORHOOD=docker4
+      - NODE_ID=F
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.213
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeF:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+  
+  nodeG:
+    image: federated-node
+    container_name: nodeG
+    environment:
+      - NEIGHBORHOOD=docker4
+      - NODE_ID=G
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.214
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeG:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+  nodeH:
+    image: federated-node
+    container_name: nodeH
+    environment:
+      - NEIGHBORHOOD=docker4
+      - NODE_ID=H
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.215
+    volumes:
+      - "/home/nikolis/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:rw"
+      - ./logs/nodeH:/logs:rw
+      - "./python_code/p2p_node:/app:rw"
+      - "/home/nikolis/Desktop/diplwmatikh/results:/results/node_results:rw"
+    command: ["python", "-u", "/app/${NODE_SCRIPT}"]
+
+
 
 networks:
   my_macvlan:

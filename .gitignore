@@ -1,6 +1,11 @@
-all_csvs/
+*.csv
+*csv*/
 citibike_zips/
+spring_version/
+legacy/
 *.zip
 *~ 
 *.swp 
 *.lock
+fine_tune_the_baseline_model/screenshots*
+.cache/

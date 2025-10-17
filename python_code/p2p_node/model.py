@@ -1,31 +1,48 @@
 import tensorflow as tf
-import numpy as np
 
-def build_and_train_model():
-    input1 = np.array([[0], [1], [0], [1]], dtype=np.int32)
-    input2 = np.array([[0], [1], [1], [0]], dtype=np.int32)
-    labels = np.array([[0, 1, 0],
-                       [1, 0, 0],
-                       [0, 0, 1],
-                       [0, 0, 1]], dtype=np.float32)
 
-    input_a = tf.keras.Input(shape=(1,), dtype='int32', name='fruit1')
-    input_b = tf.keras.Input(shape=(1,), dtype='int32', name='fruit2')
+def load_baseline_model():
+    return tf.keras.models.load_model("/data/2024_csvs/best_model.keras")
 
-    embedding_layer = tf.keras.layers.Embedding(input_dim=3, output_dim=4)
-    emb_a = embedding_layer(input_a)
-    emb_b = embedding_layer(input_b)
+def neural_network_model():
+    
+    l2=tf.keras.regularizers.L2(0.0001)
+    loss_func=tf.keras.losses.MeanSquaredError(name='MSE')
 
-    flat_a = tf.keras.layers.Flatten()(emb_a)
-    flat_b = tf.keras.layers.Flatten()(emb_b)
+    early_stopping = tf.keras.callbacks.EarlyStopping(
+    monitor='val_mae',  # Track validation loss
+    patience=10,
+    min_delta=0.001,     # Require at least 0.001 improvement        
+    restore_best_weights=True  # Revert to best model weights
+    )
+    
+    reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
+    monitor='val_mae',       
+    factor=0.5,
+    patience=10,
+    min_lr=1e-6,
+    verbose=1
+    )
 
-    combined = tf.keras.layers.Concatenate()([flat_a, flat_b])
+    metrics={"mae":'mae',
+            "MSE":tf.keras.metrics.MeanSquaredError(name='MSE'),
+            "RMSE":tf.keras.metrics.RootMeanSquaredError(name="rmse")} 
+    
 
-    hidden = tf.keras.layers.Dense(8, activation='relu')(combined)
-    output = tf.keras.layers.Dense(3, activation='softmax')(hidden)
+    model= load_baseline_model()
 
-    model = tf.keras.Model(inputs=[input_a, input_b], outputs=output)
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-    model.fit({'fruit1': input1, 'fruit2': input2}, labels, epochs=70, verbose=0)
+    optimizer = tf.keras.optimizers.Nadam(learning_rate=0.001)
+    
+    
+    model.compile(optimizer=optimizer, loss=loss_func, metrics=[metrics["mae"],metrics['RMSE'],tf.keras.metrics.R2Score()])
 
-    return model
+    return model, early_stopping, reduce_lr
+
+
+def train_the_model(model,X_val,y_val,early_stopping,reduce_lr,input,output,local_epochs):
+    
+    model.fit(input,output,validation_data=(X_val, y_val),epochs=local_epochs,batch_size=32,callbacks=[early_stopping,reduce_lr],verbose=0)
+    
+@tf.function(experimental_relax_shapes=True, reduce_retracing=True)
+def predict_fn(model, x):
+    return model(x, training=False)

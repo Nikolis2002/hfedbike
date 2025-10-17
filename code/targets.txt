@@ -1,2 +1,0 @@
-mendel@xenial-yarn.local
-mendel@green-umpire.local

@@ -1,3 +1,7 @@
 tensorflow
 numpy
 pyzmq
+pandas
+scikit-learn
+pickle
+math
