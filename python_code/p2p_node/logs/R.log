@@ -2,3 +2,679 @@
 2025-05-20 05:53:16 tensorflow WARNING ─ 6 out of the last 8 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7b0f9c782f20> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
 2025-05-20 06:19:16 tensorflow WARNING ─ 5 out of the last 7 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7b4c9870af20> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
 2025-05-20 06:19:16 tensorflow WARNING ─ 6 out of the last 8 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7b4c9870af20> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+2026-02-16 13:18:33 __main__ INFO ─ Z-Score Stats | samples=168 mean=14.065476 variance=127.954046
+2026-02-16 13:18:38 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:18:38 __main__ INFO ─ [R] RECV <- Q bytes=123992 (ACK sent)
+2026-02-16 13:18:38 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=123957
+2026-02-16 13:18:38 __main__ INFO ─ [R] ACK <- L rtt_ms=129.90 bytes=123957
+2026-02-16 13:18:38 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=123730
+2026-02-16 13:18:38 __main__ INFO ─ [R] ACK <- L rtt_ms=0.24 bytes=123730
+2026-02-16 13:18:38 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:18:38 __main__ INFO ─ [R] RECV <- Q bytes=123745 (ACK sent)
+2026-02-16 13:18:38 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:18:38 __main__ INFO ─ [R] RECV <- Q bytes=123732 (ACK sent)
+2026-02-16 13:18:38 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=123762
+2026-02-16 13:18:38 __main__ INFO ─ [R] ACK <- L rtt_ms=0.24 bytes=123762
+2026-02-16 13:18:59 __main__ INFO ─ Z-Score Stats | samples=168 mean=15.309524 variance=154.308957
+2026-02-16 13:19:02 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:02 __main__ INFO ─ [R] RECV <- Q bytes=124516 (ACK sent)
+2026-02-16 13:19:02 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=124473
+2026-02-16 13:19:02 __main__ INFO ─ [R] ACK <- L rtt_ms=0.27 bytes=124473
+2026-02-16 13:19:02 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=124478
+2026-02-16 13:19:02 __main__ INFO ─ [R] ACK <- L rtt_ms=0.34 bytes=124478
+2026-02-16 13:19:02 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:02 __main__ INFO ─ [R] RECV <- Q bytes=124468 (ACK sent)
+2026-02-16 13:19:02 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:02 __main__ INFO ─ [R] RECV <- Q bytes=124453 (ACK sent)
+2026-02-16 13:19:02 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=124482
+2026-02-16 13:19:02 __main__ INFO ─ [R] ACK <- L rtt_ms=1.32 bytes=124482
+2026-02-16 13:19:24 __main__ INFO ─ Z-Score Stats | samples=168 mean=8.285714 variance=38.406463
+2026-02-16 13:19:26 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:26 __main__ INFO ─ [R] RECV <- Q bytes=126651 (ACK sent)
+2026-02-16 13:19:26 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126730
+2026-02-16 13:19:26 __main__ INFO ─ [R] ACK <- L rtt_ms=41.45 bytes=126730
+2026-02-16 13:19:26 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126687
+2026-02-16 13:19:26 __main__ INFO ─ [R] ACK <- L rtt_ms=0.20 bytes=126687
+2026-02-16 13:19:26 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:26 __main__ INFO ─ [R] RECV <- Q bytes=126709 (ACK sent)
+2026-02-16 13:19:26 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:26 __main__ INFO ─ [R] RECV <- Q bytes=126725 (ACK sent)
+2026-02-16 13:19:26 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126680
+2026-02-16 13:19:26 __main__ INFO ─ [R] ACK <- L rtt_ms=0.68 bytes=126680
+2026-02-16 13:19:48 __main__ INFO ─ Z-Score Stats | samples=168 mean=12.130952 variance=88.209042
+2026-02-16 13:19:51 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:51 __main__ INFO ─ [R] RECV <- Q bytes=126931 (ACK sent)
+2026-02-16 13:19:51 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126849
+2026-02-16 13:19:51 __main__ INFO ─ [R] ACK <- L rtt_ms=41.92 bytes=126849
+2026-02-16 13:19:51 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126902
+2026-02-16 13:19:51 __main__ INFO ─ [R] ACK <- L rtt_ms=0.18 bytes=126902
+2026-02-16 13:19:51 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:51 __main__ INFO ─ [R] RECV <- Q bytes=126927 (ACK sent)
+2026-02-16 13:19:51 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:19:51 __main__ INFO ─ [R] RECV <- Q bytes=127019 (ACK sent)
+2026-02-16 13:19:51 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126904
+2026-02-16 13:19:51 __main__ INFO ─ [R] ACK <- L rtt_ms=0.18 bytes=126904
+2026-02-16 13:20:13 __main__ INFO ─ Z-Score Stats | samples=168 mean=25.976190 variance=512.475624
+2026-02-16 13:20:15 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:20:15 __main__ INFO ─ [R] RECV <- Q bytes=126835 (ACK sent)
+2026-02-16 13:20:15 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126801
+2026-02-16 13:20:15 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126801
+2026-02-16 13:20:15 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126815
+2026-02-16 13:20:15 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126815
+2026-02-16 13:20:15 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:20:15 __main__ INFO ─ [R] RECV <- Q bytes=126939 (ACK sent)
+2026-02-16 13:20:15 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:20:15 __main__ INFO ─ [R] RECV <- Q bytes=126870 (ACK sent)
+2026-02-16 13:20:15 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126830
+2026-02-16 13:20:15 __main__ INFO ─ [R] ACK <- L rtt_ms=0.11 bytes=126830
+2026-02-16 13:20:38 __main__ INFO ─ Z-Score Stats | samples=168 mean=41.559524 variance=960.401219
+2026-02-16 13:20:40 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:20:40 __main__ INFO ─ [R] RECV <- Q bytes=126930 (ACK sent)
+2026-02-16 13:20:40 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126888
+2026-02-16 13:20:40 __main__ INFO ─ [R] ACK <- L rtt_ms=0.24 bytes=126888
+2026-02-16 13:20:40 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126901
+2026-02-16 13:20:40 __main__ INFO ─ [R] ACK <- L rtt_ms=0.24 bytes=126901
+2026-02-16 13:20:40 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:20:40 __main__ INFO ─ [R] RECV <- Q bytes=126921 (ACK sent)
+2026-02-16 13:20:40 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:20:40 __main__ INFO ─ [R] RECV <- Q bytes=126920 (ACK sent)
+2026-02-16 13:20:40 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126938
+2026-02-16 13:20:40 __main__ INFO ─ [R] ACK <- L rtt_ms=0.21 bytes=126938
+2026-02-16 13:21:02 __main__ INFO ─ Z-Score Stats | samples=168 mean=30.000000 variance=676.404762
+2026-02-16 13:21:05 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:05 __main__ INFO ─ [R] RECV <- Q bytes=126772 (ACK sent)
+2026-02-16 13:21:05 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126764
+2026-02-16 13:21:05 __main__ INFO ─ [R] ACK <- L rtt_ms=0.37 bytes=126764
+2026-02-16 13:21:05 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126859
+2026-02-16 13:21:05 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126859
+2026-02-16 13:21:05 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:05 __main__ INFO ─ [R] RECV <- Q bytes=126788 (ACK sent)
+2026-02-16 13:21:05 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:05 __main__ INFO ─ [R] RECV <- Q bytes=126811 (ACK sent)
+2026-02-16 13:21:05 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126854
+2026-02-16 13:21:05 __main__ INFO ─ [R] ACK <- L rtt_ms=0.14 bytes=126854
+2026-02-16 13:21:27 __main__ INFO ─ Z-Score Stats | samples=168 mean=31.327381 variance=419.232107
+2026-02-16 13:21:30 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:30 __main__ INFO ─ [R] RECV <- Q bytes=126895 (ACK sent)
+2026-02-16 13:21:30 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126767
+2026-02-16 13:21:30 __main__ INFO ─ [R] ACK <- L rtt_ms=52.73 bytes=126767
+2026-02-16 13:21:30 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126870
+2026-02-16 13:21:30 __main__ INFO ─ [R] ACK <- L rtt_ms=0.21 bytes=126870
+2026-02-16 13:21:30 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:30 __main__ INFO ─ [R] RECV <- Q bytes=126887 (ACK sent)
+2026-02-16 13:21:30 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:30 __main__ INFO ─ [R] RECV <- Q bytes=126868 (ACK sent)
+2026-02-16 13:21:30 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126871
+2026-02-16 13:21:30 __main__ INFO ─ [R] ACK <- L rtt_ms=0.21 bytes=126871
+2026-02-16 13:21:52 __main__ INFO ─ Z-Score Stats | samples=168 mean=36.452381 variance=1085.378685
+2026-02-16 13:21:54 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:54 __main__ INFO ─ [R] RECV <- Q bytes=126674 (ACK sent)
+2026-02-16 13:21:54 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126762
+2026-02-16 13:21:54 __main__ INFO ─ [R] ACK <- L rtt_ms=0.24 bytes=126762
+2026-02-16 13:21:54 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126699
+2026-02-16 13:21:54 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126699
+2026-02-16 13:21:54 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:54 __main__ INFO ─ [R] RECV <- Q bytes=126680 (ACK sent)
+2026-02-16 13:21:54 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:21:54 __main__ INFO ─ [R] RECV <- Q bytes=126729 (ACK sent)
+2026-02-16 13:21:54 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126655
+2026-02-16 13:21:54 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126655
+2026-02-16 13:22:17 __main__ INFO ─ Z-Score Stats | samples=168 mean=29.041667 variance=609.194692
+2026-02-16 13:22:19 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:22:19 __main__ INFO ─ [R] RECV <- Q bytes=126624 (ACK sent)
+2026-02-16 13:22:19 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126640
+2026-02-16 13:22:20 __main__ INFO ─ [R] ACK <- L rtt_ms=92.75 bytes=126640
+2026-02-16 13:22:20 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126632
+2026-02-16 13:22:20 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126632
+2026-02-16 13:22:20 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:22:20 __main__ INFO ─ [R] RECV <- Q bytes=126639 (ACK sent)
+2026-02-16 13:22:20 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:22:20 __main__ INFO ─ [R] RECV <- Q bytes=126619 (ACK sent)
+2026-02-16 13:22:20 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126621
+2026-02-16 13:22:20 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126621
+2026-02-16 13:22:42 __main__ INFO ─ Z-Score Stats | samples=168 mean=45.446429 variance=1355.235225
+2026-02-16 13:22:44 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:22:44 __main__ INFO ─ [R] RECV <- Q bytes=126553 (ACK sent)
+2026-02-16 13:22:44 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126578
+2026-02-16 13:22:45 __main__ INFO ─ [R] ACK <- L rtt_ms=235.90 bytes=126578
+2026-02-16 13:22:45 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126614
+2026-02-16 13:22:45 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126614
+2026-02-16 13:22:45 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:22:45 __main__ INFO ─ [R] RECV <- Q bytes=126636 (ACK sent)
+2026-02-16 13:22:45 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:22:45 __main__ INFO ─ [R] RECV <- Q bytes=126675 (ACK sent)
+2026-02-16 13:22:45 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126594
+2026-02-16 13:22:45 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126594
+2026-02-16 13:23:06 __main__ INFO ─ Z-Score Stats | samples=168 mean=32.922619 variance=749.619012
+2026-02-16 13:23:09 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:23:09 __main__ INFO ─ [R] RECV <- Q bytes=126596 (ACK sent)
+2026-02-16 13:23:09 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126647
+2026-02-16 13:23:09 __main__ INFO ─ [R] ACK <- L rtt_ms=0.39 bytes=126647
+2026-02-16 13:23:09 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126700
+2026-02-16 13:23:09 __main__ INFO ─ [R] ACK <- L rtt_ms=0.67 bytes=126700
+2026-02-16 13:23:09 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:23:09 __main__ INFO ─ [R] RECV <- Q bytes=126665 (ACK sent)
+2026-02-16 13:23:09 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:23:09 __main__ INFO ─ [R] RECV <- Q bytes=126718 (ACK sent)
+2026-02-16 13:23:09 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126699
+2026-02-16 13:23:09 __main__ INFO ─ [R] ACK <- L rtt_ms=0.31 bytes=126699
+2026-02-16 13:23:32 __main__ INFO ─ Z-Score Stats | samples=168 mean=38.089286 variance=837.128933
+2026-02-16 13:23:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:23:34 __main__ INFO ─ [R] RECV <- Q bytes=126656 (ACK sent)
+2026-02-16 13:23:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126726
+2026-02-16 13:23:34 __main__ INFO ─ [R] ACK <- L rtt_ms=34.72 bytes=126726
+2026-02-16 13:23:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126688
+2026-02-16 13:23:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126688
+2026-02-16 13:23:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:23:34 __main__ INFO ─ [R] RECV <- Q bytes=126742 (ACK sent)
+2026-02-16 13:23:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:23:34 __main__ INFO ─ [R] RECV <- Q bytes=126650 (ACK sent)
+2026-02-16 13:23:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126687
+2026-02-16 13:23:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.21 bytes=126687
+2026-02-16 13:23:57 __main__ INFO ─ Z-Score Stats | samples=168 mean=35.702381 variance=771.089994
+2026-02-16 13:24:00 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:00 __main__ INFO ─ [R] RECV <- Q bytes=126472 (ACK sent)
+2026-02-16 13:24:00 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126469
+2026-02-16 13:24:00 __main__ INFO ─ [R] ACK <- L rtt_ms=0.28 bytes=126469
+2026-02-16 13:24:00 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126476
+2026-02-16 13:24:00 __main__ INFO ─ [R] ACK <- L rtt_ms=0.14 bytes=126476
+2026-02-16 13:24:00 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:00 __main__ INFO ─ [R] RECV <- Q bytes=126466 (ACK sent)
+2026-02-16 13:24:00 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:00 __main__ INFO ─ [R] RECV <- Q bytes=126473 (ACK sent)
+2026-02-16 13:24:00 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126419
+2026-02-16 13:24:00 __main__ INFO ─ [R] ACK <- L rtt_ms=1.14 bytes=126419
+2026-02-16 13:24:21 __main__ INFO ─ Z-Score Stats | samples=168 mean=54.577381 variance=1787.767822
+2026-02-16 13:24:24 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:24 __main__ INFO ─ [R] RECV <- Q bytes=126415 (ACK sent)
+2026-02-16 13:24:24 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126508
+2026-02-16 13:24:24 __main__ INFO ─ [R] ACK <- L rtt_ms=1.05 bytes=126508
+2026-02-16 13:24:24 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126561
+2026-02-16 13:24:24 __main__ INFO ─ [R] ACK <- L rtt_ms=0.22 bytes=126561
+2026-02-16 13:24:24 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:24 __main__ INFO ─ [R] RECV <- Q bytes=126475 (ACK sent)
+2026-02-16 13:24:24 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:24 __main__ INFO ─ [R] RECV <- Q bytes=126483 (ACK sent)
+2026-02-16 13:24:24 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126410
+2026-02-16 13:24:24 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126410
+2026-02-16 13:24:45 __main__ INFO ─ Z-Score Stats | samples=168 mean=53.488095 variance=1845.023668
+2026-02-16 13:24:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:47 __main__ INFO ─ [R] RECV <- Q bytes=126569 (ACK sent)
+2026-02-16 13:24:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126566
+2026-02-16 13:24:47 __main__ INFO ─ [R] ACK <- L rtt_ms=80.97 bytes=126566
+2026-02-16 13:24:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126531
+2026-02-16 13:24:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126531
+2026-02-16 13:24:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:47 __main__ INFO ─ [R] RECV <- Q bytes=126569 (ACK sent)
+2026-02-16 13:24:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:24:47 __main__ INFO ─ [R] RECV <- Q bytes=126567 (ACK sent)
+2026-02-16 13:24:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126565
+2026-02-16 13:24:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126565
+2026-02-16 13:25:09 __main__ INFO ─ Z-Score Stats | samples=168 mean=46.226190 variance=1064.115505
+2026-02-16 13:25:12 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:12 __main__ INFO ─ [R] RECV <- Q bytes=126539 (ACK sent)
+2026-02-16 13:25:12 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126577
+2026-02-16 13:25:12 __main__ INFO ─ [R] ACK <- L rtt_ms=62.76 bytes=126577
+2026-02-16 13:25:12 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126602
+2026-02-16 13:25:12 __main__ INFO ─ [R] ACK <- L rtt_ms=0.21 bytes=126602
+2026-02-16 13:25:12 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:12 __main__ INFO ─ [R] RECV <- Q bytes=126552 (ACK sent)
+2026-02-16 13:25:12 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:12 __main__ INFO ─ [R] RECV <- Q bytes=126577 (ACK sent)
+2026-02-16 13:25:12 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126604
+2026-02-16 13:25:12 __main__ INFO ─ [R] ACK <- L rtt_ms=0.25 bytes=126604
+2026-02-16 13:25:33 __main__ INFO ─ Z-Score Stats | samples=168 mean=53.452381 variance=1977.235828
+2026-02-16 13:25:35 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:35 __main__ INFO ─ [R] RECV <- Q bytes=126311 (ACK sent)
+2026-02-16 13:25:35 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126412
+2026-02-16 13:25:35 __main__ INFO ─ [R] ACK <- L rtt_ms=67.83 bytes=126412
+2026-02-16 13:25:35 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126396
+2026-02-16 13:25:35 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126396
+2026-02-16 13:25:35 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:35 __main__ INFO ─ [R] RECV <- Q bytes=126395 (ACK sent)
+2026-02-16 13:25:35 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:35 __main__ INFO ─ [R] RECV <- Q bytes=126413 (ACK sent)
+2026-02-16 13:25:35 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126411
+2026-02-16 13:25:35 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126411
+2026-02-16 13:25:56 __main__ INFO ─ Z-Score Stats | samples=168 mean=57.904762 variance=2064.788549
+2026-02-16 13:25:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:59 __main__ INFO ─ [R] RECV <- Q bytes=126427 (ACK sent)
+2026-02-16 13:25:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126417
+2026-02-16 13:25:59 __main__ INFO ─ [R] ACK <- L rtt_ms=32.89 bytes=126417
+2026-02-16 13:25:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126427
+2026-02-16 13:25:59 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126427
+2026-02-16 13:25:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:59 __main__ INFO ─ [R] RECV <- Q bytes=126430 (ACK sent)
+2026-02-16 13:25:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:25:59 __main__ INFO ─ [R] RECV <- Q bytes=126495 (ACK sent)
+2026-02-16 13:25:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126396
+2026-02-16 13:25:59 __main__ INFO ─ [R] ACK <- L rtt_ms=0.55 bytes=126396
+2026-02-16 13:26:20 __main__ INFO ─ Z-Score Stats | samples=168 mean=61.327381 variance=2187.851155
+2026-02-16 13:26:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:26:22 __main__ INFO ─ [R] RECV <- Q bytes=126415 (ACK sent)
+2026-02-16 13:26:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126444
+2026-02-16 13:26:22 __main__ INFO ─ [R] ACK <- L rtt_ms=35.94 bytes=126444
+2026-02-16 13:26:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126397
+2026-02-16 13:26:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126397
+2026-02-16 13:26:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:26:22 __main__ INFO ─ [R] RECV <- Q bytes=126437 (ACK sent)
+2026-02-16 13:26:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:26:22 __main__ INFO ─ [R] RECV <- Q bytes=126433 (ACK sent)
+2026-02-16 13:26:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126500
+2026-02-16 13:26:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126500
+2026-02-16 13:26:44 __main__ INFO ─ Z-Score Stats | samples=168 mean=71.857143 variance=2641.574830
+2026-02-16 13:26:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:26:47 __main__ INFO ─ [R] RECV <- Q bytes=126461 (ACK sent)
+2026-02-16 13:26:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126476
+2026-02-16 13:26:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.28 bytes=126476
+2026-02-16 13:26:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126498
+2026-02-16 13:26:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126498
+2026-02-16 13:26:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:26:47 __main__ INFO ─ [R] RECV <- Q bytes=126495 (ACK sent)
+2026-02-16 13:26:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:26:47 __main__ INFO ─ [R] RECV <- Q bytes=126529 (ACK sent)
+2026-02-16 13:26:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126473
+2026-02-16 13:26:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126473
+2026-02-16 13:27:08 __main__ INFO ─ Z-Score Stats | samples=168 mean=71.619048 variance=2851.450113
+2026-02-16 13:27:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:10 __main__ INFO ─ [R] RECV <- Q bytes=126333 (ACK sent)
+2026-02-16 13:27:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126342
+2026-02-16 13:27:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.25 bytes=126342
+2026-02-16 13:27:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126377
+2026-02-16 13:27:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126377
+2026-02-16 13:27:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:10 __main__ INFO ─ [R] RECV <- Q bytes=126431 (ACK sent)
+2026-02-16 13:27:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:10 __main__ INFO ─ [R] RECV <- Q bytes=126399 (ACK sent)
+2026-02-16 13:27:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126357
+2026-02-16 13:27:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.10 bytes=126357
+2026-02-16 13:27:31 __main__ INFO ─ Z-Score Stats | samples=168 mean=87.916667 variance=3356.612103
+2026-02-16 13:27:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:34 __main__ INFO ─ [R] RECV <- Q bytes=126268 (ACK sent)
+2026-02-16 13:27:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126313
+2026-02-16 13:27:34 __main__ INFO ─ [R] ACK <- L rtt_ms=53.54 bytes=126313
+2026-02-16 13:27:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126320
+2026-02-16 13:27:34 __main__ INFO ─ [R] ACK <- L rtt_ms=1.17 bytes=126320
+2026-02-16 13:27:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:34 __main__ INFO ─ [R] RECV <- Q bytes=126397 (ACK sent)
+2026-02-16 13:27:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:34 __main__ INFO ─ [R] RECV <- Q bytes=126388 (ACK sent)
+2026-02-16 13:27:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126348
+2026-02-16 13:27:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126348
+2026-02-16 13:27:55 __main__ INFO ─ Z-Score Stats | samples=168 mean=92.321429 variance=3621.491922
+2026-02-16 13:27:58 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:58 __main__ INFO ─ [R] RECV <- Q bytes=126402 (ACK sent)
+2026-02-16 13:27:58 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126411
+2026-02-16 13:27:58 __main__ INFO ─ [R] ACK <- L rtt_ms=23.11 bytes=126411
+2026-02-16 13:27:58 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126385
+2026-02-16 13:27:58 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126385
+2026-02-16 13:27:58 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:58 __main__ INFO ─ [R] RECV <- Q bytes=126331 (ACK sent)
+2026-02-16 13:27:58 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:27:58 __main__ INFO ─ [R] RECV <- Q bytes=126311 (ACK sent)
+2026-02-16 13:27:58 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126303
+2026-02-16 13:27:58 __main__ INFO ─ [R] ACK <- L rtt_ms=0.23 bytes=126303
+2026-02-16 13:28:19 __main__ INFO ─ Z-Score Stats | samples=168 mean=78.232143 variance=2340.642538
+2026-02-16 13:28:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:28:22 __main__ INFO ─ [R] RECV <- Q bytes=126464 (ACK sent)
+2026-02-16 13:28:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126423
+2026-02-16 13:28:22 __main__ INFO ─ [R] ACK <- L rtt_ms=12.06 bytes=126423
+2026-02-16 13:28:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126411
+2026-02-16 13:28:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.11 bytes=126411
+2026-02-16 13:28:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:28:22 __main__ INFO ─ [R] RECV <- Q bytes=126477 (ACK sent)
+2026-02-16 13:28:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:28:22 __main__ INFO ─ [R] RECV <- Q bytes=126481 (ACK sent)
+2026-02-16 13:28:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126438
+2026-02-16 13:28:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126438
+2026-02-16 13:28:43 __main__ INFO ─ Z-Score Stats | samples=168 mean=75.755952 variance=2214.648774
+2026-02-16 13:28:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:28:46 __main__ INFO ─ [R] RECV <- Q bytes=126469 (ACK sent)
+2026-02-16 13:28:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126471
+2026-02-16 13:28:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.26 bytes=126471
+2026-02-16 13:28:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126477
+2026-02-16 13:28:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.10 bytes=126477
+2026-02-16 13:28:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:28:46 __main__ INFO ─ [R] RECV <- Q bytes=126435 (ACK sent)
+2026-02-16 13:28:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:28:46 __main__ INFO ─ [R] RECV <- Q bytes=126482 (ACK sent)
+2026-02-16 13:28:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126496
+2026-02-16 13:28:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.35 bytes=126496
+2026-02-16 13:29:07 __main__ INFO ─ Z-Score Stats | samples=168 mean=84.744048 variance=2504.583298
+2026-02-16 13:29:09 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:09 __main__ INFO ─ [R] RECV <- Q bytes=126285 (ACK sent)
+2026-02-16 13:29:09 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126288
+2026-02-16 13:29:09 __main__ INFO ─ [R] ACK <- L rtt_ms=0.23 bytes=126288
+2026-02-16 13:29:09 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126272
+2026-02-16 13:29:09 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126272
+2026-02-16 13:29:09 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:09 __main__ INFO ─ [R] RECV <- Q bytes=126375 (ACK sent)
+2026-02-16 13:29:09 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:09 __main__ INFO ─ [R] RECV <- Q bytes=126352 (ACK sent)
+2026-02-16 13:29:09 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126344
+2026-02-16 13:29:09 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126344
+2026-02-16 13:29:31 __main__ INFO ─ Z-Score Stats | samples=168 mean=90.875000 variance=2746.859375
+2026-02-16 13:29:33 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:34 __main__ INFO ─ [R] RECV <- Q bytes=126361 (ACK sent)
+2026-02-16 13:29:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126319
+2026-02-16 13:29:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.28 bytes=126319
+2026-02-16 13:29:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126280
+2026-02-16 13:29:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.23 bytes=126280
+2026-02-16 13:29:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:34 __main__ INFO ─ [R] RECV <- Q bytes=126366 (ACK sent)
+2026-02-16 13:29:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:34 __main__ INFO ─ [R] RECV <- Q bytes=126375 (ACK sent)
+2026-02-16 13:29:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126313
+2026-02-16 13:29:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.14 bytes=126313
+2026-02-16 13:29:55 __main__ INFO ─ Z-Score Stats | samples=168 mean=87.250000 variance=2588.997024
+2026-02-16 13:29:57 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:57 __main__ INFO ─ [R] RECV <- Q bytes=126329 (ACK sent)
+2026-02-16 13:29:57 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126364
+2026-02-16 13:29:57 __main__ INFO ─ [R] ACK <- L rtt_ms=1.68 bytes=126364
+2026-02-16 13:29:57 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126343
+2026-02-16 13:29:57 __main__ INFO ─ [R] ACK <- L rtt_ms=0.55 bytes=126343
+2026-02-16 13:29:57 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:57 __main__ INFO ─ [R] RECV <- Q bytes=126396 (ACK sent)
+2026-02-16 13:29:57 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:29:57 __main__ INFO ─ [R] RECV <- Q bytes=126429 (ACK sent)
+2026-02-16 13:29:57 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126320
+2026-02-16 13:29:57 __main__ INFO ─ [R] ACK <- L rtt_ms=0.20 bytes=126320
+2026-02-16 13:30:19 __main__ INFO ─ Z-Score Stats | samples=168 mean=91.113095 variance=2815.219352
+2026-02-16 13:30:21 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:30:21 __main__ INFO ─ [R] RECV <- Q bytes=126402 (ACK sent)
+2026-02-16 13:30:21 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126435
+2026-02-16 13:30:21 __main__ INFO ─ [R] ACK <- L rtt_ms=16.15 bytes=126435
+2026-02-16 13:30:21 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126334
+2026-02-16 13:30:21 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126334
+2026-02-16 13:30:21 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:30:21 __main__ INFO ─ [R] RECV <- Q bytes=126440 (ACK sent)
+2026-02-16 13:30:21 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:30:21 __main__ INFO ─ [R] RECV <- Q bytes=126460 (ACK sent)
+2026-02-16 13:30:21 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126471
+2026-02-16 13:30:21 __main__ INFO ─ [R] ACK <- L rtt_ms=0.20 bytes=126471
+2026-02-16 13:30:43 __main__ INFO ─ Z-Score Stats | samples=168 mean=89.011905 variance=2921.571287
+2026-02-16 13:30:45 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:30:45 __main__ INFO ─ [R] RECV <- Q bytes=126296 (ACK sent)
+2026-02-16 13:30:45 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126305
+2026-02-16 13:30:45 __main__ INFO ─ [R] ACK <- L rtt_ms=50.58 bytes=126305
+2026-02-16 13:30:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126303
+2026-02-16 13:30:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126303
+2026-02-16 13:30:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:30:46 __main__ INFO ─ [R] RECV <- Q bytes=126364 (ACK sent)
+2026-02-16 13:30:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:30:46 __main__ INFO ─ [R] RECV <- Q bytes=126262 (ACK sent)
+2026-02-16 13:30:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126376
+2026-02-16 13:30:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.18 bytes=126376
+2026-02-16 13:31:07 __main__ INFO ─ Z-Score Stats | samples=168 mean=83.839286 variance=2814.908695
+2026-02-16 13:31:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:10 __main__ INFO ─ [R] RECV <- Q bytes=126274 (ACK sent)
+2026-02-16 13:31:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126281
+2026-02-16 13:31:10 __main__ INFO ─ [R] ACK <- L rtt_ms=24.04 bytes=126281
+2026-02-16 13:31:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126267
+2026-02-16 13:31:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.14 bytes=126267
+2026-02-16 13:31:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:10 __main__ INFO ─ [R] RECV <- Q bytes=126291 (ACK sent)
+2026-02-16 13:31:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:10 __main__ INFO ─ [R] RECV <- Q bytes=126316 (ACK sent)
+2026-02-16 13:31:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126285
+2026-02-16 13:31:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126285
+2026-02-16 13:31:31 __main__ INFO ─ Z-Score Stats | samples=168 mean=88.065476 variance=2876.811189
+2026-02-16 13:31:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:34 __main__ INFO ─ [R] RECV <- Q bytes=126427 (ACK sent)
+2026-02-16 13:31:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126338
+2026-02-16 13:31:34 __main__ INFO ─ [R] ACK <- L rtt_ms=41.84 bytes=126338
+2026-02-16 13:31:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126347
+2026-02-16 13:31:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126347
+2026-02-16 13:31:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:34 __main__ INFO ─ [R] RECV <- Q bytes=126326 (ACK sent)
+2026-02-16 13:31:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:34 __main__ INFO ─ [R] RECV <- Q bytes=126335 (ACK sent)
+2026-02-16 13:31:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126365
+2026-02-16 13:31:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126365
+2026-02-16 13:31:55 __main__ INFO ─ Z-Score Stats | samples=168 mean=85.851190 variance=2716.459999
+2026-02-16 13:31:57 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:57 __main__ INFO ─ [R] RECV <- Q bytes=126421 (ACK sent)
+2026-02-16 13:31:57 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126398
+2026-02-16 13:31:57 __main__ INFO ─ [R] ACK <- L rtt_ms=0.35 bytes=126398
+2026-02-16 13:31:57 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126387
+2026-02-16 13:31:57 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126387
+2026-02-16 13:31:57 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:57 __main__ INFO ─ [R] RECV <- Q bytes=126417 (ACK sent)
+2026-02-16 13:31:57 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:31:57 __main__ INFO ─ [R] RECV <- Q bytes=126365 (ACK sent)
+2026-02-16 13:31:57 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126365
+2026-02-16 13:31:57 __main__ INFO ─ [R] ACK <- L rtt_ms=0.14 bytes=126365
+2026-02-16 13:32:19 __main__ INFO ─ Z-Score Stats | samples=168 mean=86.303571 variance=2710.901892
+2026-02-16 13:32:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:32:22 __main__ INFO ─ [R] RECV <- Q bytes=126464 (ACK sent)
+2026-02-16 13:32:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126452
+2026-02-16 13:32:22 __main__ INFO ─ [R] ACK <- L rtt_ms=17.28 bytes=126452
+2026-02-16 13:32:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126445
+2026-02-16 13:32:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126445
+2026-02-16 13:32:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:32:22 __main__ INFO ─ [R] RECV <- Q bytes=126409 (ACK sent)
+2026-02-16 13:32:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:32:22 __main__ INFO ─ [R] RECV <- Q bytes=126508 (ACK sent)
+2026-02-16 13:32:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126475
+2026-02-16 13:32:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.20 bytes=126475
+2026-02-16 13:32:44 __main__ INFO ─ Z-Score Stats | samples=168 mean=85.160714 variance=2996.313457
+2026-02-16 13:32:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:32:46 __main__ INFO ─ [R] RECV <- Q bytes=126335 (ACK sent)
+2026-02-16 13:32:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126313
+2026-02-16 13:32:46 __main__ INFO ─ [R] ACK <- L rtt_ms=80.85 bytes=126313
+2026-02-16 13:32:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126289
+2026-02-16 13:32:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126289
+2026-02-16 13:32:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:32:46 __main__ INFO ─ [R] RECV <- Q bytes=126331 (ACK sent)
+2026-02-16 13:32:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:32:46 __main__ INFO ─ [R] RECV <- Q bytes=126439 (ACK sent)
+2026-02-16 13:32:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126315
+2026-02-16 13:32:46 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126315
+2026-02-16 13:33:07 __main__ INFO ─ Z-Score Stats | samples=168 mean=97.410714 variance=4325.408695
+2026-02-16 13:33:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:10 __main__ INFO ─ [R] RECV <- Q bytes=126385 (ACK sent)
+2026-02-16 13:33:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126422
+2026-02-16 13:33:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.22 bytes=126422
+2026-02-16 13:33:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126420
+2026-02-16 13:33:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.09 bytes=126420
+2026-02-16 13:33:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:10 __main__ INFO ─ [R] RECV <- Q bytes=126434 (ACK sent)
+2026-02-16 13:33:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:10 __main__ INFO ─ [R] RECV <- Q bytes=126485 (ACK sent)
+2026-02-16 13:33:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126466
+2026-02-16 13:33:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.30 bytes=126466
+2026-02-16 13:33:31 __main__ INFO ─ Z-Score Stats | samples=168 mean=95.494048 variance=4010.130917
+2026-02-16 13:33:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:34 __main__ INFO ─ [R] RECV <- Q bytes=126465 (ACK sent)
+2026-02-16 13:33:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126519
+2026-02-16 13:33:34 __main__ INFO ─ [R] ACK <- L rtt_ms=133.13 bytes=126519
+2026-02-16 13:33:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126468
+2026-02-16 13:33:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126468
+2026-02-16 13:33:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:34 __main__ INFO ─ [R] RECV <- Q bytes=126410 (ACK sent)
+2026-02-16 13:33:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:34 __main__ INFO ─ [R] RECV <- Q bytes=126534 (ACK sent)
+2026-02-16 13:33:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126472
+2026-02-16 13:33:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126472
+2026-02-16 13:33:56 __main__ INFO ─ Z-Score Stats | samples=168 mean=81.071429 variance=3568.709184
+2026-02-16 13:33:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:59 __main__ INFO ─ [R] RECV <- Q bytes=126491 (ACK sent)
+2026-02-16 13:33:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126473
+2026-02-16 13:33:59 __main__ INFO ─ [R] ACK <- L rtt_ms=66.21 bytes=126473
+2026-02-16 13:33:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126496
+2026-02-16 13:33:59 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126496
+2026-02-16 13:33:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:59 __main__ INFO ─ [R] RECV <- Q bytes=126463 (ACK sent)
+2026-02-16 13:33:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:33:59 __main__ INFO ─ [R] RECV <- Q bytes=126530 (ACK sent)
+2026-02-16 13:33:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126492
+2026-02-16 13:33:59 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126492
+2026-02-16 13:34:20 __main__ INFO ─ Z-Score Stats | samples=168 mean=92.684524 variance=3867.037380
+2026-02-16 13:34:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:34:22 __main__ INFO ─ [R] RECV <- Q bytes=126329 (ACK sent)
+2026-02-16 13:34:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126323
+2026-02-16 13:34:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.45 bytes=126323
+2026-02-16 13:34:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126383
+2026-02-16 13:34:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126383
+2026-02-16 13:34:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:34:22 __main__ INFO ─ [R] RECV <- Q bytes=126399 (ACK sent)
+2026-02-16 13:34:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:34:22 __main__ INFO ─ [R] RECV <- Q bytes=126425 (ACK sent)
+2026-02-16 13:34:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126367
+2026-02-16 13:34:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126367
+2026-02-16 13:34:43 __main__ INFO ─ Z-Score Stats | samples=168 mean=92.607143 variance=4011.214711
+2026-02-16 13:34:45 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:34:45 __main__ INFO ─ [R] RECV <- Q bytes=126459 (ACK sent)
+2026-02-16 13:34:45 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126423
+2026-02-16 13:34:45 __main__ INFO ─ [R] ACK <- L rtt_ms=0.31 bytes=126423
+2026-02-16 13:34:45 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126471
+2026-02-16 13:34:45 __main__ INFO ─ [R] ACK <- L rtt_ms=0.19 bytes=126471
+2026-02-16 13:34:45 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:34:45 __main__ INFO ─ [R] RECV <- Q bytes=126447 (ACK sent)
+2026-02-16 13:34:45 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:34:45 __main__ INFO ─ [R] RECV <- Q bytes=126447 (ACK sent)
+2026-02-16 13:34:45 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126568
+2026-02-16 13:34:45 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126568
+2026-02-16 13:35:07 __main__ INFO ─ Z-Score Stats | samples=168 mean=84.529762 variance=3545.868162
+2026-02-16 13:35:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:10 __main__ INFO ─ [R] RECV <- Q bytes=126530 (ACK sent)
+2026-02-16 13:35:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126503
+2026-02-16 13:35:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.24 bytes=126503
+2026-02-16 13:35:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126495
+2026-02-16 13:35:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126495
+2026-02-16 13:35:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:10 __main__ INFO ─ [R] RECV <- Q bytes=126515 (ACK sent)
+2026-02-16 13:35:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:10 __main__ INFO ─ [R] RECV <- Q bytes=126559 (ACK sent)
+2026-02-16 13:35:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126450
+2026-02-16 13:35:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.14 bytes=126450
+2026-02-16 13:35:32 __main__ INFO ─ Z-Score Stats | samples=168 mean=90.113095 variance=4142.886019
+2026-02-16 13:35:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:34 __main__ INFO ─ [R] RECV <- Q bytes=126515 (ACK sent)
+2026-02-16 13:35:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126592
+2026-02-16 13:35:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.29 bytes=126592
+2026-02-16 13:35:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126593
+2026-02-16 13:35:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.21 bytes=126593
+2026-02-16 13:35:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:34 __main__ INFO ─ [R] RECV <- Q bytes=126650 (ACK sent)
+2026-02-16 13:35:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:34 __main__ INFO ─ [R] RECV <- Q bytes=126530 (ACK sent)
+2026-02-16 13:35:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126615
+2026-02-16 13:35:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126615
+2026-02-16 13:35:55 __main__ INFO ─ Z-Score Stats | samples=168 mean=84.244048 variance=3282.315441
+2026-02-16 13:35:58 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:58 __main__ INFO ─ [R] RECV <- Q bytes=126415 (ACK sent)
+2026-02-16 13:35:58 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126476
+2026-02-16 13:35:58 __main__ INFO ─ [R] ACK <- L rtt_ms=4.23 bytes=126476
+2026-02-16 13:35:58 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126411
+2026-02-16 13:35:58 __main__ INFO ─ [R] ACK <- L rtt_ms=0.34 bytes=126411
+2026-02-16 13:35:58 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:58 __main__ INFO ─ [R] RECV <- Q bytes=126494 (ACK sent)
+2026-02-16 13:35:58 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:35:58 __main__ INFO ─ [R] RECV <- Q bytes=126537 (ACK sent)
+2026-02-16 13:35:58 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126451
+2026-02-16 13:35:58 __main__ INFO ─ [R] ACK <- L rtt_ms=0.38 bytes=126451
+2026-02-16 13:36:19 __main__ INFO ─ Z-Score Stats | samples=168 mean=80.690476 variance=3331.630385
+2026-02-16 13:36:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:36:22 __main__ INFO ─ [R] RECV <- Q bytes=126509 (ACK sent)
+2026-02-16 13:36:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126524
+2026-02-16 13:36:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.25 bytes=126524
+2026-02-16 13:36:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126483
+2026-02-16 13:36:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126483
+2026-02-16 13:36:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:36:22 __main__ INFO ─ [R] RECV <- Q bytes=126607 (ACK sent)
+2026-02-16 13:36:22 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:36:22 __main__ INFO ─ [R] RECV <- Q bytes=126561 (ACK sent)
+2026-02-16 13:36:22 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126555
+2026-02-16 13:36:22 __main__ INFO ─ [R] ACK <- L rtt_ms=0.45 bytes=126555
+2026-02-16 13:36:44 __main__ INFO ─ Z-Score Stats | samples=168 mean=70.315476 variance=2451.668332
+2026-02-16 13:36:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:36:47 __main__ INFO ─ [R] RECV <- Q bytes=126578 (ACK sent)
+2026-02-16 13:36:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126617
+2026-02-16 13:36:47 __main__ INFO ─ [R] ACK <- L rtt_ms=12.28 bytes=126617
+2026-02-16 13:36:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126603
+2026-02-16 13:36:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.15 bytes=126603
+2026-02-16 13:36:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:36:47 __main__ INFO ─ [R] RECV <- Q bytes=126625 (ACK sent)
+2026-02-16 13:36:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:36:47 __main__ INFO ─ [R] RECV <- Q bytes=126594 (ACK sent)
+2026-02-16 13:36:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126641
+2026-02-16 13:36:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.17 bytes=126641
+2026-02-16 13:37:08 __main__ INFO ─ Z-Score Stats | samples=168 mean=59.053571 variance=2121.443559
+2026-02-16 13:37:11 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:11 __main__ INFO ─ [R] RECV <- Q bytes=126654 (ACK sent)
+2026-02-16 13:37:11 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126692
+2026-02-16 13:37:11 __main__ INFO ─ [R] ACK <- L rtt_ms=21.62 bytes=126692
+2026-02-16 13:37:11 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126632
+2026-02-16 13:37:11 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126632
+2026-02-16 13:37:11 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:11 __main__ INFO ─ [R] RECV <- Q bytes=126698 (ACK sent)
+2026-02-16 13:37:11 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:11 __main__ INFO ─ [R] RECV <- Q bytes=126795 (ACK sent)
+2026-02-16 13:37:11 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126754
+2026-02-16 13:37:11 __main__ INFO ─ [R] ACK <- L rtt_ms=0.11 bytes=126754
+2026-02-16 13:37:31 __main__ INFO ─ Z-Score Stats | samples=168 mean=52.565476 variance=1696.305237
+2026-02-16 13:37:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:34 __main__ INFO ─ [R] RECV <- Q bytes=126744 (ACK sent)
+2026-02-16 13:37:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126739
+2026-02-16 13:37:34 __main__ INFO ─ [R] ACK <- L rtt_ms=263.67 bytes=126739
+2026-02-16 13:37:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126801
+2026-02-16 13:37:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126801
+2026-02-16 13:37:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:34 __main__ INFO ─ [R] RECV <- Q bytes=126681 (ACK sent)
+2026-02-16 13:37:34 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:34 __main__ INFO ─ [R] RECV <- Q bytes=126791 (ACK sent)
+2026-02-16 13:37:34 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126781
+2026-02-16 13:37:34 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126781
+2026-02-16 13:37:56 __main__ INFO ─ Z-Score Stats | samples=168 mean=53.119048 variance=1382.319161
+2026-02-16 13:37:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:59 __main__ INFO ─ [R] RECV <- Q bytes=126597 (ACK sent)
+2026-02-16 13:37:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126529
+2026-02-16 13:37:59 __main__ INFO ─ [R] ACK <- L rtt_ms=0.36 bytes=126529
+2026-02-16 13:37:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126469
+2026-02-16 13:37:59 __main__ INFO ─ [R] ACK <- L rtt_ms=0.37 bytes=126469
+2026-02-16 13:37:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:59 __main__ INFO ─ [R] RECV <- Q bytes=126533 (ACK sent)
+2026-02-16 13:37:59 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:37:59 __main__ INFO ─ [R] RECV <- Q bytes=126619 (ACK sent)
+2026-02-16 13:37:59 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126612
+2026-02-16 13:37:59 __main__ INFO ─ [R] ACK <- L rtt_ms=1.81 bytes=126612
+2026-02-16 13:38:20 __main__ INFO ─ Z-Score Stats | samples=168 mean=44.369048 variance=889.316185
+2026-02-16 13:38:23 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:38:23 __main__ INFO ─ [R] RECV <- Q bytes=126666 (ACK sent)
+2026-02-16 13:38:23 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126699
+2026-02-16 13:38:23 __main__ INFO ─ [R] ACK <- L rtt_ms=0.22 bytes=126699
+2026-02-16 13:38:23 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126692
+2026-02-16 13:38:23 __main__ INFO ─ [R] ACK <- L rtt_ms=0.12 bytes=126692
+2026-02-16 13:38:23 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:38:23 __main__ INFO ─ [R] RECV <- Q bytes=126625 (ACK sent)
+2026-02-16 13:38:23 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:38:23 __main__ INFO ─ [R] RECV <- Q bytes=126702 (ACK sent)
+2026-02-16 13:38:23 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126703
+2026-02-16 13:38:23 __main__ INFO ─ [R] ACK <- L rtt_ms=0.40 bytes=126703
+2026-02-16 13:38:44 __main__ INFO ─ Z-Score Stats | samples=168 mean=44.184524 variance=1495.662380
+2026-02-16 13:38:46 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:38:46 __main__ INFO ─ [R] RECV <- Q bytes=126145 (ACK sent)
+2026-02-16 13:38:46 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126172
+2026-02-16 13:38:47 __main__ INFO ─ [R] ACK <- L rtt_ms=165.78 bytes=126172
+2026-02-16 13:38:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126221
+2026-02-16 13:38:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126221
+2026-02-16 13:38:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:38:47 __main__ INFO ─ [R] RECV <- Q bytes=126234 (ACK sent)
+2026-02-16 13:38:47 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:38:47 __main__ INFO ─ [R] RECV <- Q bytes=126227 (ACK sent)
+2026-02-16 13:38:47 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126217
+2026-02-16 13:38:47 __main__ INFO ─ [R] ACK <- L rtt_ms=0.13 bytes=126217
+2026-02-16 13:39:07 __main__ INFO ─ Z-Score Stats | samples=168 mean=32.238095 variance=492.919501
+2026-02-16 13:39:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:39:10 __main__ INFO ─ [R] RECV <- Q bytes=126333 (ACK sent)
+2026-02-16 13:39:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126244
+2026-02-16 13:39:10 __main__ INFO ─ [R] ACK <- L rtt_ms=65.31 bytes=126244
+2026-02-16 13:39:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126227
+2026-02-16 13:39:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.18 bytes=126227
+2026-02-16 13:39:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:39:10 __main__ INFO ─ [R] RECV <- Q bytes=126271 (ACK sent)
+2026-02-16 13:39:10 __main__ INFO ─ [R] RECV waiting <- Q (192.168.1.205:5555)
+2026-02-16 13:39:10 __main__ INFO ─ [R] RECV <- Q bytes=126262 (ACK sent)
+2026-02-16 13:39:10 __main__ INFO ─ [R] SEND -> L (192.168.1.207:5555) bytes=126329
+2026-02-16 13:39:10 __main__ INFO ─ [R] ACK <- L rtt_ms=0.16 bytes=126329

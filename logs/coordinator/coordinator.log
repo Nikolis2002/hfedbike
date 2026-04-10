@@ -1,0 +1,1041 @@
+2026-02-16 15:45:23 coordinator INFO ─ Logger initialized; writing to /logs/coordinator.log
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:45:49 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:45:52 coordinator INFO ─ UPDATE SEND to=X bytes=371248 areas=['region1', 'region2', 'region3']
+2026-02-16 15:45:52 coordinator INFO ─ UPDATE SEND to=P bytes=371232 areas=['region0', 'region2', 'region3']
+2026-02-16 15:45:52 coordinator INFO ─ UPDATE SEND to=A bytes=371147 areas=['region0', 'region1', 'region3']
+2026-02-16 15:45:52 coordinator INFO ─ UPDATE SEND to=E bytes=371248 areas=['region0', 'region1', 'region2']
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:46:12 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:46:14 coordinator INFO ─ UPDATE SEND to=A bytes=373456 areas=['region1', 'region0', 'region3']
+2026-02-16 15:46:14 coordinator INFO ─ UPDATE SEND to=P bytes=373442 areas=['region2', 'region0', 'region3']
+2026-02-16 15:46:14 coordinator INFO ─ UPDATE SEND to=X bytes=373519 areas=['region2', 'region1', 'region3']
+2026-02-16 15:46:14 coordinator INFO ─ UPDATE SEND to=E bytes=373422 areas=['region2', 'region1', 'region0']
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:46:34 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:46:36 coordinator INFO ─ UPDATE SEND to=X bytes=380279 areas=['region1', 'region2', 'region3']
+2026-02-16 15:46:36 coordinator INFO ─ UPDATE SEND to=P bytes=379962 areas=['region0', 'region2', 'region3']
+2026-02-16 15:46:36 coordinator INFO ─ UPDATE SEND to=A bytes=380002 areas=['region0', 'region1', 'region3']
+2026-02-16 15:46:36 coordinator INFO ─ UPDATE SEND to=E bytes=380008 areas=['region0', 'region1', 'region2']
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:46:57 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:46:59 coordinator INFO ─ UPDATE SEND to=X bytes=380777 areas=['region1', 'region3', 'region2']
+2026-02-16 15:46:59 coordinator INFO ─ UPDATE SEND to=P bytes=380589 areas=['region0', 'region3', 'region2']
+2026-02-16 15:46:59 coordinator INFO ─ UPDATE SEND to=E bytes=380623 areas=['region0', 'region1', 'region2']
+2026-02-16 15:46:59 coordinator INFO ─ UPDATE SEND to=A bytes=380527 areas=['region0', 'region1', 'region3']
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:47:20 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:47:22 coordinator INFO ─ UPDATE SEND to=X bytes=380722 areas=['region2', 'region1', 'region3']
+2026-02-16 15:47:22 coordinator INFO ─ UPDATE SEND to=A bytes=380471 areas=['region0', 'region1', 'region3']
+2026-02-16 15:47:22 coordinator INFO ─ UPDATE SEND to=P bytes=380461 areas=['region0', 'region2', 'region3']
+2026-02-16 15:47:22 coordinator INFO ─ UPDATE SEND to=E bytes=380511 areas=['region0', 'region2', 'region1']
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:47:43 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:47:45 coordinator INFO ─ UPDATE SEND to=P bytes=380701 areas=['region2', 'region3', 'region0']
+2026-02-16 15:47:45 coordinator INFO ─ UPDATE SEND to=A bytes=380672 areas=['region1', 'region3', 'region0']
+2026-02-16 15:47:45 coordinator INFO ─ UPDATE SEND to=E bytes=380747 areas=['region1', 'region2', 'region0']
+2026-02-16 15:47:45 coordinator INFO ─ UPDATE SEND to=X bytes=380861 areas=['region1', 'region2', 'region3']
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:48:07 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:48:09 coordinator INFO ─ UPDATE SEND to=A bytes=380292 areas=['region3', 'region1', 'region0']
+2026-02-16 15:48:09 coordinator INFO ─ UPDATE SEND to=E bytes=380385 areas=['region2', 'region1', 'region0']
+2026-02-16 15:48:09 coordinator INFO ─ UPDATE SEND to=P bytes=380424 areas=['region2', 'region3', 'region0']
+2026-02-16 15:48:09 coordinator INFO ─ UPDATE SEND to=X bytes=380599 areas=['region2', 'region3', 'region1']
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:48:30 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:48:32 coordinator INFO ─ UPDATE SEND to=E bytes=380661 areas=['region2', 'region1', 'region0']
+2026-02-16 15:48:32 coordinator INFO ─ UPDATE SEND to=A bytes=380577 areas=['region3', 'region1', 'region0']
+2026-02-16 15:48:32 coordinator INFO ─ UPDATE SEND to=P bytes=380623 areas=['region3', 'region2', 'region0']
+2026-02-16 15:48:32 coordinator INFO ─ UPDATE SEND to=X bytes=380694 areas=['region3', 'region2', 'region1']
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:48:53 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:48:55 coordinator INFO ─ UPDATE SEND to=X bytes=380135 areas=['region3', 'region1', 'region2']
+2026-02-16 15:48:55 coordinator INFO ─ UPDATE SEND to=E bytes=379720 areas=['region0', 'region1', 'region2']
+2026-02-16 15:48:55 coordinator INFO ─ UPDATE SEND to=P bytes=379784 areas=['region0', 'region3', 'region2']
+2026-02-16 15:48:55 coordinator INFO ─ UPDATE SEND to=A bytes=379823 areas=['region0', 'region3', 'region1']
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:49:16 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:49:19 coordinator INFO ─ UPDATE SEND to=A bytes=379815 areas=['region0', 'region3', 'region1']
+2026-02-16 15:49:19 coordinator INFO ─ UPDATE SEND to=X bytes=379942 areas=['region2', 'region3', 'region1']
+2026-02-16 15:49:19 coordinator INFO ─ UPDATE SEND to=E bytes=379885 areas=['region2', 'region0', 'region1']
+2026-02-16 15:49:19 coordinator INFO ─ UPDATE SEND to=P bytes=379808 areas=['region2', 'region0', 'region3']
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:49:40 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:49:42 coordinator INFO ─ UPDATE SEND to=P bytes=379727 areas=['region0', 'region3', 'region2']
+2026-02-16 15:49:42 coordinator INFO ─ UPDATE SEND to=X bytes=379770 areas=['region1', 'region3', 'region2']
+2026-02-16 15:49:42 coordinator INFO ─ UPDATE SEND to=E bytes=379719 areas=['region1', 'region0', 'region2']
+2026-02-16 15:49:42 coordinator INFO ─ UPDATE SEND to=A bytes=379736 areas=['region1', 'region0', 'region3']
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:50:03 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:50:05 coordinator INFO ─ UPDATE SEND to=E bytes=379907 areas=['region1', 'region2', 'region0']
+2026-02-16 15:50:05 coordinator INFO ─ UPDATE SEND to=P bytes=379900 areas=['region3', 'region2', 'region0']
+2026-02-16 15:50:05 coordinator INFO ─ UPDATE SEND to=A bytes=380000 areas=['region3', 'region1', 'region0']
+2026-02-16 15:50:05 coordinator INFO ─ UPDATE SEND to=X bytes=380000 areas=['region3', 'region1', 'region2']
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:50:26 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:50:29 coordinator INFO ─ UPDATE SEND to=P bytes=379858 areas=['region3', 'region2', 'region0']
+2026-02-16 15:50:29 coordinator INFO ─ UPDATE SEND to=E bytes=379890 areas=['region1', 'region2', 'region0']
+2026-02-16 15:50:29 coordinator INFO ─ UPDATE SEND to=A bytes=379958 areas=['region1', 'region3', 'region0']
+2026-02-16 15:50:29 coordinator INFO ─ UPDATE SEND to=X bytes=380014 areas=['region1', 'region3', 'region2']
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:50:50 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:50:52 coordinator INFO ─ UPDATE SEND to=A bytes=378981 areas=['region1', 'region0', 'region3']
+2026-02-16 15:50:52 coordinator INFO ─ UPDATE SEND to=P bytes=379003 areas=['region2', 'region0', 'region3']
+2026-02-16 15:50:52 coordinator INFO ─ UPDATE SEND to=X bytes=379223 areas=['region2', 'region1', 'region3']
+2026-02-16 15:50:52 coordinator INFO ─ UPDATE SEND to=E bytes=379009 areas=['region2', 'region1', 'region0']
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:51:13 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:51:16 coordinator INFO ─ UPDATE SEND to=A bytes=379258 areas=['region3', 'region1', 'region0']
+2026-02-16 15:51:16 coordinator INFO ─ UPDATE SEND to=E bytes=379393 areas=['region2', 'region1', 'region0']
+2026-02-16 15:51:16 coordinator INFO ─ UPDATE SEND to=P bytes=379362 areas=['region2', 'region3', 'region0']
+2026-02-16 15:51:16 coordinator INFO ─ UPDATE SEND to=X bytes=379463 areas=['region2', 'region3', 'region1']
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:51:37 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:51:39 coordinator INFO ─ UPDATE SEND to=X bytes=379498 areas=['region3', 'region1', 'region2']
+2026-02-16 15:51:39 coordinator INFO ─ UPDATE SEND to=E bytes=379441 areas=['region0', 'region1', 'region2']
+2026-02-16 15:51:39 coordinator INFO ─ UPDATE SEND to=P bytes=379454 areas=['region0', 'region3', 'region2']
+2026-02-16 15:51:39 coordinator INFO ─ UPDATE SEND to=A bytes=379338 areas=['region0', 'region3', 'region1']
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:52:01 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:52:03 coordinator INFO ─ UPDATE SEND to=A bytes=379586 areas=['region1', 'region0', 'region3']
+2026-02-16 15:52:03 coordinator INFO ─ UPDATE SEND to=P bytes=379603 areas=['region2', 'region0', 'region3']
+2026-02-16 15:52:03 coordinator INFO ─ UPDATE SEND to=X bytes=379683 areas=['region2', 'region1', 'region3']
+2026-02-16 15:52:03 coordinator INFO ─ UPDATE SEND to=E bytes=379669 areas=['region2', 'region1', 'region0']
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:52:24 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:52:26 coordinator INFO ─ UPDATE SEND to=X bytes=379029 areas=['region2', 'region3', 'region1']
+2026-02-16 15:52:26 coordinator INFO ─ UPDATE SEND to=A bytes=378841 areas=['region0', 'region3', 'region1']
+2026-02-16 15:52:26 coordinator INFO ─ UPDATE SEND to=E bytes=378909 areas=['region0', 'region2', 'region1']
+2026-02-16 15:52:26 coordinator INFO ─ UPDATE SEND to=P bytes=378822 areas=['region0', 'region2', 'region3']
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:52:47 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:52:49 coordinator INFO ─ UPDATE SEND to=X bytes=379115 areas=['region1', 'region3', 'region2']
+2026-02-16 15:52:49 coordinator INFO ─ UPDATE SEND to=P bytes=378933 areas=['region0', 'region3', 'region2']
+2026-02-16 15:52:49 coordinator INFO ─ UPDATE SEND to=E bytes=378923 areas=['region0', 'region1', 'region2']
+2026-02-16 15:52:49 coordinator INFO ─ UPDATE SEND to=A bytes=378921 areas=['region0', 'region1', 'region3']
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:53:11 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:53:13 coordinator INFO ─ UPDATE SEND to=X bytes=379417 areas=['region3', 'region1', 'region2']
+2026-02-16 15:53:13 coordinator INFO ─ UPDATE SEND to=E bytes=379326 areas=['region0', 'region1', 'region2']
+2026-02-16 15:53:13 coordinator INFO ─ UPDATE SEND to=P bytes=379207 areas=['region0', 'region3', 'region2']
+2026-02-16 15:53:13 coordinator INFO ─ UPDATE SEND to=A bytes=379151 areas=['region0', 'region3', 'region1']
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:53:35 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:53:37 coordinator INFO ─ UPDATE SEND to=X bytes=379281 areas=['region3', 'region2', 'region1']
+2026-02-16 15:53:37 coordinator INFO ─ UPDATE SEND to=E bytes=379166 areas=['region0', 'region2', 'region1']
+2026-02-16 15:53:37 coordinator INFO ─ UPDATE SEND to=A bytes=379147 areas=['region0', 'region3', 'region1']
+2026-02-16 15:53:37 coordinator INFO ─ UPDATE SEND to=P bytes=379207 areas=['region0', 'region3', 'region2']
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:53:59 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:54:01 coordinator INFO ─ UPDATE SEND to=A bytes=378775 areas=['region1', 'region0', 'region3']
+2026-02-16 15:54:01 coordinator INFO ─ UPDATE SEND to=P bytes=378646 areas=['region2', 'region0', 'region3']
+2026-02-16 15:54:01 coordinator INFO ─ UPDATE SEND to=X bytes=378996 areas=['region2', 'region1', 'region3']
+2026-02-16 15:54:01 coordinator INFO ─ UPDATE SEND to=E bytes=378689 areas=['region2', 'region1', 'region0']
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:54:22 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:54:24 coordinator INFO ─ UPDATE SEND to=E bytes=378825 areas=['region1', 'region2', 'region0']
+2026-02-16 15:54:24 coordinator INFO ─ UPDATE SEND to=P bytes=378763 areas=['region3', 'region2', 'region0']
+2026-02-16 15:54:24 coordinator INFO ─ UPDATE SEND to=A bytes=378767 areas=['region3', 'region1', 'region0']
+2026-02-16 15:54:24 coordinator INFO ─ UPDATE SEND to=X bytes=379006 areas=['region3', 'region1', 'region2']
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:54:46 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:54:48 coordinator INFO ─ UPDATE SEND to=E bytes=378939 areas=['region0', 'region2', 'region1']
+2026-02-16 15:54:49 coordinator INFO ─ UPDATE SEND to=X bytes=379131 areas=['region3', 'region2', 'region1']
+2026-02-16 15:54:49 coordinator INFO ─ UPDATE SEND to=A bytes=378956 areas=['region3', 'region0', 'region1']
+2026-02-16 15:54:49 coordinator INFO ─ UPDATE SEND to=P bytes=378935 areas=['region3', 'region0', 'region2']
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:55:10 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:55:12 coordinator INFO ─ UPDATE SEND to=E bytes=379013 areas=['region1', 'region0', 'region2']
+2026-02-16 15:55:12 coordinator INFO ─ UPDATE SEND to=P bytes=378972 areas=['region3', 'region0', 'region2']
+2026-02-16 15:55:12 coordinator INFO ─ UPDATE SEND to=X bytes=379174 areas=['region3', 'region1', 'region2']
+2026-02-16 15:55:12 coordinator INFO ─ UPDATE SEND to=A bytes=378988 areas=['region3', 'region1', 'region0']
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 15:55:33 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 15:55:36 coordinator INFO ─ UPDATE SEND to=E bytes=379120 areas=['region0', 'region1', 'region2']
+2026-02-16 15:55:36 coordinator INFO ─ UPDATE SEND to=X bytes=379299 areas=['region3', 'region1', 'region2']
+2026-02-16 15:55:36 coordinator INFO ─ UPDATE SEND to=P bytes=379136 areas=['region3', 'region0', 'region2']
+2026-02-16 15:55:36 coordinator INFO ─ UPDATE SEND to=A bytes=379135 areas=['region3', 'region0', 'region1']
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:55:57 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:55:59 coordinator INFO ─ UPDATE SEND to=E bytes=378548 areas=['region0', 'region1', 'region2']
+2026-02-16 15:55:59 coordinator INFO ─ UPDATE SEND to=X bytes=378783 areas=['region3', 'region1', 'region2']
+2026-02-16 15:55:59 coordinator INFO ─ UPDATE SEND to=P bytes=378510 areas=['region3', 'region0', 'region2']
+2026-02-16 15:55:59 coordinator INFO ─ UPDATE SEND to=A bytes=378416 areas=['region3', 'region0', 'region1']
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:56:22 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:56:24 coordinator INFO ─ UPDATE SEND to=E bytes=378672 areas=['region0', 'region2', 'region1']
+2026-02-16 15:56:24 coordinator INFO ─ UPDATE SEND to=X bytes=378897 areas=['region3', 'region2', 'region1']
+2026-02-16 15:56:24 coordinator INFO ─ UPDATE SEND to=A bytes=378627 areas=['region3', 'region0', 'region1']
+2026-02-16 15:56:24 coordinator INFO ─ UPDATE SEND to=P bytes=378619 areas=['region3', 'region0', 'region2']
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:56:45 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:56:47 coordinator INFO ─ UPDATE SEND to=E bytes=378958 areas=['region2', 'region1', 'region0']
+2026-02-16 15:56:47 coordinator INFO ─ UPDATE SEND to=A bytes=378922 areas=['region3', 'region1', 'region0']
+2026-02-16 15:56:47 coordinator INFO ─ UPDATE SEND to=P bytes=378929 areas=['region3', 'region2', 'region0']
+2026-02-16 15:56:47 coordinator INFO ─ UPDATE SEND to=X bytes=379095 areas=['region3', 'region2', 'region1']
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:57:09 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:57:11 coordinator INFO ─ UPDATE SEND to=A bytes=379103 areas=['region1', 'region3', 'region0']
+2026-02-16 15:57:11 coordinator INFO ─ UPDATE SEND to=P bytes=379134 areas=['region2', 'region3', 'region0']
+2026-02-16 15:57:11 coordinator INFO ─ UPDATE SEND to=E bytes=379096 areas=['region2', 'region1', 'region0']
+2026-02-16 15:57:11 coordinator INFO ─ UPDATE SEND to=X bytes=379327 areas=['region2', 'region1', 'region3']
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:57:33 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:57:35 coordinator INFO ─ UPDATE SEND to=A bytes=378666 areas=['region0', 'region1', 'region3']
+2026-02-16 15:57:35 coordinator INFO ─ UPDATE SEND to=X bytes=378865 areas=['region2', 'region1', 'region3']
+2026-02-16 15:57:35 coordinator INFO ─ UPDATE SEND to=P bytes=378604 areas=['region2', 'region0', 'region3']
+2026-02-16 15:57:35 coordinator INFO ─ UPDATE SEND to=E bytes=378647 areas=['region2', 'region0', 'region1']
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:57:57 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:57:59 coordinator INFO ─ UPDATE SEND to=P bytes=378719 areas=['region2', 'region0', 'region3']
+2026-02-16 15:57:59 coordinator INFO ─ UPDATE SEND to=A bytes=378700 areas=['region1', 'region0', 'region3']
+2026-02-16 15:57:59 coordinator INFO ─ UPDATE SEND to=X bytes=378994 areas=['region1', 'region2', 'region3']
+2026-02-16 15:57:59 coordinator INFO ─ UPDATE SEND to=E bytes=378723 areas=['region1', 'region2', 'region0']
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:58:21 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:58:23 coordinator INFO ─ UPDATE SEND to=E bytes=378873 areas=['region1', 'region2', 'region0']
+2026-02-16 15:58:23 coordinator INFO ─ UPDATE SEND to=P bytes=378907 areas=['region3', 'region2', 'region0']
+2026-02-16 15:58:23 coordinator INFO ─ UPDATE SEND to=A bytes=378801 areas=['region3', 'region1', 'region0']
+2026-02-16 15:58:23 coordinator INFO ─ UPDATE SEND to=X bytes=379044 areas=['region3', 'region1', 'region2']
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:58:44 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:58:46 coordinator INFO ─ UPDATE SEND to=E bytes=378897 areas=['region2', 'region0', 'region1']
+2026-02-16 15:58:46 coordinator INFO ─ UPDATE SEND to=A bytes=378909 areas=['region3', 'region0', 'region1']
+2026-02-16 15:58:46 coordinator INFO ─ UPDATE SEND to=X bytes=379115 areas=['region3', 'region2', 'region1']
+2026-02-16 15:58:46 coordinator INFO ─ UPDATE SEND to=P bytes=378932 areas=['region3', 'region2', 'region0']
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:59:09 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:59:11 coordinator INFO ─ UPDATE SEND to=X bytes=379307 areas=['region2', 'region3', 'region1']
+2026-02-16 15:59:11 coordinator INFO ─ UPDATE SEND to=A bytes=378960 areas=['region0', 'region3', 'region1']
+2026-02-16 15:59:11 coordinator INFO ─ UPDATE SEND to=E bytes=379083 areas=['region0', 'region2', 'region1']
+2026-02-16 15:59:11 coordinator INFO ─ UPDATE SEND to=P bytes=379085 areas=['region0', 'region2', 'region3']
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 15:59:32 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 15:59:35 coordinator INFO ─ UPDATE SEND to=E bytes=378689 areas=['region1', 'region2', 'region0']
+2026-02-16 15:59:35 coordinator INFO ─ UPDATE SEND to=P bytes=378776 areas=['region3', 'region2', 'region0']
+2026-02-16 15:59:35 coordinator INFO ─ UPDATE SEND to=A bytes=378667 areas=['region3', 'region1', 'region0']
+2026-02-16 15:59:35 coordinator INFO ─ UPDATE SEND to=X bytes=378905 areas=['region3', 'region1', 'region2']
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 15:59:56 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 15:59:58 coordinator INFO ─ UPDATE SEND to=E bytes=378786 areas=['region0', 'region1', 'region2']
+2026-02-16 15:59:58 coordinator INFO ─ UPDATE SEND to=X bytes=379066 areas=['region3', 'region1', 'region2']
+2026-02-16 15:59:58 coordinator INFO ─ UPDATE SEND to=P bytes=378783 areas=['region3', 'region0', 'region2']
+2026-02-16 15:59:58 coordinator INFO ─ UPDATE SEND to=A bytes=378705 areas=['region3', 'region0', 'region1']
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:00:20 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:00:22 coordinator INFO ─ UPDATE SEND to=A bytes=378939 areas=['region1', 'region3', 'region0']
+2026-02-16 16:00:22 coordinator INFO ─ UPDATE SEND to=P bytes=378899 areas=['region2', 'region3', 'region0']
+2026-02-16 16:00:22 coordinator INFO ─ UPDATE SEND to=E bytes=378937 areas=['region2', 'region1', 'region0']
+2026-02-16 16:00:22 coordinator INFO ─ UPDATE SEND to=X bytes=379156 areas=['region2', 'region1', 'region3']
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:00:44 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:00:46 coordinator INFO ─ UPDATE SEND to=E bytes=379058 areas=['region1', 'region2', 'region0']
+2026-02-16 16:00:46 coordinator INFO ─ UPDATE SEND to=P bytes=379020 areas=['region3', 'region2', 'region0']
+2026-02-16 16:00:46 coordinator INFO ─ UPDATE SEND to=A bytes=378984 areas=['region3', 'region1', 'region0']
+2026-02-16 16:00:46 coordinator INFO ─ UPDATE SEND to=X bytes=379253 areas=['region3', 'region1', 'region2']
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:01:08 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:01:10 coordinator INFO ─ UPDATE SEND to=E bytes=378702 areas=['region2', 'region1', 'region0']
+2026-02-16 16:01:10 coordinator INFO ─ UPDATE SEND to=A bytes=378654 areas=['region3', 'region1', 'region0']
+2026-02-16 16:01:10 coordinator INFO ─ UPDATE SEND to=P bytes=378720 areas=['region3', 'region2', 'region0']
+2026-02-16 16:01:10 coordinator INFO ─ UPDATE SEND to=X bytes=378919 areas=['region3', 'region2', 'region1']
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:01:31 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:01:33 coordinator INFO ─ UPDATE SEND to=E bytes=378912 areas=['region0', 'region1', 'region2']
+2026-02-16 16:01:33 coordinator INFO ─ UPDATE SEND to=X bytes=379182 areas=['region3', 'region1', 'region2']
+2026-02-16 16:01:33 coordinator INFO ─ UPDATE SEND to=P bytes=379016 areas=['region3', 'region0', 'region2']
+2026-02-16 16:01:33 coordinator INFO ─ UPDATE SEND to=A bytes=378920 areas=['region3', 'region0', 'region1']
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 16:01:56 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 16:01:58 coordinator INFO ─ UPDATE SEND to=E bytes=379106 areas=['region1', 'region0', 'region2']
+2026-02-16 16:01:58 coordinator INFO ─ UPDATE SEND to=P bytes=379189 areas=['region3', 'region0', 'region2']
+2026-02-16 16:01:58 coordinator INFO ─ UPDATE SEND to=X bytes=379330 areas=['region3', 'region1', 'region2']
+2026-02-16 16:01:58 coordinator INFO ─ UPDATE SEND to=A bytes=379155 areas=['region3', 'region1', 'region0']
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=F bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=R bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=L bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=E bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=G bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=A bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=C bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=Z bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=W bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=Q bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=Y bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=X bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=H bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=D bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=P bytes=45
+2026-02-16 16:02:20 coordinator INFO ─ STATS SEND to=B bytes=45
+2026-02-16 16:02:22 coordinator INFO ─ UPDATE SEND to=P bytes=379400 areas=['region3', 'region2', 'region0']
+2026-02-16 16:02:22 coordinator INFO ─ UPDATE SEND to=E bytes=379385 areas=['region1', 'region2', 'region0']
+2026-02-16 16:02:22 coordinator INFO ─ UPDATE SEND to=A bytes=379394 areas=['region1', 'region3', 'region0']
+2026-02-16 16:02:22 coordinator INFO ─ UPDATE SEND to=X bytes=379552 areas=['region1', 'region3', 'region2']
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:02:43 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:02:45 coordinator INFO ─ UPDATE SEND to=A bytes=378941 areas=['region0', 'region1', 'region3']
+2026-02-16 16:02:45 coordinator INFO ─ UPDATE SEND to=X bytes=379269 areas=['region2', 'region1', 'region3']
+2026-02-16 16:02:45 coordinator INFO ─ UPDATE SEND to=P bytes=379033 areas=['region2', 'region0', 'region3']
+2026-02-16 16:02:45 coordinator INFO ─ UPDATE SEND to=E bytes=379030 areas=['region2', 'region0', 'region1']
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=X bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=D bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=E bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=Y bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=R bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=L bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=F bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=W bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=C bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=H bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=Z bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=B bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=G bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=A bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=Q bytes=47
+2026-02-16 16:03:07 coordinator INFO ─ STATS SEND to=P bytes=47
+2026-02-16 16:03:09 coordinator INFO ─ UPDATE SEND to=A bytes=378978 areas=['region0', 'region3', 'region1']
+2026-02-16 16:03:09 coordinator INFO ─ UPDATE SEND to=X bytes=379281 areas=['region2', 'region3', 'region1']
+2026-02-16 16:03:09 coordinator INFO ─ UPDATE SEND to=E bytes=379070 areas=['region2', 'region0', 'region1']
+2026-02-16 16:03:09 coordinator INFO ─ UPDATE SEND to=P bytes=379001 areas=['region2', 'region0', 'region3']
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:03:32 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:03:34 coordinator INFO ─ UPDATE SEND to=X bytes=379572 areas=['region3', 'region1', 'region2']
+2026-02-16 16:03:34 coordinator INFO ─ UPDATE SEND to=E bytes=379459 areas=['region0', 'region1', 'region2']
+2026-02-16 16:03:34 coordinator INFO ─ UPDATE SEND to=P bytes=379318 areas=['region0', 'region3', 'region2']
+2026-02-16 16:03:34 coordinator INFO ─ UPDATE SEND to=A bytes=379292 areas=['region0', 'region3', 'region1']
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 16:03:56 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 16:03:58 coordinator INFO ─ UPDATE SEND to=E bytes=379558 areas=['region2', 'region1', 'region0']
+2026-02-16 16:03:58 coordinator INFO ─ UPDATE SEND to=A bytes=379570 areas=['region3', 'region1', 'region0']
+2026-02-16 16:03:58 coordinator INFO ─ UPDATE SEND to=P bytes=379653 areas=['region3', 'region2', 'region0']
+2026-02-16 16:03:58 coordinator INFO ─ UPDATE SEND to=X bytes=379856 areas=['region3', 'region2', 'region1']
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 16:04:19 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 16:04:21 coordinator INFO ─ UPDATE SEND to=X bytes=380059 areas=['region3', 'region1', 'region2']
+2026-02-16 16:04:21 coordinator INFO ─ UPDATE SEND to=E bytes=379754 areas=['region0', 'region1', 'region2']
+2026-02-16 16:04:21 coordinator INFO ─ UPDATE SEND to=P bytes=379721 areas=['region0', 'region3', 'region2']
+2026-02-16 16:04:21 coordinator INFO ─ UPDATE SEND to=A bytes=379784 areas=['region0', 'region3', 'region1']
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=L bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=E bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=W bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=A bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=D bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=B bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=Z bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=Q bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=R bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=P bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=G bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=Y bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=F bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=C bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=H bytes=53
+2026-02-16 16:04:44 coordinator INFO ─ STATS SEND to=X bytes=53
+2026-02-16 16:04:46 coordinator INFO ─ UPDATE SEND to=X bytes=379459 areas=['region3', 'region2', 'region1']
+2026-02-16 16:04:46 coordinator INFO ─ UPDATE SEND to=E bytes=379204 areas=['region0', 'region2', 'region1']
+2026-02-16 16:04:46 coordinator INFO ─ UPDATE SEND to=A bytes=379218 areas=['region0', 'region3', 'region1']
+2026-02-16 16:04:46 coordinator INFO ─ UPDATE SEND to=P bytes=379316 areas=['region0', 'region3', 'region2']
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 16:05:08 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 16:05:10 coordinator INFO ─ UPDATE SEND to=X bytes=379729 areas=['region1', 'region2', 'region3']
+2026-02-16 16:05:10 coordinator INFO ─ UPDATE SEND to=P bytes=379270 areas=['region0', 'region2', 'region3']
+2026-02-16 16:05:10 coordinator INFO ─ UPDATE SEND to=A bytes=379291 areas=['region0', 'region1', 'region3']
+2026-02-16 16:05:10 coordinator INFO ─ UPDATE SEND to=E bytes=379303 areas=['region0', 'region1', 'region2']
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=R bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=D bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=X bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=L bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=Z bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=G bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=H bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=F bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=C bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=A bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=P bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=E bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=Y bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=W bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=Q bytes=54
+2026-02-16 16:05:32 coordinator INFO ─ STATS SEND to=B bytes=54
+2026-02-16 16:05:34 coordinator INFO ─ UPDATE SEND to=P bytes=377989 areas=['region3', 'region0', 'region2']
+2026-02-16 16:05:34 coordinator INFO ─ UPDATE SEND to=E bytes=378051 areas=['region1', 'region0', 'region2']
+2026-02-16 16:05:34 coordinator INFO ─ UPDATE SEND to=X bytes=378373 areas=['region1', 'region3', 'region2']
+2026-02-16 16:05:34 coordinator INFO ─ UPDATE SEND to=A bytes=378002 areas=['region1', 'region3', 'region0']
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=D bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=C bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=F bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=W bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=H bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=X bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=E bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=L bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=P bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=A bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=Y bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=Q bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=R bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=Z bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=B bytes=55
+2026-02-16 16:05:56 coordinator INFO ─ STATS SEND to=G bytes=55
+2026-02-16 16:05:58 coordinator INFO ─ UPDATE SEND to=P bytes=378182 areas=['region3', 'region2', 'region0']
+2026-02-16 16:05:58 coordinator INFO ─ UPDATE SEND to=E bytes=378268 areas=['region1', 'region2', 'region0']
+2026-02-16 16:05:58 coordinator INFO ─ UPDATE SEND to=A bytes=378203 areas=['region1', 'region3', 'region0']
+2026-02-16 16:05:58 coordinator INFO ─ UPDATE SEND to=X bytes=378566 areas=['region1', 'region3', 'region2']

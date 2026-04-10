@@ -1,0 +1,26 @@
+{
+  "_id": 1002,
+  "use L2": true,
+  "use L1": false,
+  "splitting": "month",
+  "sigma": 3211.907562419423,
+  "multiple layers": true,
+  "choosen architecture": "128,256,256",
+  "chosen_weight": "double",
+  "params": {
+    "optimizer": "nadam",
+    "momentum": 0.8,
+    "learning rate": 0.001,
+    "epochs": 1100,
+    "run_epochs": 69,
+    "number of hidden layers": "double",
+    "hidden layer activation function": "Relu",
+    "regulazation rate": 0.0001,
+    "loss function": "MSE",
+    "dropout_rate": 0
+  },
+  "Average MSE": 0.07139395922422409,
+  "Average MAE": 0.14423674941062928,
+  "Average RMSE": 0.23182660043239595,
+  "Average R2": 0.9461681723594666
+}

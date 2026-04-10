@@ -3,14 +3,15 @@ from pymongo import MongoClient
 from sklearn.cluster import KMeans
 import folium
 from scipy.spatial import ConvexHull
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
+from pathlib import Path
 
 # ─── CONFIGURATION ───────────────────────────────────────
 STORE_TO_DB = False   # Set to True to drop & re-store enrichment into MongoDB
 DB_NAME = "citibike"
-COLLECTION_NAME = "test_set"
-CSV_EXPORT = False    # Set to True to export per‐region/subzone CSVs at the end
+COLLECTION_NAME = "test_setV2"
+CSV_EXPORT = True    # Set to True to export per‐region/subzone CSVs at the end
 
 # ─── MongoDB Connection & target collection ─────────────
 client = MongoClient("mongodb://localhost:27017/")
@@ -21,12 +22,37 @@ if STORE_TO_DB:
     enriched_collection.drop()  # clear out old data
 
 # ─── 1) Read the January & February 2024 trip CSVs ───────
-csv_files = ["202401-citibike-tripdata.csv", "202402-citibike-tripdata.csv"]
-df_all = pd.concat(
-    [pd.read_csv(f, low_memory=False) for f in csv_files],
-    ignore_index=True
+#csv_files = ["202401-citibike-tripdata.csv", "202402-citibike-tripdata.csv"]
+#df_all = pd.concat(
+#    [pd.read_csv(f, low_memory=False) for f in csv_files],
+#    ignore_index=True
+#)
+
+BASE_DIR = Path(__file__).resolve().parent   # folder where the script is
+csv_files = sorted(
+    str(p) for p in BASE_DIR.rglob("*citibike-tripdata*.csv")
+    if p.name != "fixed_2024.csv"  # optional: exclude other csvs like weather/etc
 )
 
+print(f"Found {len(csv_files)} tripdata CSVs:")
+for f in csv_files[:10]:
+    print(" -", f)
+if len(csv_files) > 10:
+    print(" ...")
+
+def read_csv_safe(path):
+    try:
+        return pd.read_csv(path, low_memory=False, encoding="utf-8")
+    except UnicodeDecodeError:
+        print(f"⚠️ utf-8 failed → retrying latin1: {path}")
+        return pd.read_csv(path, low_memory=False, encoding="latin1")
+
+dfs = []
+for f in csv_files:
+    print("Reading:", f)
+    dfs.append(read_csv_safe(f))
+
+df_all = pd.concat(dfs, ignore_index=True)
 # ─── 2) Extract Unique Stations ─────────────────────────
 station_df = (
     df_all
@@ -81,24 +107,26 @@ def process_doc(doc: dict) -> dict:
     except:
         return None
 
+    
+CHUNK = 50_000
+
+def iter_csv_chunks(path):
+    try:
+        return pd.read_csv(path, chunksize=CHUNK, low_memory=False, encoding="utf-8")
+    except UnicodeDecodeError:
+        return pd.read_csv(path, chunksize=CHUNK, low_memory=False, encoding="latin1")
+
 if STORE_TO_DB:
-    BATCH_SIZE = 10_000
-    total_rows = len(df_all)
-    print(f"🚀 Enriching {total_rows} rows → {DB_NAME}.{COLLECTION_NAME}…")
-    with ThreadPoolExecutor(max_workers=8) as exe, tqdm(total=total_rows, desc="Batches") as pbar:
-        futures = []
-        for start in range(0, total_rows, BATCH_SIZE):
-            batch = df_all.iloc[start:start+BATCH_SIZE].to_dict("records")
-            futures.append(exe.submit(
-                lambda b: enriched_collection.insert_many(
-                    [d for d in (process_doc(d) for d in b) if d]
-                ) or len(b),
-                batch
-            ))
-            pbar.update(len(batch))
-        for f in futures:
-            f.result()
-    print(" Enrichment complete.")
+    total = 0
+    for f in csv_files:
+        print("📄", f)
+        for chunk in iter_csv_chunks(f):
+            batch = chunk.to_dict("records")
+            enriched = [d for d in (process_doc(d) for d in batch) if d]
+            if enriched:
+                enriched_collection.insert_many(enriched, ordered=False)
+                total += len(enriched)
+    print("✅ Inserted:", total)
 
 # ─── 6) Create a Folium map showing regions & subzones ───
 # Define distinct fill colors for each of the 4 regions
@@ -246,86 +274,67 @@ print(latex_table)
 
 # ─── 7) Optional CSV export for aggregated usage ───────
 if CSV_EXPORT:
-    from collections import defaultdict
+    import csv
 
     selected_regions = [0, 1, 2, 3]
     subzones = [0, 1, 2, 3]
-    fallback_map = {
-        0: [1, 2, 3],
-        1: [0, 3, 2],
-        2: [3, 0, 1],
-        3: [2, 1, 0]
-    }
+
+    # (Optional but recommended) speed up match/group/sort
+    enriched_collection.create_index([("start_region", 1), ("subzone", 1), ("hour", 1)])
 
     pipeline = [
-        {"$match": {"start_region": {"$in": selected_regions}}},
+        {"$match": {
+            "start_region": {"$in": selected_regions},
+            "hour": {"$ne": None},
+            "subzone": {"$ne": "unknown"}
+        }},
         {"$group": {
             "_id": {
-                "hour":    "$hour",
-                "region":  "$start_region",
-                "subzone": "$subzone"
+                "hour":   "$hour",
+                "region": "$start_region",
+                "subzone":"$subzone"
             },
             "bike_usage": {"$sum": 1}
         }},
         {"$sort": {"_id.hour": 1}}
     ]
 
-    results = list(enriched_collection.aggregate(pipeline))
-    panda = pd.DataFrame(results)
-    panda["hour"] = panda["_id"].apply(lambda x: x["hour"])
-    panda["region"] = panda["_id"].apply(lambda x: x["region"])
-    panda["subzone"] = panda["_id"].apply(lambda x: x["subzone"])
-    panda = panda.drop(columns=["_id"])
+    # --- stream results, write per (region, subzone) CSV without pandas ---
+    writers = {}
+    files = {}
 
+    def writer_for(region, subzone):
+        key = (region, subzone)
+        if key not in writers:
+            fn = f"region{region}_subzone{subzone}_bike_usage.csv"
+            f = open(fn, "w", newline="")
+            files[key] = f
+            w = csv.writer(f)
+            w.writerow(["region", "subzone", "hour", "bike_usage"])
+            writers[key] = w
+            print(f"→ Opened {fn}")
+        return writers[key]
 
+    cursor = enriched_collection.aggregate(
+        pipeline,
+        allowDiskUse=True,
+        batchSize=50_000
+    )
 
-    # Reassign low-data subzones
-    THRESHOLD = 100
-    freq_count = panda.groupby(["region", "subzone"]).size().reset_index(name="count_rows")
-    low_data_pairs = {
-        (int(r), int(sz))
-        for r, sz, c in freq_count.itertuples(index=False)
-        if c < THRESHOLD
-    }
-    grouped = {
-        (int(row.region), int(row.subzone), row.hour): int(row.bike_usage)
-        for row in panda.itertuples(index=False)
-    }
-    to_drop = []
-    for (region, subzone) in low_data_pairs:
-        mask = (panda.region == region) & (panda.subzone == subzone)
-        chunk = panda.loc[mask, ["hour", "bike_usage"]]
-        for hour, usage in zip(chunk.hour, chunk.bike_usage):
-            original_key = (region, subzone, hour)
-            for fb in fallback_map[subzone]:
-                fallback_key = (region, fb, hour)
-                if fallback_key in grouped:
-                    grouped[fallback_key] += usage
-                    break
-            else:
-                first_fb = fallback_map[subzone][0]
-                fallback_key = (region, first_fb, hour)
-                grouped[fallback_key] = usage
-            to_drop.append(original_key)
+    count_rows = 0
+    for doc in cursor:
+        _id = doc["_id"]
+        r = int(_id["region"])
+        sz = int(_id["subzone"])
+        hour = _id["hour"]
+        usage = int(doc["bike_usage"])
 
-    for key in to_drop:
-        grouped.pop(key, None)
+        # only keep your 0..3 subzones (in case something weird exists)
+        if r in selected_regions and sz in subzones:
+            writer_for(r, sz).writerow([r, sz, hour, usage])
+            count_rows += 1
 
-    restructured = []
-    for (region, subzone, hour), bike_usage in grouped.items():
-        restructured.append({
-            "region": region,
-            "subzone": subzone,
-            "hour": hour,
-            "bike_usage": bike_usage
-        })
+    for f in files.values():
+        f.close()
 
-    panda2 = pd.DataFrame(restructured)
-
-    for region in selected_regions:
-        for sz in subzones:
-            chunk = panda2[(panda2.region == region) & (panda2.subzone == sz)]
-            if not chunk.empty:
-                fn = f"region{region}_subzone{sz}_bike_usage.csv"
-                chunk.to_csv(fn, index=False)
-                print(f"→ Saved {fn} ({len(chunk)} rows)")
+    print(f"✅ Export done. Wrote {count_rows} aggregated rows into per-subzone CSVs.")

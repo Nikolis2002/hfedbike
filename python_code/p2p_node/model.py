@@ -2,13 +2,16 @@ import tensorflow as tf
 
 
 def load_baseline_model():
-    return tf.keras.models.load_model("/data/2024_csvs/best_model.keras")
+    return tf.keras.models.load_model(
+        "/data/2024_csvs/_model_two_layers.keras", compile=False
+    )
+
 
 def neural_network_model():
-    
-    l2=tf.keras.regularizers.L2(0.0001)
-    loss_func=tf.keras.losses.MeanSquaredError(name='MSE')
 
+    l2 = tf.keras.regularizers.L2(0.0001)
+    loss_func = tf.keras.losses.MeanSquaredError(name="MSE")
+    """"
     early_stopping = tf.keras.callbacks.EarlyStopping(
     monitor='val_mae',  # Track validation loss
     patience=10,
@@ -23,26 +26,39 @@ def neural_network_model():
     min_lr=1e-6,
     verbose=1
     )
+    """
 
-    metrics={"mae":'mae',
-            "MSE":tf.keras.metrics.MeanSquaredError(name='MSE'),
-            "RMSE":tf.keras.metrics.RootMeanSquaredError(name="rmse")} 
-    
+    metrics = {
+        "mae": "mae",
+        "MSE": tf.keras.metrics.MeanSquaredError(name="MSE"),
+        "RMSE": tf.keras.metrics.RootMeanSquaredError(name="rmse"),
+    }
 
-    model= load_baseline_model()
+    model = load_baseline_model()
 
     optimizer = tf.keras.optimizers.Nadam(learning_rate=0.001)
-    
-    
-    model.compile(optimizer=optimizer, loss=loss_func, metrics=[metrics["mae"],metrics['RMSE'],tf.keras.metrics.R2Score()])
 
-    return model, early_stopping, reduce_lr
+    model.compile(
+        optimizer=optimizer,
+        loss=loss_func,
+        metrics=[metrics["mae"], metrics["RMSE"], tf.keras.metrics.R2Score()],
+    )
+
+    return model
 
 
-def train_the_model(model,X_val,y_val,early_stopping,reduce_lr,input,output,local_epochs):
-    
-    model.fit(input,output,validation_data=(X_val, y_val),epochs=local_epochs,batch_size=32,callbacks=[early_stopping,reduce_lr],verbose=0)
-    
+def train_the_model(model, X_val, y_val, input, output, local_epochs):
+
+    model.fit(
+        input,
+        output,
+        validation_data=(X_val, y_val),
+        epochs=local_epochs,
+        batch_size=16,
+        verbose=0,
+    )
+
+
 @tf.function(experimental_relax_shapes=True, reduce_retracing=True)
 def predict_fn(model, x):
     return model(x, training=False)

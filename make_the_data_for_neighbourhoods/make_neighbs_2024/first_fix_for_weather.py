@@ -24,6 +24,7 @@ if "hour" not in weather_df.columns:
     # Create the 'hour' column by flooring to the hour
     weather_df["hour"] = weather_df["dt_iso_parsed"].dt.floor("h")
 
+
 # Now that we have the 'hour' column, find duplicates
 duplicate_mask = weather_df.duplicated(subset=["hour"], keep=False)
 duplicates = weather_df[duplicate_mask]
