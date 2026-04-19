@@ -1,3 +1,13 @@
+"""
+Finds the best-scoring baseline configuration per regularization family
+(pure L1 vs pure L2) from the grid-search results stored in MongoDB by
+pre_processing.py. Sorts each filter by Average MAE / MSE / RMSE
+ascending and prints the winner.
+
+Requires MongoDB at mongodb://localhost:27017/ with the
+`citibike.results` collection populated by a prior grid-search run.
+"""
+
 from pymongo import MongoClient
 import pprint
 

@@ -1,3 +1,10 @@
+"""Row-count sanity check across the first two 2024 monthly Citi Bike CSVs.
+
+Prints per-file and combined trip-record counts. Run once after downloading
+the raw dumps, before invoking the enrichment pipeline in
+split_and_enrich.py / make_the_final_csvsV2.py.
+"""
+
 import pandas as pd
 
 # Replace these with your actual CSV file paths

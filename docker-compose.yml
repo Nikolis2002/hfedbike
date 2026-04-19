@@ -9,11 +9,11 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.199
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/python_code/p2p_node/models:/models:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/federated/p2p_node/models:/models:z,rw
     - ./logs/nodeX:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -28,7 +28,7 @@ services:
         ipv4_address: 192.168.1.203
     volumes:
     - ./logs/coordinator:/logs:z,rw
-    - ./python_code/coordinator.py:/app/coordinator.py:z,ro
+    - ./federated/coordinator.py:/app/coordinator.py:z,ro
     command:
     - python
     - -u
@@ -43,10 +43,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.200
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeY:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -61,10 +61,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.201
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeZ:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -79,10 +79,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.202
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeW:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -97,10 +97,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.204
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeP:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -115,10 +115,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.205
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeQ:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -133,10 +133,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.206
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeR:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -151,10 +151,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.207
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeL:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -169,10 +169,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.208
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeA:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -187,10 +187,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.209
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeB:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -205,10 +205,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.210
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeC:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -223,10 +223,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.211
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeD:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -241,10 +241,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.212
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeE:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -259,10 +259,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.213
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeF:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -277,10 +277,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.214
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeG:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc
@@ -295,10 +295,10 @@ services:
       my_macvlan:
         ipv4_address: 192.168.1.215
     volumes:
-    - /home/red_panda/Desktop/diplwmatikh/2024_csvs:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
     - ./logs/nodeH:/logs:z,rw
-    - ./python_code/p2p_node:/app:z,rw
-    - /home/red_panda/Desktop/diplwmatikh/results:/results/node_results:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
     command:
     - sh
     - -lc

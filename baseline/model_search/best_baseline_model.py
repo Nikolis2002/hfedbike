@@ -1,3 +1,14 @@
+"""
+Prints the top 10% of grid-search runs sorted by Average MAE / RMSE / R2
+from the MongoDB collection `citibike.resultsv2`. Used for manual review
+of the grid-search output from pre_processing.py. The selected
+configuration ends up written by hand into best_baseline_parameters.json
+and then retrained in a separate step to produce
+data/2024/_model_two_layers.keras.
+
+Does not train anything itself -- pure query script.
+"""
+
 from pymongo import MongoClient
 import math
 import pprint
