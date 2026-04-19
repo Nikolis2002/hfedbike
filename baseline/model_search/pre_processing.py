@@ -1,3 +1,27 @@
+"""
+Baseline training + cross-validation worker.
+
+Despite the filename, this script does more than preprocessing: it is the
+inner loop of the baseline grid search. `fine_tuning.py` invokes it as a
+subprocess with different --optimizer, --lr, --hidden_layers, --r (L2),
+etc. Each invocation:
+
+  1. Loads the pre-cleaned weather CSV and the per-station bike-usage
+     CSVs, merges and engineers features (data_processor()).
+  2. Builds a feedforward network with the passed hyperparameters
+     (neural_network_model()).
+  3. Runs month-stratified 5-fold CV (K_fold()) or a chronological month
+     split (month_split()).
+  4. Writes the fold-average MAE / MSE / RMSE / R2 plus metadata to the
+     MongoDB collection `citibike.resultsv2`, keyed by `run_id`.
+
+The winning configuration across all runs is later retrained in
+best_baseline_model.py and saved as data/2024/_model_two_layers.keras.
+
+External dependencies: TensorFlow, scikit-learn, MongoDB at
+mongodb://localhost:27017/, numba (GPU reset between folds).
+"""
+
 import pandas as pd
 import glob
 import numpy as np
@@ -44,8 +68,11 @@ def one_hot_encoding(panda, columns):
 
 
 def data_processor():
-
-    weather_df = pd.read_csv("../processed_csvs/clean_weather.csv")
+    # Path is relative to this script's directory (baseline/model_search/).
+    # After the repo restructure the pre-cleaned weather CSV lives under
+    # data/processed/. If you run this script from a different cwd, pass
+    # an absolute path instead.
+    weather_df = pd.read_csv("../../data/processed/clean_weather.csv")
 
     default_values = {
         "visibility": 10000,

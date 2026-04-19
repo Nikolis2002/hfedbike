@@ -6,7 +6,7 @@ import matplotlib.ticker as mticker
 from scipy.stats import wilcoxon
 
 # ─── 1) Load each node's weekly results CSV ──────────────────
-csv_files = glob.glob("results/*_results.csv")
+csv_files = glob.glob("../results/current/*_results.csv")
 node_data = {}
 for path in csv_files:
     node = path.split('/')[-1].split('_results')[0]

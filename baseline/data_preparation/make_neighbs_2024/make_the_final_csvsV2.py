@@ -1,3 +1,21 @@
+"""Produce the 16 per-subzone bike-usage CSVs consumed by the federation.
+
+Pipeline:
+  1. Read the enriched 2024 trip records (cleaned by
+     split_and_enrich.py) and the cleaned weather table
+     (fixed_2024.csv).
+  2. k-means on station coordinates, k=4, produces the four regions.
+  3. k-means again within each region, k=4, produces the four
+     subzones per region (16 subzones total).
+  4. For each subzone, aggregate trips to hourly counts and join with
+     weather.
+  5. Write one CSV per subzone under data/2024/entire_year/, named
+     region<G>_subzone<s>_bike_usage.csv.
+
+These files are the exact inputs read by federated/p2p_node/v2_node.py
+at runtime.
+"""
+
 import pandas as pd
 from pymongo import MongoClient
 from sklearn.cluster import KMeans

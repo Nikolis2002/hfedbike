@@ -1,4 +1,5 @@
 import glob
+from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,7 +7,8 @@ import matplotlib.ticker as mticker
 from scipy.stats import wilcoxon
 
 # ─── 1) Load each node's weekly results CSV ──────────────────
-csv_files = glob.glob("results/*_results.csv")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+csv_files = sorted(glob.glob(str(REPO_ROOT / "results/current/*_results.csv")))
 node_data = {}
 
 for path in csv_files:
@@ -200,8 +202,8 @@ ax.legend(
 fig.tight_layout()
 
 # Save
-fig.savefig("mae_comparison.pdf")
-fig.savefig("mae_comparison.png", dpi=450)
+fig.savefig(REPO_ROOT / "figures/mae_comparison.pdf")
+fig.savefig(REPO_ROOT / "figures/mae_comparison.png", dpi=450)
 
 plt.show()
 # ─── 5) Stats summary + Wilcoxon ─────────────────────────────

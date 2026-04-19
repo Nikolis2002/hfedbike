@@ -29,7 +29,7 @@ def wilcoxon_with_z(x, y):
 
 records = []
 
-for path in glob.glob("results/*_results.csv"):
+for path in glob.glob("../results/current/*_results.csv"):
     subzone = path.split("/")[-1].replace("_results.csv", "")
     df = pd.read_csv(path)
 

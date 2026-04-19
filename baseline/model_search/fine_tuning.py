@@ -1,3 +1,24 @@
+"""
+Grid-search driver for the frozen baseline.
+
+Enumerates 1,734 combinations of (optimizer, layer widths, L2 strength,
+learning rate) and invokes pre_processing.py once per combination, each
+run logging its fold-average metrics to MongoDB under a fresh run_id.
+
+Resumable: run_ids that already appear in completed_runsv2.txt are
+skipped, so you can Ctrl-C mid-grid and re-run. Each worker gets the
+GPU reset beforehand (tf.keras.backend.clear_session) to avoid OOMs.
+
+Downstream:
+  - find_the_best_baseline.py queries MongoDB for the minimum-MAE
+    configuration per regularization regime.
+  - best_baseline_model.py shows the top 10% of runs for manual review.
+  - best_baseline_parameters.json records the winning config (64, 128,
+    128 units, ReLU, L2=1e-4, Nadam, lr=1e-3).
+
+Run from this directory so pre_processing.py is resolvable as a peer.
+"""
+
 import subprocess
 import itertools
 import time

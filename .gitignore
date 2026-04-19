@@ -8,4 +8,15 @@ legacy/
 *.swp 
 *.lock
 fine_tune_the_baseline_model/screenshots*
+baseline/model_search/screenshots*
 .cache/
+
+# Python bytecode / editor scratch
+__pycache__/
+*.pyc
+*.pyo
+
+# Runtime artefacts from docker-compose federated runs
+results/current/*.csv
+results/pre_fix/*.csv
+results/archive/**/*.csv

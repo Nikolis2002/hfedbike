@@ -1,3 +1,11 @@
+"""Clean and normalize the 2024 OpenWeatherMap extract.
+
+Reads the raw weather CSVs, parses the irregular timestamp format used by
+OpenWeatherMap (e.g. '2023-01-01 00:00:00 +0000 UTC'), and writes a
+single gap-filled fixed_2024.csv hourly table used downstream by
+make_the_final_csvsV2.py.
+"""
+
 import pandas as pd
 from pymongo import MongoClient
 from glob import glob
