@@ -23,8 +23,8 @@ mongodb://localhost:27017/, numba (GPU reset between folds).
 """
 
 import pandas as pd
-import glob
 import numpy as np
+from pathlib import Path
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import KFold, StratifiedShuffleSplit
 import tensorflow as tf
@@ -35,8 +35,19 @@ from pymongo import MongoClient
 import os, pprint
 from datetime import datetime
 from tensorflow.keras import backend as K
-from numba import cuda
 from collections import Counter
+
+# ---------------------------------------------------------------------
+# Paths are resolved relative to this file, not cwd, so the script runs
+# from anywhere. Repo root is three levels up: pre_processing.py ->
+# model_search -> baseline -> repo root.
+# ---------------------------------------------------------------------
+REPO_ROOT       = Path(__file__).resolve().parents[2]
+SCRIPT_DIR      = Path(__file__).resolve().parent
+WEATHER_CSV     = REPO_ROOT / "data" / "processed" / "clean_weather.csv"
+MERGED_CACHE    = SCRIPT_DIR / "merged_data.csv"          # feature-engineered cache
+CHECKPOINT_PATH = SCRIPT_DIR / "_model_two_layers.keras"  # ModelCheckpoint output
+SCREENSHOTS_DIR = SCRIPT_DIR / "screenshotsv2"            # run-plot outputs
 
 client = MongoClient("mongodb://localhost:27017/")
 database = client["citibike"]
@@ -67,101 +78,73 @@ def one_hot_encoding(panda, columns):
     return encoded_data
 
 
-def data_processor():
-    # Path is relative to this script's directory (baseline/model_search/).
-    # After the repo restructure the pre-cleaned weather CSV lives under
-    # data/processed/. If you run this script from a different cwd, pass
-    # an absolute path instead.
-    weather_df = pd.read_csv("../../data/processed/clean_weather.csv")
+def _build_merged_frame():
+    """Merge weather + hourly bike usage, add cyclic time features.
 
+    Runs the MongoDB aggregation against ``citibike.bike_data_enriched``
+    (see ``baseline/data_preparation/make_neighbs_2023/data_enrich.py``
+    for how that collection is populated), joins with the cleaned
+    OpenWeatherMap table at ``data/processed/clean_weather.csv``, adds
+    cyclic/categorical time features, and shifts bike_usage by -1 to
+    create the ``bike_usage_next`` target column.
+
+    The result is cached to ``MERGED_CACHE`` so subsequent grid-search
+    invocations skip this step.
+    """
+    # --- 1) cleaned hourly weather --------------------------------------
+    weather_df = pd.read_csv(WEATHER_CSV)
     default_values = {
-        "visibility": 10000,
-        "wind_gust": 0,
-        "rain_1h": 0,
-        "rain_3h": 0,
-        "snow_1h": 0,
-        "snow_3h": 0,
+        "visibility": 10000, "wind_gust": 0,
+        "rain_1h": 0, "rain_3h": 0,
+        "snow_1h": 0, "snow_3h": 0,
     }
-
-    weather_df[
-        ["visibility", "wind_gust", "rain_1h", "rain_3h", "snow_1h", "snow_3h"]
-    ] = weather_df[
-        ["visibility", "wind_gust", "rain_1h", "rain_3h", "snow_1h", "snow_3h"]
-    ].fillna(default_values)
-
+    weather_cols = list(default_values.keys())
+    weather_df[weather_cols] = weather_df[weather_cols].fillna(default_values)
     weather_df["hour"] = pd.to_datetime(weather_df["hour"], errors="coerce")
-    tester = 0
-    merger = 1
-    merged_df = None
-    """"
-    #bike_files=glob.glob("processed_csvs/*_bike_usage.csv")
-    file="/home/nikolis/Desktop/diplwmatikh/processed_csvs/lower_west_manhattan_NE_bike_usage.csv"
-    filtered_inputs=[]
-    outputs=[]
-    save=0
-    tester=0
-    
 
-    #for file in bike_files:
-    bike_df=pd.read_csv(file)
+    # --- 2) hourly trip counts across all of NYC ------------------------
+    col = client["citibike"]["bike_data_enriched"]
+    pipeline = [
+        {"$group": {"_id": "$hour", "bike_usage": {"$sum": 1}}},
+        {"$project": {"_id": 0, "hour": "$_id", "bike_usage": 1}},
+        {"$sort": {"hour": 1}},
+    ]
+    bike_df = pd.DataFrame(list(col.aggregate(pipeline)))
+    bike_df["hour"] = pd.to_datetime(bike_df["hour"])
 
-    region=bike_df["region"].unique()
-    sub_region=bike_df["subzone"].unique()
-
-    merged_df=pd.merge(weather_df,bike_df,on="hour",how="inner")
+    # --- 3) weather ⋈ usage, shift-1 target -----------------------------
+    merged_df = pd.merge(weather_df, bike_df, on="hour", how="inner")
     merged_df["hour"] = pd.to_datetime(merged_df["hour"], errors="coerce")
-    #merged_df = merged_df.set_index('hour')
-    merged_df['bike_usage_next'] = merged_df['bike_usage'].shift(-1)
+    merged_df["bike_usage_next"] = merged_df["bike_usage"].shift(-1)
+    # Last row has no "next" target, drop it.
     merged_df = merged_df.iloc[:-1].copy()
 
-    print(merged_df.head())
+    # --- 4) time features ----------------------------------------------
+    merged_df["hour_of_datetime"] = merged_df["hour"].dt.hour
+    merged_df["day_of_week"]      = merged_df["hour"].dt.dayofweek
+    merged_df["week_of_year"]     = merged_df["hour"].dt.isocalendar().week
+    merged_df["month"]            = merged_df["hour"].dt.month
 
-    """
-    if merger == 0:
-        col = client.citibike.bike_data_enriched
+    weeks  = merged_df["week_of_year"].to_numpy()
+    angles = 2 * np.pi * (weeks - 1) / 52
+    merged_df["week_sin"] = np.sin(angles)
+    merged_df["week_cos"] = np.cos(angles)
 
-        pipeline = [
-            {"$group": {"_id": "$hour", "bike_usage": {"$sum": 1}}},
-            {"$project": {"_id": 0, "hour": "$_id", "bike_usage": 1}},
-            {"$sort": {"hour": 1}},
-        ]
+    merged_df["hour_sin"] = np.sin(2 * np.pi * merged_df["hour_of_datetime"] / 24)
+    merged_df["hour_cos"] = np.cos(2 * np.pi * merged_df["hour_of_datetime"] / 24)
 
-        results = list(col.aggregate(pipeline))
-        bike_df = pd.DataFrame(results)
+    merged_df.to_csv(MERGED_CACHE, index=False)
+    return merged_df
 
-        bike_df["hour"] = pd.to_datetime(bike_df["hour"])
 
-        print(bike_df.head())
-
-        merged_df = pd.merge(weather_df, bike_df, on="hour", how="inner")
-
-        merged_df["hour"] = pd.to_datetime(merged_df["hour"], errors="coerce")
-        merged_df["bike_usage_next"] = merged_df["bike_usage"].shift(-1)
-        merged_df = merged_df.iloc[:-1].copy()
-
-        print(merged_df.head())
-
-        merged_df["hour_of_datetime"] = merged_df["hour"].dt.hour
-        merged_df["day_of_week"] = merged_df["hour"].dt.dayofweek
-        merged_df["week_of_year"] = merged_df["hour"].dt.isocalendar().week
-        merged_df["month"] = merged_df["hour"].dt.month
-
-        weeks = merged_df["week_of_year"].to_numpy()
-        angles = 2 * np.pi * (weeks - 1) / 52
-
-        merged_df["week_sin"] = np.sin(angles)
-        merged_df["week_cos"] = np.cos(angles)
-
-        merged_df["hour_sin"] = np.sin(2 * np.pi * merged_df["hour_of_datetime"] / 24)
-        merged_df["hour_cos"] = np.cos(2 * np.pi * merged_df["hour_of_datetime"] / 24)
-
-        if tester == 1:
-            merged_df["day_sin"] = np.sin(2 * np.pi * merged_df["day_of_week"] / 7)
-            merged_df["day_cos"] = np.cos(2 * np.pi * merged_df["day_of_week"] / 7)
-
-        merged_df.to_csv(".csv", index=False)
+def data_processor():
+    # Regenerating the merged frame requires MongoDB and is slow, so we
+    # cache it on disk after the first build.  Delete MERGED_CACHE to
+    # force a rebuild (e.g. after re-ingesting raw trips).
+    if MERGED_CACHE.exists():
+        merged_df = pd.read_csv(MERGED_CACHE)
     else:
-        merged_df = pd.read_csv("merged_data.csv")
+        merged_df = _build_merged_frame()
 
     months = merged_df["month"].values
 
@@ -188,39 +171,25 @@ def data_processor():
         "clouds_all",
         "weather_main",
     ]
-    # columns=['hour_sin','hour_cos','day_of_week','weather_main_prev','weather_main_cur','weather_main_next','visibility_fixed','temp_max','temp_min','feels_like','humidity','wind_speed']
     input = merged_df[columns]
 
+    # Cyclic hour features go in directly (no normalization).
     time_feats = input[["hour_sin", "hour_cos"]].to_numpy(dtype=np.float32)
 
-    if tester == 2:
-        input.to_csv(f"tester.csv", index=False)
-
-    # output=merged_df['bike_usage'].to_numpy().astype(np.float32)
-
-    exclude_cols = ["hour_sin", "hour_cos", "day_of_week", "month", "weather_main"]
-
-    numeric_columns = input.select_dtypes(include=["number"]).columns.tolist()
-    numeric_columns = [col for col in numeric_columns if col not in exclude_cols]
+    # Split the rest into numeric (z-scored) and categorical (one-hot).
+    exclude_cols    = ["hour_sin", "hour_cos", "day_of_week", "month", "weather_main"]
+    numeric_columns = [c for c in input.select_dtypes(include=["number"]).columns
+                       if c not in exclude_cols]
+    categorical_columns = ["day_of_week", "month", "weather_main"]
     print("Numeric columns: ", numeric_columns)
 
-    categorical_columns = ["day_of_week", "month", "weather_main"]
-
     z_scored_data, _ = z_score(input, numeric_columns)
-    print(f"The shape of the z_score:{z_scored_data.shape[1]}")
-    output, sigma = z_score(merged_df, ["bike_usage_next"])
-    categ_data = one_hot_encoding(input, categorical_columns).astype(np.float32)
-    print(f"The shape of the categ:{categ_data.shape[1]}")
+    output, sigma    = z_score(merged_df, ["bike_usage_next"])
+    categ_data       = one_hot_encoding(input, categorical_columns).astype(np.float32)
 
     filtered_input = np.concatenate(
         [time_feats, z_scored_data, categ_data], axis=1
     ).astype(np.float32)
-    # filtered_inputs.append(filtered_input)
-    # outputs.append(output)
-
-    if tester == 2:
-        print(filtered_input)
-        tester = tester + 1
 
     return filtered_input, output, sigma, months
 
@@ -307,12 +276,11 @@ def create_parser():
 
 
 def create_folder(id):
+    """Create a timestamped output folder under SCREENSHOTS_DIR."""
     date_str = datetime.now().strftime("%m-%d_%H-%M-%S")
-    folder_name = f"screenshotsv2/ID:{id}_DATE_{date_str}"
-
-    os.makedirs(folder_name, exist_ok=True)
-
-    return folder_name
+    folder = SCREENSHOTS_DIR / f"ID_{id}_DATE_{date_str}"
+    folder.mkdir(parents=True, exist_ok=True)
+    return str(folder)
 
 
 # plot the taining-loss/validation loss
@@ -322,7 +290,7 @@ def plot(args, loss_table, val_loss_table, folder, max_epochs):
             epochs = range(1, len(history) + 1)
             plt.plot(epochs, history, label=f"Fold {i + 1}")
 
-        plt.normal_trainingxlabel("Epoch")
+        plt.xlabel("Epoch")
         plt.ylabel("Validation Loss")
         plt.title("Validation Loss per Fold with Stopping Epochs")
         plt.legend()
@@ -436,8 +404,8 @@ def neural_network_model(
         verbose=1,
     )
     checkpoint = tf.keras.callbacks.ModelCheckpoint(
-        filepath="_model_two_layers.keras",  # native Keras format
-        monitor="val_mae",  # or "val_loss"
+        filepath=str(CHECKPOINT_PATH),  # absolute path under baseline/model_search/
+        monitor="val_mae",
         save_best_only=True,
         mode="min",
         verbose=1,
@@ -633,7 +601,10 @@ def K_fold(filtered_input, output, args, folder, hidden_layers, sigma):
         input_train, input_val = filtered_input[training_idx], filtered_input[val_idx]
         output_train, output_val = output[training_idx], output[val_idx]
 
-        model, early_stop, reduce_lr = neural_network_model(
+        # neural_network_model returns 4 values (model, early_stop,
+        # reduce_lr, checkpoint); the K_fold path just ignores the
+        # checkpoint since we don't persist the best fold anywhere.
+        model, early_stop, reduce_lr, _checkpoint = neural_network_model(
             filtered_input.shape[1],
             args.optimizer,
             args.momentum,
