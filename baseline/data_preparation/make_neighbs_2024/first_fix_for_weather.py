@@ -1,14 +1,19 @@
 """Clean and normalize the 2024 OpenWeatherMap extract.
 
-Reads the raw weather CSVs, parses the irregular timestamp format used by
-OpenWeatherMap (e.g. '2023-01-01 00:00:00 +0000 UTC'), and writes a
-single gap-filled fixed_2024.csv hourly table used downstream by
-make_the_final_csvsV2.py.
+Reads the raw weather CSV (data/2024/raw/weather_2024.csv), parses the
+irregular timestamp format used by OpenWeatherMap
+('2024-01-01 00:00:00 +0000 UTC'), and writes a deduplicated hourly
+table to data/2024/entire_year/fixed_2024.csv. That file is then
+consumed by make_the_final_csvsV2.py (station-level join) and by
+federated/p2p_node/v2_node.py at runtime.
+
+Paths are resolved relative to the script's own location so it can be
+invoked from any cwd.
 """
 
+from pathlib import Path
 import pandas as pd
-from pymongo import MongoClient
-from glob import glob
+
 # Custom parsing function to handle strings like "2023-01-01 00:00:00 +0000 UTC"
 def parse_dt_iso(x):
     if pd.isna(x):
@@ -23,7 +28,12 @@ def parse_dt_iso(x):
 
 
 
-weather_df = pd.read_csv('2024.csv')
+REPO_ROOT = Path(__file__).resolve().parents[3]  # baseline/data_preparation/make_neighbs_2024/ -> repo root
+RAW_PATH = REPO_ROOT / "data" / "2024" / "raw" / "weather_2024.csv"
+OUT_PATH = REPO_ROOT / "data" / "2024" / "entire_year" / "fixed_2024.csv"
+OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+weather_df = pd.read_csv(RAW_PATH)
 
 # Check if 'hour' column exists; if not, create it.
 if "hour" not in weather_df.columns:
@@ -53,5 +63,5 @@ for hour, group in grouped:
 clean_weather_df = weather_df.drop_duplicates(subset=["hour"])
 print("Cleaned weather data shape:", clean_weather_df.shape)
 
-clean_weather_df.to_csv(f"fixed_2024.csv", index=False)
-print("Clean weather CSV saved.")
+clean_weather_df.to_csv(OUT_PATH, index=False)
+print(f"Clean weather CSV saved to {OUT_PATH}")

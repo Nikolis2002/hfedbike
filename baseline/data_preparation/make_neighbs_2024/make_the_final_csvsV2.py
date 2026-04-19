@@ -46,10 +46,12 @@ if STORE_TO_DB:
 #    ignore_index=True
 #)
 
-BASE_DIR = Path(__file__).resolve().parent   # folder where the script is
+REPO_ROOT = Path(__file__).resolve().parents[3]
+RAW_DIR = REPO_ROOT / "data" / "2024" / "raw"
+OUT_DIR = REPO_ROOT / "data" / "2024" / "entire_year"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 csv_files = sorted(
-    str(p) for p in BASE_DIR.rglob("*citibike-tripdata*.csv")
-    if p.name != "fixed_2024.csv"  # optional: exclude other csvs like weather/etc
+    str(p) for p in RAW_DIR.rglob("*citibike-tripdata*.csv")
 )
 
 print(f"Found {len(csv_files)} tripdata CSVs:")
@@ -249,9 +251,10 @@ for _, row in station_df.iterrows():
     ).add_to(m)
 
 
-# Save output
-m.save("region_subzone_map.html")
-print("Saved map to region_subzone_map.html")
+# Save output (diagnostic map, not consumed by any downstream script)
+_map_out = OUT_DIR.parent / "region_subzone_map.html"
+m.save(str(_map_out))
+print(f"Saved map to {_map_out}")
 
 summary = (
 station_df
@@ -324,7 +327,7 @@ if CSV_EXPORT:
     def writer_for(region, subzone):
         key = (region, subzone)
         if key not in writers:
-            fn = f"region{region}_subzone{subzone}_bike_usage.csv"
+            fn = OUT_DIR / f"region{region}_subzone{subzone}_bike_usage.csv"
             f = open(fn, "w", newline="")
             files[key] = f
             w = csv.writer(f)

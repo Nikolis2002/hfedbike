@@ -1,3 +1,21 @@
+"""Hour-enrichment + legacy region/subzone assignment for 2023 trips.
+
+Reads the raw 2023 trips that were bulk-loaded into the MongoDB
+collection `citibike.bikes_raw` (by a pipeline no longer tracked in
+this repo), assigns each trip a region (via geographic polygons in
+assign_region(), an older method superseded by k-means for 2024) and a
+subzone, and crucially floors `started_at` to the hour so downstream
+aggregation can compute hourly usage.
+
+This is the only 2023 data-prep script kept in the repo. The rest of
+the 2023 pipeline (raw ingestion, per-neighborhood aggregation, station
+index build) was a one-off exercise; its outputs live in
+`data/processed/*_bike_usage.csv` and are read by the baseline training
+pipeline at `baseline/model_search/pre_processing.py`.
+
+External deps: MongoDB at mongodb://localhost:27017/, shapely, tqdm.
+"""
+
 import pandas as pd
 from pymongo import MongoClient
 from shapely.geometry import Point, LineString
