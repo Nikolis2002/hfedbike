@@ -147,7 +147,9 @@ class Welford:
             self.M2 = np.zeros(self.dim, dtype=np.float64)
 
         if arr.shape[0] != self.dim:
-            raise Value(f"Dimension mismatch: expected {self.dim}, got {arr.shape[0]}")
+            raise ValueError(
+                f"Dimension mismatch: expected {self.dim}, got {arr.shape[0]}"
+            )
 
         # Increment count and update each feature’s mean and M2
         self.n += 1
@@ -365,11 +367,20 @@ def data_init():
     return merged_df
 
 
-def pre_processing(input, numeric_columns, mean, sigma):
+def pre_processing(
+    input, numeric_columns, mean, sigma, in_means=None, in_sigmas=None
+):
 
     time_feats = input[["hour_sin", "hour_cos"]].to_numpy(dtype=np.float32)
 
-    z_scored_data = z_score_normal(input, numeric_columns)
+    X_raw = input[numeric_columns].to_numpy(dtype=np.float32)
+    if in_means is None or in_sigmas is None:
+        in_means = X_raw.mean(axis=0).astype(np.float32)
+        in_sigmas = X_raw.std(axis=0, ddof=0).astype(np.float32)
+    eps = np.float32(1e-6)
+    sig_in = in_sigmas.astype(np.float32).copy()
+    sig_in[sig_in == 0] = eps
+    z_scored_data = (X_raw - in_means.astype(np.float32)) / sig_in
     print(f"The shape of the z_score:{z_scored_data.shape[1]}")
 
     output = z_score(mean, ["bike_usage_next"], sigma, input)
@@ -381,7 +392,7 @@ def pre_processing(input, numeric_columns, mean, sigma):
         [time_feats, z_scored_data, categ_data], axis=1
     ).astype(np.float32)
 
-    return filtered_input, output
+    return filtered_input, output, in_means, in_sigmas
 
 
 def one_hot_encoding(data):
@@ -781,30 +792,47 @@ def main():
                     week_df, val_frac=0.2, time_col="hour"
                 )
 
-                # 3) Preprocess using that week's μ/σ
-                X_tr, y_tr = pre_processing(
+                # 3) Preprocess using that week's μ/σ.
+                # Fit input-feature stats on the training split only, then
+                # reuse them unchanged for the validation split and for the
+                # next week's online inference (see output_stats reset below).
+                X_tr, y_tr, tr_in_means, tr_in_sigmas = pre_processing(
                     tr_df, numeric_cols, global_mean, global_sigma
                 )
-                X_val, y_val = pre_processing(
-                    val_df, numeric_cols, global_mean, global_sigma
+                X_val, y_val, _, _ = pre_processing(
+                    val_df,
+                    numeric_cols,
+                    global_mean,
+                    global_sigma,
+                    in_means=tr_in_means,
+                    in_sigmas=tr_in_sigmas,
                 )
 
                 # 4) Train your local model
                 train_the_model(model, X_val, y_val, X_tr, y_tr, 20)
                 my_weights = model.get_weights()
 
-                # 5) Neighborhood‐level federated rounds
+                # 5) Neighborhood-level ring all-reduce.
+                # Each round we forward the parcel received in the previous
+                # round (or our own weights in round 1) and accumulate every
+                # received parcel into `acc`. After len(NODE_LIST)-1 rounds
+                # each node has summed every other node's original weights
+                # exactly once, so acc/N is the exact neighborhood mean.
+                acc = [w.copy() for w in my_weights]
+                parcel = my_weights
                 for round_num in range(1, TOTAL_ROUNDS + 1):
                     print(
                         f"[{NODE_ID}] Neighborhood Round {round_num} (wk {current_week})…"
                     )
                     if (node_index + round_num) % 2 == 0:
-                        send_weights(my_weights)
+                        send_weights(parcel)
                         received_weights = receive_weights()
                     else:
                         received_weights = receive_weights()
-                        send_weights(my_weights)
-                    my_weights = federated_average(my_weights, received_weights)
+                        send_weights(parcel)
+                    acc = [a + r for a, r in zip(acc, received_weights)]
+                    parcel = received_weights
+                my_weights = [a / len(NODE_LIST) for a in acc]
 
                 print(
                     f"[{NODE_ID}] Neighborhood federation done for week {current_week}."
@@ -862,7 +890,13 @@ def main():
                 week_freezed_pred.clear()
 
                 init_count = len(week_df)
-                input_stats.reset(hard=True)
+                # Seed input Welford with the training-split stats so that
+                # next week's online inference normalizes inputs the same
+                # way the model was trained.
+                tr_count = max(len(tr_df), 2)
+                input_stats.reset(
+                    mean=tr_in_means, std=tr_in_sigmas, init_count=tr_count
+                )
                 output_stats.reset(global_mean, global_sigma, init_count)
                 # for col in numeric_cols:
                 # rolling_trackers[col].reset()
@@ -994,23 +1028,34 @@ def main():
             tr_df, val_df = split_train_val_chrono(
                 week_df, val_frac=0.2, time_col="hour"
             )
-            X_tr, y_tr = pre_processing(tr_df, numeric_cols, global_mean, global_sigma)
-            X_val, y_val = pre_processing(
-                val_df, numeric_cols, global_mean, global_sigma
+            X_tr, y_tr, tr_in_means, tr_in_sigmas = pre_processing(
+                tr_df, numeric_cols, global_mean, global_sigma
+            )
+            X_val, y_val, _, _ = pre_processing(
+                val_df,
+                numeric_cols,
+                global_mean,
+                global_sigma,
+                in_means=tr_in_means,
+                in_sigmas=tr_in_sigmas,
             )
 
             train_the_model(model, X_val, y_val, X_tr, y_tr, 20)
             my_weights = model.get_weights()
 
+            acc = [w.copy() for w in my_weights]
+            parcel = my_weights
             for round_num in range(1, TOTAL_ROUNDS + 1):
                 print(f"[{NODE_ID}] Neighborhood Round {round_num} (final wk)…")
                 if (node_index + round_num) % 2 == 0:
-                    send_weights(my_weights)
+                    send_weights(parcel)
                     received_weights = receive_weights()
                 else:
                     received_weights = receive_weights()
-                    send_weights(my_weights)
-                my_weights = federated_average(my_weights, received_weights)
+                    send_weights(parcel)
+                acc = [a + r for a, r in zip(acc, received_weights)]
+                parcel = received_weights
+            my_weights = [a / len(NODE_LIST) for a in acc]
 
             print(
                 f"[{NODE_ID}] Neighborhood federation done for final week {current_week}."
