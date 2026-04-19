@@ -42,10 +42,16 @@ db = client["citibike"]
 SRC_COLLECTION = "bikes_raw"            # pre-existing raw trip dump
 DST_COLLECTION = "bike_data_enriched"   # what pre_processing.py reads
 
-# ``started_at`` in the raw Citi Bike exports is a string with milliseconds,
-# e.g. ``2023-01-07 15:36:53.430``.  %L in the format spec means "3-digit
-# milliseconds" (MongoDB's convention).
-RAW_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S.%L"
+# Citi Bike's ``started_at`` format flipped mid-2024:
+#   2023-01..2024-04 :  ``2023-01-07 15:36:53.430``   (with milliseconds)
+#   2024-05 onward   :  ``2024-05-01 08:05:53``        (no milliseconds)
+# Today's 2023 dump is uniformly the first form, but we accept both here
+# so a future backfill or a re-ingestion of mixed data doesn't silently
+# drop rows via onError.  MongoDB's $dateFromString is fail-single-format,
+# so we try the millisecond form first and fall back to the no-ms form
+# via $ifNull.
+FORMAT_WITH_MS = "%Y-%m-%d %H:%M:%S.%L"
+FORMAT_NO_MS   = "%Y-%m-%d %H:%M:%S"
 
 
 def enrich_server_side() -> int:
@@ -73,14 +79,24 @@ def enrich_server_side() -> int:
     db[SRC_COLLECTION].aggregate(
         [
             # 1. Parse the string timestamp; emit null on malformed rows.
+            #    Try the millisecond format first (pre-May-2024 layout);
+            #    fall back to no-ms on failure. $dateFromString accepts
+            #    only one format spec per call, so $ifNull chains the two.
             {
                 "$addFields": {
                     "_parsed": {
-                        "$dateFromString": {
-                            "dateString": "$started_at",
-                            "format": RAW_TIMESTAMP_FORMAT,
-                            "onError": None,
-                        }
+                        "$ifNull": [
+                            {"$dateFromString": {
+                                "dateString": "$started_at",
+                                "format": FORMAT_WITH_MS,
+                                "onError": None,
+                            }},
+                            {"$dateFromString": {
+                                "dateString": "$started_at",
+                                "format": FORMAT_NO_MS,
+                                "onError": None,
+                            }},
+                        ]
                     }
                 }
             },
