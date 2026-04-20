@@ -55,6 +55,13 @@ diplwmatikh/
 │
 ├── Dockerfile                    TensorFlow + pyzmq image used by every node/coordinator
 ├── docker-compose.yml            16 nodes + 1 coordinator on a macvlan network
+├── docker-compose.hybrid-host.yml    15-node host compose for the Pi-in-the-loop run
+│                                     (nodeA is omitted; Raspberry Pi provides it — `hybrid` branch)
+├── pi_node/                      Self-contained Pi-side deployment (`hybrid` branch)
+│   ├── docker-compose.pi-nodeA.yml   Single-service compose for the Pi
+│   ├── setup_macvlan.sh              Creates the Pi's macvlan network
+│   ├── data/                         Minimal data subset nodeA needs
+│   └── README.md                     Pi setup walkthrough
 └── requirements.txt              Python dependencies
 ```
 
@@ -132,9 +139,70 @@ All three pairwise differences significant at `p < 1e-8`
 
 ## Branches
 
-- `main` — last presented version before the current review cycle.
-- `fix/input-normalization` — the two correctness fixes (input Z-score
-  consistency and exact-mean ring reduce). Used for the paper's
-  post-fix numbers.
-- `restructure/cleanup` — this reorganization; merges into `main` after
-  review.
+The repo is organized around a stable trunk with two lines of branches:
+deployment variants (different ways to run the same production
+protocol) and research variants (shadow-metric ablations that log
+additional signals alongside the deployed run).
+
+### Main trunk
+
+- **`main`** — production code. The `v2_node.py` federated pipeline, the
+  full 16-node `docker-compose.yml` on macvlan, and the analysis
+  scripts used to produce the paper's Table I. This is the branch the
+  paper's numbers come from.
+
+### Deployment variants
+
+- **`hybrid`** — Raspberry-Pi-in-the-loop deployment. Adds
+  `pi_node/` (self-contained single-service compose for the Pi, macvlan
+  setup script, subset of data needed for nodeA, step-by-step README)
+  and `docker-compose.hybrid-host.yml` (the 15 host containers, nodeA
+  omitted because the Pi fills that slot). The poster's companion video
+  and the MDM'26 demo submission reference this branch.
+  Adds `analysis/weekly_improvement_bars.py` for the demo's second
+  figure (per-week % improvement over the bias-adapted baseline).
+
+### Research variants (shadow-metric ablations)
+
+These branches modify `v3_node.py` to log one or more additional metrics
+*during the same 52-week run*, without changing the deployed
+algorithm. Each adds columns to the per-node CSV and includes analysis
+scripts to interpret them.
+
+- **`region3-option-a`** — corrects the Region-3 failure framing using
+  only the data the production run already produced. Adds
+  `analysis/region3_scatter.py` (Fed/Bias improvement vs. per-subzone
+  mean demand) and the scatter figure.
+
+- **`region3-option-c1`** — builds on `region3-option-a` and adds two
+  shadow metrics to `v3_node.py`:
+  *Fed-intra* (neighborhood mean weights from Step 3, skipping the
+  cross-region FedAvg of Step 5) and *Fed-scale* (per-leader
+  scale-aware blend driven by the Welford σ the coordinator already
+  broadcasts). One extra forward pass per hour per node; same 52-week
+  run. See `analysis/compare_intra_cross.py` and
+  `analysis/option_b_comparison.py` for the interpretation scripts.
+
+### Snapshots and historical
+
+- **`restructure/cleanup`** — a pointer to the commit that introduced
+  the current `data/ baseline/ federated/ results/` layout. Identical
+  tip to `main` once merged; kept as a stable reference.
+
+- **`fix/input-normalization`** — the two correctness fixes (input
+  Z-score consistency and exact-mean ring reduce) in isolation. Used
+  to produce the paper's before/after comparison.
+
+- **`demo/pi-single-neighborhood`** — earlier exploration of running a
+  full 4-node neighborhood (plus coordinator) entirely on a single Pi.
+  Superseded by `hybrid`, kept for reference.
+
+### Picking a branch
+
+| Goal                                              | Branch                  |
+|---------------------------------------------------|-------------------------|
+| Reproduce Table I                                 | `main`                  |
+| Run nodeA on a Pi alongside 15 host containers    | `hybrid`                |
+| See the regime scatter                            | `region3-option-a`      |
+| Also log Fed-intra + Fed-scale during the run     | `region3-option-c1`     |
+| Read the clean pre-experiment code                | `main` or `restructure/cleanup` |
