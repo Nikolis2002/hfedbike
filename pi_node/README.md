@@ -10,6 +10,26 @@ on the same switch --- because they are.
 This directory is everything that needs to live on the Pi. It pulls
 from `git` and runs with three commands.
 
+**This is a template.** The configuration targets a Pi 4 running nodeA,
+but everything here (the compose file, the macvlan setup script, the
+data layout) generalises to any Linux edge device running Docker.
+To run a *different* node on a *different* device:
+
+- edit `NODE_ID` and `NEIGHBORHOOD` in `docker-compose.pi-nodeA.yml`
+  (see the header comment there for the valid combinations);
+- edit the `ipv4_address` to match the IP expected for that node
+  (see `ip_mapping` in `federated/p2p_node/v2_node.py`);
+- copy the corresponding `region{N}_subzone{M}_bike_usage.csv` into
+  `data/entire_year/`;
+- rebuild the container image on the target architecture with
+  `docker build -t federated-node ..` from the repo root.
+
+The setup has been validated on Raspberry Pi 4 (2 GB — the smallest
+Pi 4 model) and on x86 containers; Jetson Nano, ODROID, BeagleBone, or
+similar SBCs with a macvlan-capable Ethernet interface will work
+identically. On 2 GB boards the first `docker build` requires swap
+(see the main project README for the one-line swap tweak).
+
 ## Network topology required
 
 ```
