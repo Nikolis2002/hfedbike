@@ -1,0 +1,293 @@
+services:
+  nodeX:
+    image: federated-node
+    container_name: nodeX
+    environment:
+    - NEIGHBORHOOD=docker
+    - NODE_ID=X
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.199
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/federated/p2p_node/models:/models:z,rw
+    - ./logs/nodeX:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  coordinator:
+    image: federated-node
+    container_name: coordinator
+    environment:
+    - NODE_ID=coordinator
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.203
+    volumes:
+    - ./logs/coordinator:/logs:z,rw
+    - ./federated/coordinator.py:/app/coordinator.py:z,ro
+    command:
+    - python
+    - -u
+    - /app/coordinator.py
+  nodeY:
+    image: federated-node
+    container_name: nodeY
+    environment:
+    - NEIGHBORHOOD=docker
+    - NODE_ID=Y
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.200
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeY:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeZ:
+    image: federated-node
+    container_name: nodeZ
+    environment:
+    - NEIGHBORHOOD=docker
+    - NODE_ID=Z
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.201
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeZ:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeW:
+    image: federated-node
+    container_name: nodeW
+    environment:
+    - NEIGHBORHOOD=docker
+    - NODE_ID=W
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.202
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeW:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeP:
+    image: federated-node
+    container_name: nodeP
+    environment:
+    - NEIGHBORHOOD=docker2
+    - NODE_ID=P
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.204
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeP:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeQ:
+    image: federated-node
+    container_name: nodeQ
+    environment:
+    - NEIGHBORHOOD=docker2
+    - NODE_ID=Q
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.205
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeQ:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeR:
+    image: federated-node
+    container_name: nodeR
+    environment:
+    - NEIGHBORHOOD=docker2
+    - NODE_ID=R
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.206
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeR:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeL:
+    image: federated-node
+    container_name: nodeL
+    environment:
+    - NEIGHBORHOOD=docker2
+    - NODE_ID=L
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.207
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeL:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  # nodeA runs on the Raspberry Pi over macvlan (see pi_node/).
+  # The host compose intentionally omits it.
+  nodeB:
+    image: federated-node
+    container_name: nodeB
+    environment:
+    - NEIGHBORHOOD=docker3
+    - NODE_ID=B
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.209
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeB:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeC:
+    image: federated-node
+    container_name: nodeC
+    environment:
+    - NEIGHBORHOOD=docker3
+    - NODE_ID=C
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.210
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeC:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeD:
+    image: federated-node
+    container_name: nodeD
+    environment:
+    - NEIGHBORHOOD=docker3
+    - NODE_ID=D
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.211
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeD:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeE:
+    image: federated-node
+    container_name: nodeE
+    environment:
+    - NEIGHBORHOOD=docker4
+    - NODE_ID=E
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.212
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeE:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeF:
+    image: federated-node
+    container_name: nodeF
+    environment:
+    - NEIGHBORHOOD=docker4
+    - NODE_ID=F
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.213
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeF:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeG:
+    image: federated-node
+    container_name: nodeG
+    environment:
+    - NEIGHBORHOOD=docker4
+    - NODE_ID=G
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.214
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeG:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+  nodeH:
+    image: federated-node
+    container_name: nodeH
+    environment:
+    - NEIGHBORHOOD=docker4
+    - NODE_ID=H
+    networks:
+      my_macvlan:
+        ipv4_address: 192.168.1.215
+    volumes:
+    - /home/red_panda/Desktop/diplwmatikh/data/2024:/data/2024_csvs:z,rw
+    - ./logs/nodeH:/logs:z,rw
+    - ./federated/p2p_node:/app:z,rw
+    - /home/red_panda/Desktop/diplwmatikh/results/current:/results/node_results:z,rw
+    command:
+    - sh
+    - -lc
+    - python -u /app/$NODE_SCRIPT
+networks:
+  my_macvlan:
+    external: true
+
