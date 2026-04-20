@@ -1,0 +1,35 @@
+# Hybrid deployment: this compose file runs ONLY nodeA on the Pi.
+# The other 15 clients plus the coordinator run on the host (laptop
+# or desktop), which must be on the SAME physical L2 segment as the Pi
+# (same switch, same Ethernet broadcast domain). The macvlan network
+# below gives the Pi container IP 192.168.1.208, which is exactly the
+# address the rest of the federation expects for nodeA.
+#
+# Before bringing this up, create the macvlan network on the Pi by
+# running ./setup_macvlan.sh in this directory. Bring the rest of the
+# federation up on the host with docker-compose.hybrid-host.yml from
+# the repo root.
+
+services:
+  nodeA:
+    image: federated-node
+    container_name: nodeA
+    environment:
+    - NEIGHBORHOOD=docker3      # region2 ring: A is the leader, peers are B, C, D on the host
+    - NODE_ID=A
+    networks:
+      pi_macvlan:
+        ipv4_address: 192.168.1.208
+    volumes:
+    - ./data:/data/2024_csvs:z,rw
+    - ./logs:/logs:z,rw
+    - ../federated/p2p_node:/app:z,rw
+    - ./results:/results/node_results:z,rw
+    command:
+    - python
+    - -u
+    - /app/v2_node.py
+
+networks:
+  pi_macvlan:
+    external: true
