@@ -683,6 +683,11 @@ def main():
     # neighborhood-mean weights (post ring-reduce, pre router exchange).
     intra_model = neural_network_model()
     intra_weights_prev = None
+    # Shadow model for scale-aware personalized Fed (Option C1). Blends
+    # own neighborhood mean with cross-region mean by alpha, where
+    # alpha = clip(|local_sigma - global_sigma| / global_sigma, 0, 1).
+    scale_model = neural_network_model()
+    scale_weights_prev = None
 
     full_df = merged_df.sort_values("hour").reset_index(drop=True)
 
@@ -706,6 +711,7 @@ def main():
     week_freezed_pred = []
     week_fed_pred = []  # federated model predictions
     week_fed_intra_pred = []  # intra-region-only federated predictions
+    week_fed_scale_pred = []  # scale-aware personalized Fed predictions
 
     # 6) Path for writing results
     results_file = f"/results/node_results/{NODE_ID}_results.csv"
@@ -719,6 +725,8 @@ def main():
         "fed_mse",
         "fed_intra_mae",
         "fed_intra_mse",
+        "fed_scale_mae",
+        "fed_scale_mse",
     ]
     if not os.path.exists(results_file):
         with open(results_file, "w", newline="") as f:
@@ -746,6 +754,7 @@ def main():
             yb_arr = np.array(week_base_pred)
             yf_arr = np.array(week_fed_pred)
             yfi_arr = np.array(week_fed_intra_pred)
+            yfs_arr = np.array(week_fed_scale_pred)
             yfreeze = np.array(week_freezed_pred)
 
             bias = float(np.mean(y_true_arr - yb_arr))
@@ -763,6 +772,9 @@ def main():
                 fed_intra_mae = mean_absolute_error(y_true_arr, yfi_arr)
                 fed_intra_mse = mean_squared_error(y_true_arr, yfi_arr)
 
+                fed_scale_mae = mean_absolute_error(y_true_arr, yfs_arr)
+                fed_scale_mse = mean_squared_error(y_true_arr, yfs_arr)
+
                 # Append to CSV
                 with open(results_file, "a", newline="") as f:
                     writer = csv.writer(f)
@@ -777,6 +789,8 @@ def main():
                             fed_mse,
                             fed_intra_mae,
                             fed_intra_mse,
+                            fed_scale_mae,
+                            fed_scale_mse,
                         ]
                     )
                 print(
@@ -799,6 +813,7 @@ def main():
                 # 1) Compute “true” μ/σ via your aggregator
                 output = week_df["bike_usage_next"]
                 global_mean, global_sigma = send_z_score(output, glob_dealer)
+                local_sigma = float(output.std(ddof=0)) if len(output) > 1 else 0.0
 
                 # 2) Chronological split → train & val
                 tr_df, val_df = split_train_val_chrono(
@@ -860,16 +875,39 @@ def main():
                 if NODE_ID in leaders.values():
                     received_weights = send_update_and_wait_for_peers(my_weights)
                     all_weights = [my_weights] + list(received_weights.values())
+                    # Save own neighborhood mean before federated_average overwrites.
+                    own_neigh_mean = [np.array(w) for w in my_weights]
                     my_weights = federated_average(all_weights)
 
+                    # Option C1: scale-aware personalized blend.
+                    # alpha near 1 when the leader's neighborhood σ diverges
+                    # strongly from the federation mean σ -> trust own model.
+                    alpha = (
+                        min(1.0, abs(local_sigma - global_sigma) / global_sigma)
+                        if global_sigma > 0
+                        else 0.0
+                    )
+                    scale_weights_prev = [
+                        alpha * own + (1.0 - alpha) * cross
+                        for own, cross in zip(own_neigh_mean, my_weights)
+                    ]
+                    scale_model.set_weights(scale_weights_prev)
+
                     model.set_weights(my_weights)
-                    print(f"[{NODE_ID}] Completed synchronous neighborhood exchange")
+                    print(
+                        f"[{NODE_ID}] Synchronous neighborhood exchange done "
+                        f"(alpha={alpha:.3f}, sigma_local={local_sigma:.3f}, "
+                        f"sigma_global={global_sigma:.3f})"
+                    )
 
                     for peer in NODE_LIST:
                         if peer == NODE_ID:
                             continue
 
-                        payload = {"weights": [w.tolist() for w in my_weights]}
+                        payload = {
+                            "weights": [w.tolist() for w in my_weights],
+                            "scale_weights": [w.tolist() for w in scale_weights_prev],
+                        }
                         # send [peer_identity, empty, json_payload]
                         router.send_multipart(
                             [
@@ -894,6 +932,10 @@ def main():
                     msg = json.loads(raw.decode("utf-8"))
                     peer_weights = [np.array(w) for w in msg["weights"]]
                     model.set_weights(peer_weights)
+                    if "scale_weights" in msg:
+                        scale_peer_weights = [np.array(w) for w in msg["scale_weights"]]
+                        scale_model.set_weights(scale_peer_weights)
+                        scale_weights_prev = scale_peer_weights
                     print(
                         f"[{NODE_ID}] Received global update from leader for week {current_week}."
                     )
@@ -906,6 +948,7 @@ def main():
                 week_base_pred.clear()
                 week_fed_pred.clear()
                 week_fed_intra_pred.clear()
+                week_fed_scale_pred.clear()
                 week_freezed_pred.clear()
 
                 init_count = len(week_df)
@@ -989,11 +1032,20 @@ def main():
             yf_intra = yf
         else:
             yf_intra = intra_model.predict(input)[0][0]
+        # Scale-aware personalized Fed (Option C1): alpha-blend of own
+        # neighborhood mean and cross-region mean, weighted by the mismatch
+        # between the neighborhood's local sigma and the federation's global
+        # sigma. Same first-week fallback as intra.
+        if scale_weights_prev is None:
+            yf_scale = yf
+        else:
+            yf_scale = scale_model.predict(input)[0][0]
         print(f"Real Value:{out},Baseline:{yb},Prediction:{yf}")
         week_true.append(out)
         week_base_pred.append(yb)
         week_fed_pred.append(yf)
         week_fed_intra_pred.append(yf_intra)
+        week_fed_scale_pred.append(yf_scale)
         week_freezed_pred.append(yfreeze)
 
         true_val = out.item()  # safe conversion
@@ -1012,6 +1064,7 @@ def main():
         yb_arr = np.array(week_base_pred)
         yf_arr = np.array(week_fed_pred)
         yfi_arr = np.array(week_fed_intra_pred)
+        yfs_arr = np.array(week_fed_scale_pred)
         yfreeze = np.array(week_freezed_pred)
 
         if len(y_true_arr) > 0:
@@ -1026,6 +1079,9 @@ def main():
 
             fed_intra_mae = mean_absolute_error(y_true_arr, yfi_arr)
             fed_intra_mse = mean_squared_error(y_true_arr, yfi_arr)
+
+            fed_scale_mae = mean_absolute_error(y_true_arr, yfs_arr)
+            fed_scale_mse = mean_squared_error(y_true_arr, yfs_arr)
             with open(results_file, "a", newline="") as f:
                 writer = csv.writer(f)
                 writer.writerow(
@@ -1039,6 +1095,8 @@ def main():
                         fed_mse,
                         fed_intra_mae,
                         fed_intra_mse,
+                        fed_scale_mae,
+                        fed_scale_mse,
                     ]
                 )
             print(
@@ -1057,6 +1115,7 @@ def main():
             )
             output = week_df["bike_usage_next"]
             global_mean, global_sigma = send_z_score(output, glob_dealer)
+            local_sigma = float(output.std(ddof=0)) if len(output) > 1 else 0.0
 
             tr_df, val_df = split_train_val_chrono(
                 week_df, val_frac=0.2, time_col="hour"
@@ -1100,16 +1159,34 @@ def main():
             if NODE_ID in leaders.values():
                 received_weights = send_update_and_wait_for_peers(my_weights)
                 all_weights = [my_weights] + list(received_weights.values())
+                own_neigh_mean = [np.array(w) for w in my_weights]
                 my_weights = federated_average(all_weights)
 
+                alpha = (
+                    min(1.0, abs(local_sigma - global_sigma) / global_sigma)
+                    if global_sigma > 0
+                    else 0.0
+                )
+                scale_weights_prev = [
+                    alpha * own + (1.0 - alpha) * cross
+                    for own, cross in zip(own_neigh_mean, my_weights)
+                ]
+                scale_model.set_weights(scale_weights_prev)
+
                 model.set_weights(my_weights)
-                print(f"[{NODE_ID}] Completed synchronous neighborhood exchange")
+                print(
+                    f"[{NODE_ID}] Final synchronous neighborhood exchange done "
+                    f"(alpha={alpha:.3f})"
+                )
 
                 for peer in NODE_LIST:
                     if peer == NODE_ID:
                         continue
 
-                    payload = {"weights": [w.tolist() for w in my_weights]}
+                    payload = {
+                        "weights": [w.tolist() for w in my_weights],
+                        "scale_weights": [w.tolist() for w in scale_weights_prev],
+                    }
                     # send [peer_identity, empty, json_payload]
                     router.send_multipart(
                         [peer.encode("utf-8"), b"", json.dumps(payload).encode("utf-8")]
@@ -1128,6 +1205,10 @@ def main():
                 msg = json.loads(raw.decode("utf-8"))
                 peer_weights = [np.array(w) for w in msg["weights"]]
                 model.set_weights(peer_weights)
+                if "scale_weights" in msg:
+                    scale_peer_weights = [np.array(w) for w in msg["scale_weights"]]
+                    scale_model.set_weights(scale_peer_weights)
+                    scale_weights_prev = scale_peer_weights
                 print(f"[{NODE_ID}] Received final global update from leader.")
                 ack = json.dumps({"status": "ACK"}).encode("utf-8")
                 neigh_dealer.send_multipart([b"", ack])
