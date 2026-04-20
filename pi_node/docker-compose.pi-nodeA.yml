@@ -5,6 +5,17 @@
 # below gives the Pi container IP 192.168.1.208, which is exactly the
 # address the rest of the federation expects for nodeA.
 #
+# TEMPLATE: this file is specifically configured to run nodeA on a
+# Raspberry Pi 4, but it is intended as a template for running any one
+# of the 16 clients on any edge device. To adapt it:
+#   - change NODE_ID (A/B/.../Z -- see v2_node.py for valid IDs)
+#   - change NEIGHBORHOOD to match (docker/docker2/docker3/docker4)
+#   - change ipv4_address to the matching IP in the ip_mapping table
+#   - ensure the edge device's architecture has a compatible Docker
+#     image (rebuild with docker build -t federated-node ..)
+# Jetson Nano, ODROID, BeagleBone, or any Linux box with Docker and a
+# macvlan-capable Ethernet interface will work identically.
+#
 # Before bringing this up, create the macvlan network on the Pi by
 # running ./setup_macvlan.sh in this directory. Bring the rest of the
 # federation up on the host with docker-compose.hybrid-host.yml from
