@@ -679,6 +679,10 @@ def main():
     )
 
     model = neural_network_model()
+    # Shadow model for intra-region-only Fed evaluation. Holds last week's
+    # neighborhood-mean weights (post ring-reduce, pre router exchange).
+    intra_model = neural_network_model()
+    intra_weights_prev = None
 
     full_df = merged_df.sort_values("hour").reset_index(drop=True)
 
@@ -701,6 +705,7 @@ def main():
     week_base_pred = []  # baseline predictions
     week_freezed_pred = []
     week_fed_pred = []  # federated model predictions
+    week_fed_intra_pred = []  # intra-region-only federated predictions
 
     # 6) Path for writing results
     results_file = f"/results/node_results/{NODE_ID}_results.csv"
@@ -712,6 +717,8 @@ def main():
         "freeze_mse",
         "fed_mae",
         "fed_mse",
+        "fed_intra_mae",
+        "fed_intra_mse",
     ]
     if not os.path.exists(results_file):
         with open(results_file, "w", newline="") as f:
@@ -738,6 +745,7 @@ def main():
             y_true_arr = np.array(week_true)
             yb_arr = np.array(week_base_pred)
             yf_arr = np.array(week_fed_pred)
+            yfi_arr = np.array(week_fed_intra_pred)
             yfreeze = np.array(week_freezed_pred)
 
             bias = float(np.mean(y_true_arr - yb_arr))
@@ -752,6 +760,9 @@ def main():
                 fed_mae = mean_absolute_error(y_true_arr, yf_arr)
                 fed_mse = mean_squared_error(y_true_arr, yf_arr)
 
+                fed_intra_mae = mean_absolute_error(y_true_arr, yfi_arr)
+                fed_intra_mse = mean_squared_error(y_true_arr, yfi_arr)
+
                 # Append to CSV
                 with open(results_file, "a", newline="") as f:
                     writer = csv.writer(f)
@@ -764,6 +775,8 @@ def main():
                             freeze_mse,
                             fed_mae,
                             fed_mse,
+                            fed_intra_mae,
+                            fed_intra_mse,
                         ]
                     )
                 print(
@@ -834,6 +847,11 @@ def main():
                     parcel = received_weights
                 my_weights = [a / len(NODE_LIST) for a in acc]
 
+                # Snapshot the intra-region (neighborhood-mean) weights before
+                # they get overwritten by the cross-region FedAvg in Step 5.
+                intra_weights_prev = [np.array(w) for w in my_weights]
+                intra_model.set_weights(intra_weights_prev)
+
                 print(
                     f"[{NODE_ID}] Neighborhood federation done for week {current_week}."
                 )
@@ -887,6 +905,7 @@ def main():
                 week_true.clear()
                 week_base_pred.clear()
                 week_fed_pred.clear()
+                week_fed_intra_pred.clear()
                 week_freezed_pred.clear()
 
                 init_count = len(week_df)
@@ -963,10 +982,18 @@ def main():
         yfreeze = baseline_freezed(input)[0][0]
 
         yf = model.predict(input)[0][0]
+        # Intra-region-only Fed: shadow model holds last week's neighborhood
+        # mean. Before the first ring-reduce has run, it equals the freshly
+        # initialized model; after week 1 it tracks the intra-region variant.
+        if intra_weights_prev is None:
+            yf_intra = yf
+        else:
+            yf_intra = intra_model.predict(input)[0][0]
         print(f"Real Value:{out},Baseline:{yb},Prediction:{yf}")
         week_true.append(out)
         week_base_pred.append(yb)
         week_fed_pred.append(yf)
+        week_fed_intra_pred.append(yf_intra)
         week_freezed_pred.append(yfreeze)
 
         true_val = out.item()  # safe conversion
@@ -984,6 +1011,7 @@ def main():
         y_true_arr = np.array(week_true)
         yb_arr = np.array(week_base_pred)
         yf_arr = np.array(week_fed_pred)
+        yfi_arr = np.array(week_fed_intra_pred)
         yfreeze = np.array(week_freezed_pred)
 
         if len(y_true_arr) > 0:
@@ -995,6 +1023,9 @@ def main():
 
             fed_mae = mean_absolute_error(y_true_arr, yf_arr)
             fed_mse = mean_squared_error(y_true_arr, yf_arr)
+
+            fed_intra_mae = mean_absolute_error(y_true_arr, yfi_arr)
+            fed_intra_mse = mean_squared_error(y_true_arr, yfi_arr)
             with open(results_file, "a", newline="") as f:
                 writer = csv.writer(f)
                 writer.writerow(
@@ -1006,6 +1037,8 @@ def main():
                         freeze_mse,
                         fed_mae,
                         fed_mse,
+                        fed_intra_mae,
+                        fed_intra_mse,
                     ]
                 )
             print(
@@ -1056,6 +1089,9 @@ def main():
                 acc = [a + r for a, r in zip(acc, received_weights)]
                 parcel = received_weights
             my_weights = [a / len(NODE_LIST) for a in acc]
+
+            intra_weights_prev = [np.array(w) for w in my_weights]
+            intra_model.set_weights(intra_weights_prev)
 
             print(
                 f"[{NODE_ID}] Neighborhood federation done for final week {current_week}."
