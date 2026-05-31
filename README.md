@@ -1,9 +1,24 @@
-# Hierarchical Federated Learning for Bike-Sharing Demand
+# HFedBike — Hybrid Federated Learning for Urban Bike-Sharing Demand Forecasting
 
-Hour-ahead demand forecasting for the New York City Citi Bike network,
-trained with a hybrid federated-learning architecture: four geographic
-neighborhoods, static leaders, peer-to-peer ring reduce inside each
-neighborhood, and a non-computational router between leaders.
+> 📄 **Accepted at [MDM 2026](https://mdm-2026.github.io/) — Demos & Posters track.**
+> *HFedBike: A Hybrid Federated Learning System for Urban Bike-Sharing Demand
+> Forecasting.* N. Andrianopoulos et al., 27th IEEE International Conference on
+> Mobile Data Management, Athens, 2026.
+
+Hour-ahead demand forecasting for the New York City Citi Bike network, trained with
+a **hybrid hierarchical federated-learning** architecture: 16 nodes across four
+geographic neighborhoods, static per-neighborhood leaders, an exact-mean peer-to-peer
+**ring all-reduce** inside each neighborhood, and a non-computational router that pools
+Welford sufficient statistics for global z-scoring and a cross-region FedAvg between
+leaders — **no node ever shares raw data**.
+
+## TL;DR
+
+Over the full 52 weeks of 2024, across 16 subzones, the federated system cut hour-ahead
+forecast error to **0.459 MAE — a 29.2% reduction** vs. a frozen baseline (and 19.6% vs.
+a bias-adapted one), every pairwise difference significant at **p < 1e-8** (paired
+Wilcoxon). Built on a hand-rolled ZeroMQ messaging layer, 16 Docker containers on a
+macvlan network, with a Raspberry-Pi-in-the-loop demo variant.
 
 ## Repository layout
 
@@ -118,6 +133,20 @@ On the 52 consecutive ISO weeks of 2024, across 16 subzones:
 Federated vs. frozen: **−29.2%**. Federated vs. bias-adapted: **−19.6%**.
 All three pairwise differences significant at `p < 1e-8`
 (paired Wilcoxon).
+
+## Citation
+
+```bibtex
+@inproceedings{andrianopoulos2026hfedbike,
+  title     = {HFedBike: A Hybrid Federated Learning System for Urban
+               Bike-Sharing Demand Forecasting},
+  author    = {Andrianopoulos, Nikos and others},
+  booktitle = {Proceedings of the 27th IEEE International Conference on
+               Mobile Data Management (MDM), Demos and Posters Track},
+  year      = {2026},
+  address   = {Athens, Greece}
+}
+```
 
 ## Data notes
 
