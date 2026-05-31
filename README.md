@@ -66,7 +66,6 @@ diplwmatikh/
 ├── figures/                      Generated figures (mae_comparison.pdf/png, map, topology)
 ├── papers/                       Drafts and submitted versions
 ├── logs/                         Per-container runtime logs from the most recent federation
-├── legacy/ + spring_version/     Archived earlier explorations; not used by the current pipeline
 │
 ├── Dockerfile                    TensorFlow + pyzmq image used by every node/coordinator
 ├── docker-compose.yml            16 nodes + 1 coordinator on a macvlan network
